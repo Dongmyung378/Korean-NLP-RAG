@@ -51,7 +51,7 @@ Korean-NLP-RAG/
 프로젝트 최상위 폴더에서 실행합니다.
 
 ```powershell
-cd C:\Users\leona\Desktop\Korean-NLP-RAG
+cd 저장한 폴더 경로
 python -m pip install -r requirements.txt
 python -m korean_rag --question "방탄소년단의 팬클럽 창단식은 몇 월 며칠인가?"
 ```
