@@ -13,6 +13,7 @@ from .pipeline import (
     KoreanRAGPipeline,
 )
 from .retrieval import ArtifactPaths
+from .validation import QuestionValidationError, validate_question_text
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -49,19 +50,21 @@ def main() -> None:
     parser = _parser()
     args = parser.parse_args()
     question = (args.question if args.question is not None else input("Question: ")).strip()
-    if not question:
-        parser.error("Question must not be empty.")
     try:
+        question = validate_question_text(question)
         KoreanRAGPipeline.validate_answer_options(3, args.min_rrf_score, args.min_reranker_score, args.min_reader_score)
     except ValueError as error:
         parser.error(str(error))
     pipeline = KoreanRAGPipeline(ArtifactPaths(args.outputs_root.resolve()), device=args.device, use_reader=not args.no_reader)
-    result = pipeline.answer(
-        question,
-        min_rrf_score=args.min_rrf_score,
-        min_reranker_score=args.min_reranker_score,
-        min_reader_score=args.min_reader_score,
-    )
+    try:
+        result = pipeline.answer(
+            question,
+            min_rrf_score=args.min_rrf_score,
+            min_reranker_score=args.min_reranker_score,
+            min_reader_score=args.min_reader_score,
+        )
+    except QuestionValidationError as error:
+        parser.error(str(error))
     if args.json:
         print(json.dumps(result, ensure_ascii=False, indent=2))
     else:

@@ -10,6 +10,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from .reranking import CrossEncoderReranker
+from .validation import validate_question_tokens
 from .retrieval import ArtifactPaths, load_week2_retriever, reciprocal_rank_fusion, tokenize_for_bm25, top_k_from_scores
 
 DEFAULT_READER_MODEL = "monologg/koelectra-base-v3-finetuned-korquad"
@@ -129,6 +130,7 @@ class KoreanRAGPipeline:
         import torch
 
         tokenizer, model = self.reader
+        question = validate_question_tokens(question, tokenizer)
         encoded = tokenizer(
             question,
             context,
@@ -189,8 +191,7 @@ class KoreanRAGPipeline:
 
     def search(self, question: str, candidate_k: int = 50, rerank_k: int = 20) -> list[dict]:
         """Retrieve and rerank evidence chunks for one Korean question."""
-        if not question or not question.strip():
-            raise ValueError("Question must not be empty.")
+        question = validate_question_tokens(question, self.reranker.tokenizer)
         if candidate_k < 1 or rerank_k < 1:
             raise ValueError("candidate_k and rerank_k must be positive.")
         bm25_scores = np.asarray(self.bm25.get_scores(tokenize_for_bm25(question)))

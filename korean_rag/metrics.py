@@ -50,6 +50,11 @@ def ndcg_at_k(ranks: Iterable[int | None], k: int) -> float:
 def ranking_summary(ranks: Iterable[int | None], cutoffs: Iterable[int] = (1, 5, 10)) -> dict[str, float]:
     """Build a consistently named Recall/MRR/nDCG metric dictionary."""
     rank_list = list(ranks)
+    cutoffs = tuple(cutoffs)
+    if not cutoffs:
+        return {}
+    if any(not isinstance(k, int) or isinstance(k, bool) or k < 1 for k in cutoffs):
+        raise ValueError("cutoffs must contain positive integers.")
     summary: dict[str, float] = {}
     for k in cutoffs:
         summary[f"recall_at_{k}"] = recall_at_k(rank_list, k)

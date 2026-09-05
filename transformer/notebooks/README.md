@@ -20,6 +20,8 @@
 3. 4주차 입력으로 2주차 Retriever와 3주차 Reranker 출력물을 연결합니다.
 4. 4주차 완료 후 `week4_final_artifacts.zip`을 받아 압축을 풉니다.
 
+4주차 입력 셀의 `WEEK2_CHECKPOINT`, `WEEK3_MODEL_DIR`는 기본값이 `None`입니다. 입력에 모델이 하나씩 있으면 자동으로 찾고, 여러 버전이 있으면 실행을 멈춥니다. 그때는 두 변수에 사용할 체크포인트 파일과 리랭커 폴더의 전체 Kaggle 경로를 지정하세요. 2주차 설정과 토크나이저도 선택한 체크포인트 옆에서만 읽습니다. 입력 검사만 추가했으며 기존 모델과 출력물은 그대로입니다.
+
 로컬 실행만 하려면 이 과정을 반복할 필요가 없습니다. [Google Drive의 outputs](https://drive.google.com/drive/folders/1wqPSshOLzAJHYGfR7Z-Ug0BP_k3ycL4s?usp=sharing)를 프로젝트의 `transformer/outputs`에 배치하고 [최상위 README](../../README.md)의 실행 방법을 따르면 됩니다.
 
 ## 4주차 결과와 실행 기록
@@ -38,6 +40,7 @@
 - 정답 포함률은 정규화된 정답 문자열의 포함 여부입니다. 인용률 역시 의미적 정답률이 아닙니다.
 - 4주차 질문은 기존 개발에 사용한 표본입니다. 일반적인 무응답 성능이나 새 held-out 성능을 주장하지 않습니다.
 - 2주차 배포 JSON의 `sts_baseline`은 이름과 달리 2일차 학습 결과를 담습니다. 사전학습 기준선과 최종 시드 결과는 [2주차 보고서](../../reports/week2_experiment_results.md)에 구분했습니다.
+- 3주차 random-negative 기준 모델은 4일차 검증에 포함된 질문 일부를 이미 학습했습니다. 기준선과 hard-negative 모델의 점수 차이를 공정한 효과 비교로 해석하지 않습니다. 이번에는 [설명을 바로잡았으며](../../reports/week3_experiment_results.md), 비교 모델을 다시 학습한 것은 아닙니다.
 
 ## 선택 사항: 보고서 재생성
 

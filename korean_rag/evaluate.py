@@ -88,7 +88,7 @@ def main():
         "versions": {name: version(name) for name in ("torch", "transformers", "numpy", "pandas", "faiss-cpu", "rank-bm25")},
         "python": platform.python_version(),
         "input_sha256": {"examples": file_hash(examples_path), "probes": file_hash(args.unanswerable_file)},
-        "source_sha256": {name: file_hash(root / "korean_rag" / name) for name in ("pipeline.py", "retrieval.py", "reranking.py", "evaluate.py")},
+        "source_sha256": {name: file_hash(root / "korean_rag" / name) for name in ("pipeline.py", "retrieval.py", "reranking.py", "validation.py", "evaluate.py")},
     }
     args.save_dir.mkdir(parents=True, exist_ok=True)
     for name, content in (("metrics.json", metrics), ("predictions.json", predictions), ("unanswerable_probes.json", probe_results)):
