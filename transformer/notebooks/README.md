@@ -1,42 +1,51 @@
 # 노트북 안내
 
-이 폴더의 노트북은 한국어 RAG 시스템을 4주 동안 단계적으로 구축한 실험 기록입니다. 각 노트북에는 일차별 실험 과정과 핵심 결과가 남아 있습니다.
+4주간의 학습·검색·질의응답 실험 기록입니다. 노트북은 Kaggle에서 독립 실행하고, 로컬 앱은 저장된 모델과 인덱스만 불러옵니다.
 
-| 주차 | 노트북 | 핵심 질문 | 재사용 결과물 |
-|---|---|---|---|
-| 1주차 | `Week - 1/korean-transformer-finetuning.ipynb` | 한국어 Transformer를 어떻게 fine-tuning하고 평가하는가? | 학습 프로토콜과 분류 오류 분석 |
-| 2주차 | `Week - 2/sentence-embedding-retrieval.ipynb` | Contrastive fine-tuning이 의미 기반 검색을 개선하는가? | Dense Retriever 체크포인트와 토크나이저 |
-| 3주차 | `Week - 3/cross-encoder-reranker.ipynb` | Cross-Encoder가 검색 문맥의 순위를 개선하는가? | 최종 Reranker 체크포인트 |
-| 4주차 | `Week - 4/hybrid-rag.ipynb` | Hybrid Retrieval과 근거 기반 QA로 사용할 수 있는 한국어 RAG를 만들 수 있는가? | BM25, FAISS, 지식베이스, RAG 평가 결과 |
+## 주차별 역할
 
-## 아티팩트 연결
+| 주차 | 노트북 | 주요 실험 | 최종 앱과의 관계 |
+| --- | --- | --- | --- |
+| 1 | [Transformer fine-tuning](<Week - 1/korean-transformer-finetuning.ipynb>) | KLUE-YNAT 뉴스 분류, 설정 비교, hold-out 평가 | 학습·평가 실험이며 분류 가중치는 재사용하지 않음 |
+| 2 | [Sentence embedding](<Week - 2/sentence-embedding-retrieval.ipynb>) | KLUE-STS 학습, 다중 시드, FAISS 검색 | Dense Retriever와 토크나이저 |
+| 3 | [Cross-Encoder reranker](<Week - 3/cross-encoder-reranker.ipynb>) | hard-negative 학습, 검색 순위 평가 | Reranker 체크포인트 |
+| 4 | [Hybrid RAG](<Week - 4/hybrid-rag.ipynb>) | BM25·Dense·RRF·리랭킹, Qwen·Reader 비교 | 지식베이스, 검색 인덱스, 답변 평가 |
 
-2주차 Retriever는 3주차와 4주차에서 사용합니다. 3주차 Reranker는 4주차에서 사용합니다. 로컬 터미널 애플리케이션은 최종적으로 `transformer/outputs/week2`, `week3`, `week4`의 아티팩트를 직접 불러옵니다.
+주차별 요약: [1주차](../../reports/week1_experiment_results.md) · [2주차](../../reports/week2_experiment_results.md) · [3주차](../../reports/week3_experiment_results.md) · [4주차](../../reports/week4_experiment_results.md)
 
-## 데이터와 답변 범위
+## Kaggle 재현 순서
 
-4주차의 최종 지식베이스는 **KorQuAD 1.0 한국어 위키백과 문맥**으로 구성했습니다. 따라서 노트북의 정량 평가는 KorQuAD 기반 검색·추출형 질의응답 성능을 나타냅니다.
+1. 각 노트북을 새 세션에서 위에서 아래로 실행합니다. 모델·데이터 다운로드를 위한 Internet과 학습용 GPU를 준비합니다.
+2. 3주차 입력으로 2주차 출력물을 연결합니다.
+3. 4주차 입력으로 2주차 Retriever와 3주차 Reranker 출력물을 연결합니다.
+4. 4주차 완료 후 `week4_final_artifacts.zip`을 받아 압축을 풉니다.
 
-이 결과를 일반 지식 챗봇의 성능으로 해석하면 안 됩니다. 최신 정보, 실시간 정보, 개인 정보, 지식베이스에 없는 주제는 답할 수 없으며, 로컬 애플리케이션은 근거가 부족할 때 답변을 거절하도록 구성했습니다.
+로컬 실행만 하려면 이 과정을 반복할 필요가 없습니다. [Google Drive의 outputs](https://drive.google.com/drive/folders/1wqPSshOLzAJHYGfR7Z-Ug0BP_k3ycL4s?usp=sharing)를 프로젝트의 `transformer/outputs`에 배치하고 [최상위 README](../../README.md)의 실행 방법을 따르면 됩니다.
 
-## 노트북 재현 순서
+## 4주차 결과와 실행 기록
 
-1. 각 노트북을 새로운 Kaggle 세션에서 위에서 아래로 실행합니다.
-2. 3주차 전에는 2주차 아티팩트를 Kaggle 입력으로 연결합니다.
-3. 4주차 전에는 2주차 Retriever와 3주차 Reranker 아티팩트를 Kaggle 입력으로 연결합니다.
-4. 포트폴리오에는 중간 학습 지표보다 최종 Retrieval과 RAG 평가 지표를 사용합니다.
+수정본은 Kaggle 전체 실행을 완료했습니다. 고정 질문 100개에서 최종 정답 포함은 74개였고, Reader 후보 209개에 빈 답 안내 문장은 없습니다. 모든 최종 답변은 Reader에서 나왔으며 이 표본에서는 Qwen fallback이 사용되지 않았습니다.
 
-## GitHub에서 로컬 실행하기
+이후 한 글자 답변의 인용 누락을 로컬에서 수정했습니다. 저장된 답변은 바꾸지 않고 인용·표·그림만 갱신했으며, 해당 셀에 `local_postprocessing` 메타데이터를 남겼습니다. 모델 추론 시간은 원래 Kaggle 값을 유지했습니다. [후처리 기록](../../reports/week4_postprocessing.json)에서 변경 범위를 확인할 수 있습니다.
 
-GitHub 용량 제한 때문에 100MB가 넘는 모델 체크포인트와 인덱스는 저장소에 포함하지 않습니다. 아래 Google Drive에서 `outputs` 폴더를 내려받아 `transformer/outputs` 위치에 넣어야 합니다.
+현재 노트북 결과를 단순히 수정 전 Kaggle 출력으로만 보아서는 안 됩니다. 학습·추론은 Kaggle 실행, 인용·보고서 일부는 저장 결과의 로컬 후처리로 구분돼 있습니다.
 
-[Google Drive - outputs 다운로드](https://drive.google.com/drive/folders/1wqPSshOLzAJHYGfR7Z-Ug0BP_k3ycL4s?usp=sharing)
+로컬 앱은 Qwen 없이 후보별 점수와 연도 검사를 사용하므로 정답 포함은 67/100입니다. 노트북의 74/100과 같은 정책의 성능으로 합쳐 표기하지 않습니다.
 
-그 다음 프로젝트 최상위 폴더에서 아래 명령어를 실행합니다.
+## 결과를 해석할 때
 
-```powershell
-python -m pip install -r requirements.txt
-python -m korean_rag --question "방탄소년단의 팬클럽 창단식은 몇 월 며칠인가?"
+- 지식베이스는 KorQuAD 1.0 validation split의 한국어 위키백과 문맥이며 웹 전체를 검색하지 않습니다.
+- 정답 포함률은 정규화된 정답 문자열의 포함 여부입니다. 인용률 역시 의미적 정답률이 아닙니다.
+- 4주차 질문은 기존 개발에 사용한 표본입니다. 일반적인 무응답 성능이나 새 held-out 성능을 주장하지 않습니다.
+- 2주차 배포 JSON의 `sts_baseline`은 이름과 달리 2일차 학습 결과를 담습니다. 사전학습 기준선과 최종 시드 결과는 [2주차 보고서](../../reports/week2_experiment_results.md)에 구분했습니다.
+
+## 선택 사항: 보고서 재생성
+
+일반적인 로컬 질의응답에는 필요하지 않습니다. 저장된 답변과 후보로 인용·표·그림을 다시 만들 때만 프로젝트 루트에서 실행합니다.
+
+```bash
+python -m pip install -r requirements-reports.txt
+python scripts/refresh_week4_reports.py
 ```
 
-상세한 실행 옵션과 답변 거절 기준은 프로젝트 최상위 [README](../../README.md)를 참고하세요.
+이 명령은 모델 추론 없이 4주차 결과 파일, 노트북의 후처리 출력, 후처리 기록을 갱신합니다. 원본 실행 기록을 보관하려면 먼저 노트북과 출력물의 별도 사본을 보관하세요. 전체 노트북 재학습에 필요한 라이브러리는 각 노트북의 설치·가져오기 셀을 확인해야 하며, 로컬 앱용 `requirements.txt`만으로 학습 환경 전체를 설치하는 것은 아닙니다.

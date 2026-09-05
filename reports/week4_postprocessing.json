@@ -1,0 +1,11 @@
+{
+  "updated_at_utc": "2026-09-05T14:10:41.581667+00:00",
+  "model_inference": false,
+  "answers_changed": 0,
+  "answer_containment_rate": 0.74,
+  "grounded_rate_before": 0.97,
+  "grounded_rate_after": 1.0,
+  "input_examples_sha256": "b3f67c311876e7bcb81cd0cc0896ec7ee398c8e45effa351a6a4a2fb02d0a490",
+  "output_examples_sha256": "acd29380dd348a235dacf978ce1ae05ec6e715bc995328a625607385737acb75",
+  "timing_note": "Original Kaggle component timings retained, not a new end-to-end latency measurement."
+}

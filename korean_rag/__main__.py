@@ -21,7 +21,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--outputs-root", type=Path, default=Path(__file__).resolve().parents[1] / "transformer" / "outputs", help="Directory containing week2, week3, and week4 outputs")
     parser.add_argument("--device", choices=("auto", "cpu", "cuda"), default="auto")
     parser.add_argument("--no-reader", action="store_true", help="Show retrieved evidence without downloading or running the QA reader")
-    parser.add_argument("--min-rrf-score", type=float, default=DEFAULT_MIN_RRF_SCORE, help="Minimum hybrid retrieval confidence for an answer")
+    parser.add_argument("--min-rrf-score", type=float, default=DEFAULT_MIN_RRF_SCORE, help="Minimum per-chunk RRF score (rank-based, not a probability)")
     parser.add_argument("--min-reranker-score", type=float, default=DEFAULT_MIN_RERANKER_SCORE, help="Minimum Cross-Encoder relevance for an answer")
     parser.add_argument("--min-reader-score", type=float, default=DEFAULT_MIN_READER_SCORE, help="Minimum QA reader confidence for an answer")
     parser.add_argument("--json", action="store_true", help="Print machine-readable JSON")
@@ -32,7 +32,7 @@ def _print_result(result: dict) -> None:
     print(f"\nAnswer: {result['answer'] or 'No reader was used.'}")
     print(f"Source: {result['answer_source']}")
     if "reader_score" in result:
-        print(f"Reader confidence: {result['reader_score']:.4f}")
+        print(f"Reader span score: {result['reader_score']:.4f}")
     if "abstention_reasons" in result:
         print("Reason: " + " ".join(result["abstention_reasons"]))
     if "citation" in result:
@@ -46,8 +46,15 @@ def _print_result(result: dict) -> None:
 
 
 def main() -> None:
-    args = _parser().parse_args()
-    question = args.question or input("Question: ").strip()
+    parser = _parser()
+    args = parser.parse_args()
+    question = (args.question if args.question is not None else input("Question: ")).strip()
+    if not question:
+        parser.error("Question must not be empty.")
+    try:
+        KoreanRAGPipeline.validate_answer_options(3, args.min_rrf_score, args.min_reranker_score, args.min_reader_score)
+    except ValueError as error:
+        parser.error(str(error))
     pipeline = KoreanRAGPipeline(ArtifactPaths(args.outputs_root.resolve()), device=args.device, use_reader=not args.no_reader)
     result = pipeline.answer(
         question,
@@ -55,8 +62,9 @@ def main() -> None:
         min_reranker_score=args.min_reranker_score,
         min_reader_score=args.min_reader_score,
     )
-    print(json.dumps(result, ensure_ascii=False, indent=2) if args.json else "")
-    if not args.json:
+    if args.json:
+        print(json.dumps(result, ensure_ascii=False, indent=2))
+    else:
         _print_result(result)
 
 
