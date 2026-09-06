@@ -84,7 +84,7 @@ Citation: 방탄소년단 (chunk 3167)
 
 첫 실행에는 공개 QA 모델 `monologg/koelectra-base-v3-finetuned-korquad`를 내려받기 위한 인터넷 연결이 필요합니다. 이후에는 로컬 캐시를 사용합니다. 질문 한 번을 실행할 때마다 모델을 메모리에 다시 불러옵니다.
 
-Windows, Python 3.12.7, PyTorch 2.5.1+cu121, Transformers 5.16.1에서 검증했습니다. CPU로도 실행할 수 있고, GPU를 쓰려면 CUDA 지원 PyTorch가 설치돼 있어야 합니다. 의존성은 버전 범위로 지정했으므로 환경이 달라지면 아래 테스트로 확인해 주세요. 기존에 실행되는 환경을 다시 설치할 필요는 없습니다.
+Windows, Python 3.12.7, PyTorch 2.5.1+cu121, Transformers 5.16.1에서 검증했습니다. CPU로도 실행할 수 있고, GPU를 쓰려면 CUDA 지원 PyTorch가 설치돼 있어야 합니다. 의존성은 버전 범위로 지정했으므로 환경이 달라지면 아래 테스트로 확인해 주세요.
 
 ## 자주 쓰는 명령
 
@@ -136,9 +136,9 @@ python -m korean_rag --question "질문" --min-rrf-score 0.03 --min-reranker-sco
 
 무응답 점검도 알려진 실패 사례를 포함한 6문항에 한정됩니다. 팬클럽 ‘해체식’이라는 잘못된 전제의 질문에 날짜를 답하는 실패가 남아 있습니다.
 
-3주차의 random-negative 기준 모델 비교에는 검증 질문 중복이 있습니다. 따라서 그 비교만으로 hard-negative 학습의 효과를 입증했다고 주장하지 않습니다. 최종 모델의 검색 순위 평가와 구분해 [3주차 보고서](reports/week3_experiment_results.md)에 설명했습니다. 이 문제를 설명으로 바로잡았을 뿐, 공정한 비교 실험을 새로 수행한 것은 아닙니다.
+3주차의 random-negative 기준 모델 비교에는 검증 질문 중복이 있어 hard-negative 학습 효과를 입증하는 근거로 사용할 수 없습니다. 독립된 질문 분할로 두 모델을 다시 비교한 결과는 없습니다. 최종 모델의 검색 순위 평가와의 차이는 [3주차 보고서](reports/week3_experiment_results.md)에 설명했습니다.
 
-[4주차 분석](reports/week4_experiment_results.md), [실측 지표와 실행 환경](reports/local_evaluation/metrics.json), [100개 답변](reports/local_evaluation/predictions.json), [무응답 점검 결과](reports/local_evaluation/unanswerable_probes.json)에서 세부 내용을 볼 수 있습니다. 저장된 평가 기록은 당시 코드의 해시를 담고 있습니다. 이후 입력 검사와 예외 처리를 추가했지만 기존 기록을 새 실행 결과로 덮어쓰지는 않았습니다.
+[4주차 분석](reports/week4_experiment_results.md), [실측 지표와 실행 환경](reports/local_evaluation/metrics.json), [100개 답변](reports/local_evaluation/predictions.json), [무응답 점검 결과](reports/local_evaluation/unanswerable_probes.json)에서 세부 내용을 볼 수 있습니다. 평가 기록의 코드 해시는 입력 검사와 예외 처리가 추가되기 전의 실행 버전을 가리킵니다.
 
 ## 검증 명령
 

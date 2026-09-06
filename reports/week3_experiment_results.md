@@ -19,7 +19,7 @@ learning-rate 비교에서는 3e-5가 가장 높은 validation Macro-F1 0.9732�
 
 3일차 random-negative 기준 모델은 hard-negative 대상 질문들을 포함해 학습했다. 이후 4일차에 질문 ID를 train/validation으로 나눈 뒤 같은 기준 모델을 validation에 평가했으므로, 검증 질문 일부를 이미 학습한 상태다. 따라서 `hard_negative_baseline_macro_f1`과 4일차 모델의 차이를 독립적인 검증이나 hard-negative 학습 효과의 확정적 증거로 해석하지 않는다.
 
-최종 모델은 사전학습 모델에서 새로 초기화해 4일차 train 분할로 학습했고, 위 검색 순위 표는 별도의 KorQuAD validation 질의에서 측정했다. 기준 모델의 질문 중복 문제와 이 순위 평가는 구분한다. 공정한 random-negative/hard-negative 비교를 새로 하려면 먼저 동일한 질문 분할을 고정하고 두 모델을 각각 학습해야 한다. 이번 정리에서는 설명만 바로잡았으며 기존 가중치와 결과를 변경하지 않았다.
+최종 모델은 사전학습 가중치를 다시 불러와 4일차 train 분할로 학습했고, 위 검색 순위 표는 별도의 KorQuAD validation 질의에서 측정했다. 기준 모델의 질문 중복 문제와 이 순위 평가는 구분한다. 동일한 질문 분할에서 random-negative와 hard-negative 모델을 각각 학습한 통제 실험은 수행하지 않았다.
 
 reranker는 Top-20 후보 집합을 늘리지는 않지만, 그 안의 순서를 크게 개선했다. Recall@20이 같다는 점은 후보 생성은 Week 2 retriever가 담당하고, Week 3 모델은 상위 순위 품질을 높였다는 뜻이다.
 
