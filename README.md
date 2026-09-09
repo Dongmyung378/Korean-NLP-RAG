@@ -2,8 +2,6 @@
 
 [English](README.md) | [한국어](README.ko.md)
 
-[![Tests](https://github.com/Dongmyung378/Korean-NLP-RAG/actions/workflows/tests.yml/badge.svg)](https://github.com/Dongmyung378/Korean-NLP-RAG/actions/workflows/tests.yml)
-
 A four-week NLP engineering project that builds a grounded Korean question-answering pipeline from trained retrieval and reranking models. The final application runs in a terminal, retrieves evidence from a fixed KorQuAD knowledge base, extracts an answer, and returns its citation or abstains when the evidence is insufficient.
 
 This repository includes the experiment notebooks, reusable inference code, regression tests, evaluation records, and weekly reports. Large model artifacts are distributed separately through Google Drive.
