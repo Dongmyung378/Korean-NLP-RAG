@@ -2,8 +2,6 @@
 
 [English](README.md) | [한국어](README.ko.md)
 
-[![Tests](https://github.com/Dongmyung378/Korean-NLP-RAG/actions/workflows/tests.yml/badge.svg)](https://github.com/Dongmyung378/Korean-NLP-RAG/actions/workflows/tests.yml)
-
 한국어 문맥에서 질문에 필요한 근거를 찾고, 답과 출처를 터미널에 보여주는 프로젝트입니다. 4주 동안 Transformer 학습, 문장 임베딩, 검색, 리랭킹을 실험한 뒤 저장된 모델을 로컬 Python 코드로 연결했습니다.
 
 최종 앱은 인터넷을 검색하거나 자유롭게 문장을 생성하지 않습니다. KorQuAD 문맥을 검색한 다음 QA Reader가 답을 추출합니다. Qwen을 이용한 생성형 RAG와의 비교 실험은 4주차 노트북에 남겨두었습니다.
