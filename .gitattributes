@@ -1,0 +1,3 @@
+# Weekly learning notebooks are retained as project records but excluded from
+# GitHub Linguist's repository language statistics.
+transformer/notebooks/**/*.ipynb linguist-detectable=false

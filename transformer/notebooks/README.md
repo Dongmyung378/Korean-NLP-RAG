@@ -13,7 +13,9 @@ These notebooks record the four-week training, retrieval, and question-answering
 | 3 | [Cross-Encoder reranker](<Week - 3/cross-encoder-reranker.ipynb>) | Hard-negative training and ranking evaluation | Reranker checkpoint |
 | 4 | [Hybrid RAG](<Week - 4/hybrid-rag.ipynb>) | BM25, dense retrieval, RRF, reranking, Qwen/reader comparison | Knowledge base, search indexes, and answer evaluation |
 
-Weekly reports: [Week 1](../../reports/week1_experiment_results.md), [Week 2](../../reports/week2_experiment_results.md), [Week 3](../../reports/week3_experiment_results.md), [Week 4](../../reports/week4_experiment_results.md)
+Weekly reports: [Week 1](../../reports/week1_experiment_results.md), [Week 2](../../reports/week2_experiment_results.md), [Week 3](../../reports/week3_experiment_results.md), [Week 4](../../reports/week4_experiment_results.md). Each report links to its Korean translation.
+
+These learning notebooks are kept in version control for reproducibility, but their `.ipynb` files are excluded from GitHub's repository language statistics through `.gitattributes`.
 
 ## Kaggle execution order
 

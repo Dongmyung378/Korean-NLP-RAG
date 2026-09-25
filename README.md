@@ -46,7 +46,9 @@ The local application does not browse the web and does not use free-form generat
 | 3 | Cross-Encoder training and ranking evaluation | Reranker checkpoint |
 | 4 | BM25-dense fusion, reranking, reader/generator comparison, citations, and error analysis | Knowledge base, indexes, and final evaluation |
 
-The notebooks and their execution order are documented in [transformer/notebooks](transformer/notebooks/README.md). Concise weekly reports are available under [reports](reports).
+The notebooks and their execution order are documented in [transformer/notebooks](transformer/notebooks/README.md). Concise weekly reports are available under [reports](reports), with English as the default and a Korean translation linked from each report.
+
+The weekly notebooks are learning and experiment records rather than the reusable application source. They remain versioned and browsable, but `.gitattributes` excludes their `.ipynb` files from GitHub's repository language statistics.
 
 ## Knowledge-base scope
 
@@ -186,8 +188,8 @@ This command performs inference but does not retrain any model. Use a different 
 
 ```text
 korean_rag/            Local retrieval, reranking, QA, CLI, and evaluation code
-transformer/notebooks/ Four weekly Kaggle experiment notebooks
-reports/               Weekly analyses and saved local evaluation records
+transformer/notebooks/ Four weekly Kaggle experiment notebooks (excluded from language statistics)
+reports/               English-first weekly analyses, Korean translations, and evaluation records
 tests/                 Unit, notebook, and artifact regression tests
 scripts/               Report post-processing utility
 ```

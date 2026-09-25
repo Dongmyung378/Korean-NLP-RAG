@@ -19,6 +19,8 @@
 
 `질문 -> BM25 Top-50 + Dense Top-50 -> RRF Top-20 -> Reranker Top-3 -> QA Reader -> 답변과 인용 또는 답변 보류`
 
+주차별 노트북은 학습·실험 기록이므로 저장소에는 그대로 보존하되, 재사용 가능한 애플리케이션 소스의 언어 비중을 왜곡하지 않도록 `.gitattributes`에서 `.ipynb` 파일을 GitHub 언어 통계에서 제외했습니다. [주차별 보고서](reports)는 영어를 기본으로 제공하며, 각 보고서에서 한국어 번역본으로 이동할 수 있습니다.
+
 ## 답변할 수 있는 범위
 
 지식베이스는 KorQuAD 1.0 validation split의 한국어 위키백과 문맥 960개를 나눈 5,889개 청크입니다. 저장된 인물·문화·역사·과학 등의 문맥에서 사실을 찾을 수 있지만, 최신 뉴스나 날씨, 개인정보처럼 여기에 없는 정보에는 신뢰할 만한 답을 제공할 수 없습니다. 웹 검색, 사용자 문서 업로드, 대화 이력 기능은 없습니다.
@@ -138,9 +140,9 @@ python -m korean_rag --question "질문" --min-rrf-score 0.03 --min-reranker-sco
 
 무응답 점검도 알려진 실패 사례를 포함한 6문항에 한정됩니다. 팬클럽 ‘해체식’이라는 잘못된 전제의 질문에 날짜를 답하는 실패가 남아 있습니다.
 
-3주차의 random-negative 기준 모델 비교에는 검증 질문 중복이 있어 hard-negative 학습 효과를 입증하는 근거로 사용할 수 없습니다. 독립된 질문 분할로 두 모델을 다시 비교한 결과는 없습니다. 최종 모델의 검색 순위 평가와의 차이는 [3주차 보고서](reports/week3_experiment_results.md)에 설명했습니다.
+3주차의 random-negative 기준 모델 비교에는 검증 질문 중복이 있어 hard-negative 학습 효과를 입증하는 근거로 사용할 수 없습니다. 독립된 질문 분할로 두 모델을 다시 비교한 결과는 없습니다. 최종 모델의 검색 순위 평가와의 차이는 [3주차 보고서](reports/week3_experiment_results.ko.md)에 설명했습니다.
 
-[4주차 분석](reports/week4_experiment_results.md), [실측 지표와 실행 환경](reports/local_evaluation/metrics.json), [100개 답변](reports/local_evaluation/predictions.json), [무응답 점검 결과](reports/local_evaluation/unanswerable_probes.json)에서 세부 내용을 볼 수 있습니다. 평가 기록의 코드 해시는 입력 검사와 예외 처리가 추가되기 전의 실행 버전을 가리킵니다.
+[4주차 분석](reports/week4_experiment_results.ko.md), [실측 지표와 실행 환경](reports/local_evaluation/metrics.json), [100개 답변](reports/local_evaluation/predictions.json), [무응답 점검 결과](reports/local_evaluation/unanswerable_probes.json)에서 세부 내용을 볼 수 있습니다. 평가 기록의 코드 해시는 입력 검사와 예외 처리가 추가되기 전의 실행 버전을 가리킵니다.
 
 ## 검증 명령
 

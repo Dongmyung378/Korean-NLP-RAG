@@ -1,25 +1,27 @@
-# Week 1 결과 요약
+# Week 1 results
 
-## 목표
+[English](week1_experiment_results.md) | [한국어](week1_experiment_results.ko.md)
 
-KLUE-YNAT 뉴스 제목 분류 문제에서 KLUE-RoBERTa를 미세 조정하고, 성능과 학습 비용의 균형을 확인했다.
+## Objective
 
-## 실험 결과
+Fine-tune KLUE-RoBERTa for KLUE-YNAT news-title classification and examine the balance between performance and training cost.
 
-| 구분 | 평가 구간 | Accuracy | Macro-F1 | 파라미터 수 | 학습 시간 |
+## Experiment results
+
+| Configuration | Evaluation split | Accuracy | Macro-F1 | Parameters | Training time |
 | --- | --- | ---: | ---: | ---: | ---: |
-| 고정 시드 기준 실험 | Dev | 0.8831 | 0.8693 | 110.6M | 235.0초 |
-| 학습률 3e-5 실험 | Dev | 0.8827 | 0.8686 | 110.6M | 236.9초 |
-| 최종 선택 모델 | Hold-out test | 0.8696 | 0.8689 | 110.6M | 709.3초 |
+| Fixed-seed baseline | Dev | 0.8831 | 0.8693 | 110.6M | 235.0 s |
+| Learning rate 3e-5 | Dev | 0.8827 | 0.8686 | 110.6M | 236.9 s |
+| Selected final model | Hold-out test | 0.8696 | 0.8689 | 110.6M | 709.3 s |
 
-## 정리
+## Summary
 
-고정 시드 기준 설정이 Dev Macro-F1 0.8693으로 가장 높아 최종 학습에 사용됐다. 최종 hold-out test Macro-F1은 0.8689였다.
+The fixed-seed baseline achieved the highest Dev Macro-F1 of 0.8693 and was used for final training. The final hold-out test Macro-F1 was 0.8689.
 
-제목 길이가 짧아 최대 길이 64 이상에서 큰 이득은 없었다. 오류는 정치, 사회, 경제, 생활문화처럼 경계가 가까운 범주에 집중됐다.
+Because the news titles were short, sequence lengths above 64 provided little benefit. Errors were concentrated among closely related categories such as politics, society, economy, and culture/lifestyle.
 
-## 산출물
+## Outputs
 
-- 최종 분류 모델
-- hold-out test 예측과 오류 사례
-- 학습 설정과 평가 지표
+- Final classification model
+- Hold-out test predictions and error examples
+- Training configurations and evaluation metrics

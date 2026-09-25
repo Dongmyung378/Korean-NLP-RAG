@@ -1,30 +1,32 @@
-# Week 2 결과 요약
+# Week 2 results
 
-## 목표
+[English](week2_experiment_results.md) | [한국어](week2_experiment_results.ko.md)
 
-한국어 문장 임베딩 모델을 학습하고, FAISS 기반 밀집 검색기로 확장했다. Week 3에서 사용할 질문-문맥 후보와 모델 파일도 함께 저장했다.
+## Objective
 
-## 실험 결과
+Train a Korean sentence-embedding model and extend it into a FAISS-based dense retriever. The question-context candidates and model files required by Week 3 were saved as well.
 
-| 구분 | Pearson | Spearman | Recall@1 | Recall@5 | Recall@10 | MRR@10 |
+## Experiment results
+
+| Configuration | Pearson | Spearman | Recall@1 | Recall@5 | Recall@10 | MRR@10 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 사전학습 임베딩 기준선 | 0.3475 | 0.3558 | 0.7318 | 0.9045 | 0.9545 | - |
-| 다중 시드 최종 모델, seed 378 | 0.8519 | 0.8703 | 0.9500 | 0.9955 | 0.9955 | 0.9720 |
-| KorQuAD 전달 평가 | - | - | 0.4930 | 0.7020 | 0.7880 | - |
+| Pretrained embedding baseline | 0.3475 | 0.3558 | 0.7318 | 0.9045 | 0.9545 | - |
+| Final multi-seed model, seed 378 | 0.8519 | 0.8703 | 0.9500 | 0.9955 | 0.9955 | 0.9720 |
+| KorQuAD transfer evaluation | - | - | 0.4930 | 0.7020 | 0.7880 | - |
 
-## 정리
+## Summary
 
-표의 사전학습 상관계수는 노트북 1일차 출력 기준이다. 배포된 `week2_metrics.json`의 `sts_baseline` 키에는 변수 재사용으로 2일차 학습 후 결과(Pearson 0.7096, Spearman 0.7136)가 저장돼 있다. `sts_fine_tuned`는 3일차 결과이며, 최종 모델의 상관계수는 `multi_seed_final_training`의 seed 378 항목이다. 이 지표 이름의 불일치는 로컬 모델 로딩이나 추론에는 사용되지 않는다.
+The pretrained correlation scores in the table come from the notebook's Day 1 output. Because a variable was reused, the `sts_baseline` key in the distributed `week2_metrics.json` contains the post-training Day 2 result (Pearson 0.7096, Spearman 0.7136). `sts_fine_tuned` contains the Day 3 result, while the final model correlations are recorded under seed 378 in `multi_seed_final_training`. This naming mismatch is not used by local model loading or inference.
 
-KLUE-STS 기반의 제어된 검색 평가에서 미세 조정 후 Recall@1은 0.7318에서 0.9500으로 올랐다. 하드 네거티브를 포함한 다중 시드 실험에서는 seed 378이 가장 높은 상관계수를 보였다.
+In the controlled KLUE-STS retrieval evaluation, fine-tuning raised Recall@1 from 0.7318 to 0.9500. Seed 378 produced the highest correlation in the multi-seed experiment with hard negatives.
 
-시드 17, 47, 378 비교는 동일한 3일차 모델에서 시작해 152쌍의 하드 네거티브 추가 학습을 반복한 실험이다. 전체 학습 과정을 시드별로 반복한 결과가 아니므로, 전체 파이프라인의 시드 변동성을 나타내지는 않는다. 표에는 이 중 선택한 seed 378의 결과를 기재했다.
+The comparison among seeds 17, 47, and 378 repeated only the 152-pair hard-negative refinement from the same Day 3 model. It did not repeat the complete training pipeline for each seed and therefore does not represent the seed variance of the full pipeline. The table reports the selected seed 378 result.
 
-실제 KorQuAD 질문-문맥 평가에서는 Top-20 Recall이 0.8560, MRR@20이 0.5878이었다. 이 결과를 바탕으로 Week 3는 밀집 검색 Top-20 안에서 정답 문맥의 순위를 다시 조정하는 문제로 설계했다.
+On the KorQuAD question-context evaluation, Top-20 Recall was 0.8560 and MRR@20 was 0.5878. Based on this result, Week 3 was designed to rerank the relevant context within the dense retriever's Top-20 candidates.
 
-## 산출물
+## Outputs
 
-- 밀집 검색 모델 체크포인트와 토크나이저
-- 검색 설정과 FAISS 인덱스 구성 정보
-- KorQuAD Top-20 후보 20,000건
-- 재로딩 검증 결과
+- Dense retriever checkpoint and tokenizer
+- Retrieval configuration and FAISS index metadata
+- 20,000 KorQuAD Top-20 candidates
+- Reload verification results
