@@ -10,6 +10,8 @@
 
 원래 프로젝트에서 학습한 검색 모델과 재순위화 모델 및 각각의 토크나이저를 `.local/training-inputs/retriever`와 `.local/training-inputs/reranker`에 준비합니다. 추가 개선 이전의 모델이 초기값이며, 최종 실행 모델로 대체하면 같은 실험을 재현할 수 없습니다. 공개된 아티팩트 명세와 다음 해시를 확인합니다.
 
+선택 자료인 [학습 모델 압축 파일](https://drive.google.com/file/d/1attqOUViSx2i4q0JcRz2l577HZTGIuh6/view?usp=drivesdk)을 내려받아 [압축 파일 안내](../reports/training-artifacts.ko.md)의 크기와 SHA-256을 확인한 뒤 `models/original-retriever`를 `.local/training-inputs/retriever`에 복사합니다. 함께 제공하는 `models/task-retriever-hard-epoch1`은 기록된 실험 후보이며 같은 실험을 다시 학습할 때 초기 모델로 사용하지 않습니다. 원래 재순위화 모델은 별도로 준비한 실행 구성의 `artifacts/runtime/models/reranker`에서 `.local/training-inputs/reranker`로 복사합니다. 최종 질의응답 구성은 이 압축의 검색 모델 대신 E5를 사용합니다.
+
 | 입력 파일 | SHA-256 |
 | --- | --- |
 | 원래 `week2_dense_retriever.pt` | `ec09ae94fbdf5e8e86e1766353bcb71ea49aa222f4096f4f2ea2bfb65e6c33ca` |

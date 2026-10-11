@@ -75,6 +75,8 @@ Use the prepared project environment as explained in [runtime instructions](docs
 
 The [evaluation guide](docs/evaluation.md) provides final inference commands and explains EM, Korean character F1, complete-span Recall and abstention. The [training guide](docs/training.md) records training commands and stopping rules. [Architecture](docs/architecture.md) explains how evidence and answer decisions connect.
 
+The optional [training-model archive](https://drive.google.com/file/d/1attqOUViSx2i4q0JcRz2l577HZTGIuh6/view?usp=drivesdk) contains the original STS retriever, the epoch-1 task-trained candidate and training provenance. Its complete public download was verified by byte size and SHA-256; see [the archive guide](reports/training-artifacts.md) for verification and use. The final runtime uses multilingual E5 and downloads separate artifacts, so this archive is not needed to run or evaluate the selected question-answering system.
+
 ## Repository map
 
 | Location | Purpose |

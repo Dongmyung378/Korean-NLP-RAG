@@ -10,6 +10,8 @@ Prepare the runtime using the [runtime guide](runtime.md). Training is optional 
 
 Place the original project checkpoints and their tokenizers in `.local/training-inputs/retriever` and `.local/training-inputs/reranker`. These inputs are the original trained models, before the additional refinement described here. A final runtime checkpoint is not an interchangeable training initializer. Compare the published artifact manifest and these identities before running:
 
+Download the optional [training-model archive](https://drive.google.com/file/d/1attqOUViSx2i4q0JcRz2l577HZTGIuh6/view?usp=drivesdk), verify its recorded size and SHA-256 using [the archive guide](../reports/training-artifacts.md), and copy its `models/original-retriever` directory to `.local/training-inputs/retriever`. Its `models/task-retriever-hard-epoch1` directory is the recorded experiment candidate, not the initializer for replaying that experiment. The original reranker is available separately in the prepared runtime's `artifacts/runtime/models/reranker`; copy that directory to `.local/training-inputs/reranker`. The final question-answering runtime uses E5 rather than either retriever in this archive.
+
 | Input | SHA-256 |
 | --- | --- |
 | Original `week2_dense_retriever.pt` | `ec09ae94fbdf5e8e86e1766353bcb71ea49aa222f4096f4f2ea2bfb65e6c33ca` |

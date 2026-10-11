@@ -75,6 +75,8 @@ python scripts/reproduce_data.py
 
 [평가 안내](docs/evaluation.ko.md)에 최종 추론 명령과 EM, 한국어 문자 F1, 정답 구간 전체를 기준으로 한 검색 재현율 및 보류 지표를 설명했습니다. [학습 안내](docs/training.ko.md)에는 학습 명령과 중단 기준을, [시스템 구조](docs/architecture.ko.md)에는 근거와 답변 판단의 연결을 정리했습니다.
 
+선택 자료인 [학습 모델 압축 파일](https://drive.google.com/file/d/1attqOUViSx2i4q0JcRz2l577HZTGIuh6/view?usp=drivesdk)에는 기존 STS 검색 모델, 추가 학습에서 선택한 1에포크 후보와 학습 출처 기록을 담았습니다. 공개한 전체 파일의 크기와 SHA-256을 확인했으며 검증 및 사용 방법은 [압축 파일 안내](reports/training-artifacts.ko.md)에 있습니다. 최종 실행 구성은 multilingual E5와 별도로 내려받는 아티팩트를 사용하므로 채택한 질의응답 시스템을 실행하거나 평가할 때 이 압축 파일은 필요하지 않습니다.
+
 ## 폴더 구성
 
 | 위치 | 내용 |
