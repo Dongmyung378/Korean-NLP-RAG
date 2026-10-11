@@ -46,7 +46,7 @@ class DataReproductionTests(unittest.TestCase):
         content = b'{"data":[]}'
         source = {"file": "KorQuAD_v1.0_train.json", "url": "https://korquad.github.io/dataset/KorQuAD_v1.0_train.json",
                   "bytes": len(content), "sha256": hashlib.sha256(content).hexdigest()}
-        with tempfile.TemporaryDirectory(prefix=".data-test-", dir=Path(__file__).resolve().parents[1]) as directory:
+        with tempfile.TemporaryDirectory(prefix=".data-test-") as directory:
             target = Path(directory) / source["file"]
             target.write_bytes(content)
             self.assertEqual(fetch_source(source, Path(directory), offline=True), target)

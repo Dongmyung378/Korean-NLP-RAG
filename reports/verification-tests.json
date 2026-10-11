@@ -11,5 +11,63 @@
   "system_site_packages": false,
   "skipped_scope": "Optional historical Week 4 saved artifacts moved out of the public tree.",
   "selected_freeze_sha256": "e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574",
-  "verification_date_utc": "2026-10-11"
+  "verification_date_utc": "2026-10-11",
+  "linux_verification": {
+    "scope": "Full public unit suite in an isolated Linux CPU environment on the same host, with a read-only source mount and networking disabled. Not model accuracy evaluation.",
+    "command": "python -m unittest discover -s tests -v",
+    "test_count": 112,
+    "passed_count": 109,
+    "skipped_count": 3,
+    "failed_count": 0,
+    "elapsed_seconds": 4.165,
+    "initial_successful_run_elapsed_seconds": 5.267,
+    "logged_run_reason": "Full stdout preservation; this completed second run is recorded separately from the first successful run.",
+    "python": "3.12.15",
+    "torch": "2.14.0+cpu",
+    "transformers": "5.17.0",
+    "system_site_packages": false,
+    "cuda_available": false,
+    "container_image": "python:3.12-slim",
+    "source_mount": "read_only",
+    "networking": "none",
+    "cpu_limit": 4,
+    "omp_threads": 4,
+    "mkl_threads": 4,
+    "hf_hub_offline": true,
+    "python_bytecode_disabled": true,
+    "ephemeral_container_removed": true,
+    "native_environment_volume_retained": true,
+    "skipped_scope": "Optional historical Week 4 saved artifacts moved out of the public tree.",
+    "full_stdout_preserved_privately": true,
+    "full_stdout_sha256": "b8784fa6eb4b00d4668feb7ecceeafe1f9c3de9b6c372f0313758513d8255de4",
+    "frozen_source_files_checked": 19,
+    "frozen_source_files_changed": 0,
+    "verification_date_utc": "2026-10-11"
+  },
+  "test_portability_adjustment": {
+    "scope": "Only the scratch directory of two tests changed from the source tree to the operating-system temporary directory. Test assertions and the 19 frozen core source files are unchanged.",
+    "files": [
+      "tests/test_training.py",
+      "tests/test_reproduce_data.py"
+    ],
+    "tested_file_sha256": {
+      "tests/test_training.py": "b1e5b53e77186da1325f882e3d5da600594926b5d21b579539f3fa93173a614a",
+      "tests/test_reproduce_data.py": "4d21d1b8cc6f806d5d4090f14b56e2994bedea9c52e8e899ab7d2f4596a8178d"
+    }
+  },
+  "windows_after_test_portability_change": {
+    "test_count": 15,
+    "passed_count": 15,
+    "failed_count": 0,
+    "files": [
+      "test_training.py",
+      "test_reproduce_data.py"
+    ],
+    "elapsed_seconds": [
+      13.431,
+      0.007
+    ],
+    "environment": "Project default isolated CPU virtual environment after repair",
+    "scope": "Only changed test scratch placement; original full Windows112-suite record retained separately."
+  }
 }

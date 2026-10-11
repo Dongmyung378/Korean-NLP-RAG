@@ -172,7 +172,19 @@
     "scope": "Separate initial fresh-source tests with Python absent from PATH; pinned uv, Python 3.12.15, pure CPU venv and pip check succeeded"
   },
   "public_download_validation": {
-    "status": "pending",
-    "scope": "Final public descriptor delivery and fresh source bootstrap will be checked after publication"
+    "status": "passed",
+    "report": "public-download-verification.json",
+    "source_archive_sha256": "88240025f30e35fb3e1a5928b4821f0defc7cb3e239120281cd71cfc260c8b02",
+    "scope": "Initial published source ZIP, fresh Windows CPU venv, credential-free public models and official data, no prior model cache, six demo inferences and offline prepared reuse; frozen core unchanged"
+  },
+  "default_project_environment": {
+    "healthy": true,
+    "python": "3.12.7",
+    "torch": "2.14.0+cpu",
+    "system_site_packages": false,
+    "device": "cpu",
+    "pip_check": "passed",
+    "prior_environment_preserved": true,
+    "global_packages_modified": false
   }
 }

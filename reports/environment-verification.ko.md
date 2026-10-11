@@ -20,6 +20,8 @@
 
 모델 manifest의 SHA-256은 `2834c057f845137c129dcbbd6bc419e0a63303779d0a2f31a0b7cff11a4a57b9`이며 canonical 동결 식별자는 `e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574`입니다. JSON 파일의 바이트 해시는 별도로 기록합니다. 동결 내용, 소스, 설정과 모델 결합을 검증했고 이번 확인에서는 최종 성능 평가용으로 분리한 질문을 읽지 않았습니다.
 
-앞선 별도 실행 스크립트 검증에서는 PATH에 Python이 없는 Windows x64와 Linux x64에서 자동 준비도 실제 수행했습니다. 고정된 uv 파일을 검증하고 Python 3.12.15를 프로젝트 내부에 설치했으며 순수 CPU 환경을 구성해 `pip check`까지 통과했습니다. 최종 공개 다운로드와 처음 실행 과정은 메타데이터 및 명세를 배포한 뒤 별도로 기록합니다.
+앞선 별도 실행 스크립트 검증에서는 PATH에 Python이 없는 Windows x64와 Linux x64에서 자동 준비도 실제 수행했습니다. 고정된 uv 파일을 검증하고 Python 3.12.15를 프로젝트 내부에 설치했으며 순수 CPU 환경을 구성해 `pip check`까지 통과했습니다. 배포 후에는 실제 공개 소스 ZIP으로 새 Windows CPU 환경을 구성하고 인증정보나 기존 모델 캐시 없이 세 공개 모델 가중치, 메타데이터와 공식 원본을 내려받는 과정도 통과했습니다. 공개 실행 스크립트로 두 persistent 세션에서 예시 추론 여섯 번을 수행했으며 반복 판단 일치와 준비된 환경의 오프라인 재사용도 확인했습니다. 정확한 검증 대상 압축파일과 배포 확인 범위는 [public-download-verification.ko.md](public-download-verification.ko.md)에 기록했습니다.
 
-Linux는 같은 컴퓨터에서 Docker를 이용해 검증 환경만 분리했습니다. 일반 사용자는 Docker 없이 실행합니다. 서로 다른 실행 환경을 확인한 검증이며 외부 제3자의 독립 검토나 모든 입력과 하드웨어를 검사했다는 의미는 아닙니다. 간결한 증거는 [environment-verification.json](environment-verification.json), 실행 방법은 [runtime.ko.md](../docs/runtime.ko.md)에서 확인할 수 있습니다.
+프로젝트 폴더의 기본 환경도 문서에 안내한 복구 절차로 격리된 CPU 가상환경으로 교체했습니다. 이전 실험 환경은 Git에서 제외되는 로컬 백업 폴더에 보존했습니다. 새 환경은 시스템 패키지를 공유하지 않고 CPU용 PyTorch를 사용하며 `pip check`와 실제 공개 실행 스크립트의 doctor 검사를 통과했습니다.
+
+Linux는 같은 컴퓨터에서 Docker를 이용해 검증 환경만 분리했습니다. 일반 사용자는 Docker 없이 실행합니다. 서로 다른 실행 환경을 확인한 검증이며 외부 제3자의 독립 검토나 모든 입력과 하드웨어를 검사했다는 의미는 아닙니다. 간결한 증거는 [environment-verification.json](environment-verification.json), 실행 방법은 [runtime.ko.md](../docs/runtime.ko.md)에서 확인할 수 있습니다. Windows CPU에서 synthetic 답변 불가 최종 질문 80개 전체를 추가 확인한 결과는 [synthetic-final-cpu-audit.ko.md](synthetic-final-cpu-audit.ko.md)에 별도로 기록했습니다.

@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-11T09:24:23.285749+00:00",
+  "status": "passed",
+  "scope": {
+    "new_source_extraction": true,
+    "new_pure_cpu_venv": true,
+    "existing_model_cache_used": false,
+    "huggingface_model_cache_empty_before_and_after": true,
+    "private_model_or_dataset_inputs_used": false,
+    "credentials_used_for_public_source_downloads": false,
+    "dependency_cache": "Installer uses --no-cache-dir; dependencies were downloaded into a new environment",
+    "python_bootstrap": "Default launcher reused an existing Python3.12 interpreter; missing-Python bootstrap was tested separately",
+    "same_host": true,
+    "external_independent_review": false,
+    "demo_inferences": 6,
+    "demo_scope": "Two authored public example questions over two persistent sessions; not benchmark accuracy evaluation",
+    "distinct_demo_questions": 2
+  },
+  "source_archive": {
+    "url": "https://park-dongmyung.com/downloads/korean-nlp-rag-source.zip",
+    "bytes": 618451,
+    "sha256": "88240025f30e35fb3e1a5928b4821f0defc7cb3e239120281cd71cfc260c8b02",
+    "hash_scope": "Initial published source archive actually used in this clean-run audit; later documentation-only archives can differ while the frozen core remains unchanged"
+  },
+  "bindings": {
+    "canonical_freeze_sha256": "e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574",
+    "bundle_manifest_sha256": "2834c057f845137c129dcbbd6bc419e0a63303779d0a2f31a0b7cff11a4a57b9",
+    "frozen_source_sha256": {
+      "korean_rag/abstention_benchmark.py": "9407675d022483d7dbc2df22883ae0f2f813e3f9af69e8effc8c38696318dfe0",
+      "korean_rag/benchmark.py": "e9084885905c3cdce4af81a9997b513067e0530b0b5dca2c8073dc680eae5e94",
+      "korean_rag/evaluate.py": "5807e6925009d9184ec9fdd0930db210f62f25949c26609cd309a47206c03254",
+      "korean_rag/metrics.py": "b93d5f744bc75e417c876c9af3acbd0bece259d5f59317101ecf49614bad27bf",
+      "korean_rag/pipeline.py": "b41d336ff32ccfc6ffb1a5a82114bd2c7657b2856e843f5ed91c254cf85a96dd",
+      "korean_rag/qa_metrics.py": "25852e6df12db19b0a378f16d8dcfbc4203a9dda761b92e2bda9c11b1c525f5b",
+      "korean_rag/reranking.py": "25820d111fa644a039022db776534173eac3ea559fc66f36a8bba5ba5cc53ab7",
+      "korean_rag/retrieval.py": "5d6cfc517797e600653dcd5faa1443e0971743f6522855a712d24305e7ea3b8d",
+      "korean_rag/runtime.py": "f557e4c3eafaf60aac70d8b93b9f9c59704d92ccf72158789448c99676785cf4",
+      "korean_rag/training.py": "7a939d4bab4e6a8d6cee0a2d1ebce51375293b5733e629e16cffa8858afcc37e",
+      "korean_rag/validation.py": "c84d8b828a81e94553860b1981a504e8cc80fa726b758066e08f8185e609e9ff",
+      "korean_rag/__init__.py": "1626c09cd98d040969c7fa6237f414692b701d2c9c4189a6045d97716d512297",
+      "korean_rag/__main__.py": "331c3f944ca5f63118e29270235814c34f8110988683a50a57ddb49663c63688",
+      "scripts/evaluate_portable.py": "b8d6d2fe319f17c9ffc1a8d32522905d391537ead8c532c7b4e777daef4e3599",
+      "scripts/build_bundle.py": "a2596d086b7d094061b17799cd8bf4b03543840a52bf62bbd1d3e723b1774d48",
+      "scripts/select_configuration.py": "316e3aa94589d118bf8340b404057d6dc17130043e5245b73029769b61345d40",
+      "scripts/calibrate_abstention.py": "1e12df03ef2797e0f56bed07bb58bbc37b952b15b7dbef95ad6caebcd7191214",
+      "requirements-runtime.txt": "e675d2ee6b917345b7ebbcafb987a181edde23e01e5ea86c062311e3090d7fb4",
+      "pyproject.toml": "ac0674b52c304c96633a7af743dbce7152dca28371763ff7446b662bf3b07fc9"
+    }
+  },
+  "public_downloads": [
+    {
+      "kind": "metadata_archive",
+      "url": "https://park-dongmyung.com/downloads/korean-rag-runtime-metadata.zip",
+      "bytes": 7580697,
+      "sha256": "73537c36b5f33743b150db5fc7fcff91fb65cd2174693290fed75a3808f06d8f"
+    },
+    {
+      "kind": "model_weight",
+      "path": "models/reader/model.safetensors",
+      "url": "https://huggingface.co/monologg/koelectra-base-v3-finetuned-korquad/resolve/ad4097ba1dc9904a22c3df71cafe6431e23f8914/model.safetensors",
+      "bytes": 449357300,
+      "sha256": "75ad3ca646cd32eefbc8f34cb17b34f191783edcf537fd2f3f865f25617240ce"
+    },
+    {
+      "kind": "model_weight",
+      "path": "models/reranker/model.safetensors",
+      "url": "https://drive.usercontent.google.com/download?id=17_ySmkKgo0NDtHGPJhyT0Vjz34wq5Cxn&export=download&confirm=t",
+      "bytes": 442502720,
+      "sha256": "98071cd9882265c172865279b91f75e0b40c6f5e9787be60296ee82fb5f29d2c"
+    },
+    {
+      "kind": "model_weight",
+      "path": "models/retriever/model.safetensors",
+      "url": "https://huggingface.co/intfloat/multilingual-e5-small/resolve/614241f622f53c4eeff9890bdc4f31cfecc418b3/model.safetensors",
+      "bytes": 470641600,
+      "sha256": "1a55775f53449dac10a2bcbc312469fac40b96d53198c407081a831f81c98477"
+    },
+    {
+      "kind": "official_source",
+      "url": "https://korquad.github.io/dataset/KorQuAD_v1.0_dev.json",
+      "bytes": 3881058,
+      "sha256": "25ffeb51e6c51ec02c071b60a10188e10005c144110f0d876b26079d80a35bdf"
+    }
+  ],
+  "environment": {
+    "python": "3.12.7",
+    "package_versions": {
+      "annotated-doc": "0.0.5",
+      "anyio": "4.15.1",
+      "certifi": "2026.7.22",
+      "click": "8.5.0",
+      "colorama": "0.4.6",
+      "filelock": "3.32.3",
+      "fsspec": "2026.7.0",
+      "h11": "0.16.0",
+      "hf-xet": "1.7.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "idna": "3.20",
+      "Jinja2": "3.1.6",
+      "markdown-it-py": "4.2.0",
+      "MarkupSafe": "3.0.3",
+      "mdurl": "0.1.2",
+      "mpmath": "1.3.0",
+      "networkx": "3.6.1",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "Pygments": "2.21.0",
+      "python-dateutil": "2.9.0.post0",
+      "PyYAML": "6.0.3",
+      "transformers": "5.17.0",
+      "safetensors": "0.8.0",
+      "faiss-cpu": "1.15.1",
+      "rank-bm25": "0.2.2",
+      "packaging": "26.3",
+      "regex": "2026.9.29",
+      "rich": "15.0.0",
+      "setuptools": "84.0.0",
+      "shellingham": "1.5.4",
+      "six": "1.17.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.23.2",
+      "huggingface-hub": "1.32.0",
+      "tqdm": "4.70.1",
+      "typer": "0.27.3",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.5",
+      "wheel": "0.48.0",
+      "torch": "2.14.0+cpu"
+    },
+    "system_site_packages": false,
+    "torch": "2.14.0+cpu",
+    "pip_check": "passed",
+    "doctor_healthy": true
+  },
+  "bootstrap_seconds": 223.4343274999992,
+  "interactive_session_seconds": 20.951719600001525,
+  "interactive_session": {
+    "model_loads": 1,
+    "questions_processed": 2,
+    "quit_command_completed": true,
+    "answer_sources": [
+      "abstained",
+      "abstained"
+    ],
+    "single_ready_message_verified": true
+  },
+  "integrity": {
+    "metadata_and_official_source_verified_by_installer": true,
+    "all_three_model_weight_bytes_verified_again": true,
+    "full_bundle_manifest_verified": true,
+    "frozen_core_file_count": 19,
+    "source_unchanged_after_install": true
+  },
+  "offline_reuse_session": {
+    "status": "passed",
+    "elapsed_seconds": 33.550134799999796,
+    "questions_processed": 4,
+    "distinct_questions": 2,
+    "repeats_per_question": 2,
+    "model_loads": 1,
+    "single_ready_message_verified": true,
+    "quit_command_completed": true,
+    "answer_sources": [
+      "abstained",
+      "abstained",
+      "abstained",
+      "abstained"
+    ],
+    "answers_decisions_citation_ids_equal_across_repeats_and_sessions": true,
+    "artifact_preparation": "--no-download; same previously downloaded and fully verified bundle",
+    "model_access": "HF_HUB_OFFLINE=1, TRANSFORMERS_OFFLINE=1 and local_files_only model loading",
+    "network_boundary": "Run under the default restricted shell sandbox; no separate OS packet-capture claim",
+    "huggingface_model_cache_empty_before_and_after": true
+  }
+}

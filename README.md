@@ -62,7 +62,7 @@ Plan for several gigabytes of free disk space for dependencies and models. Windo
 .\launch-rag.bat --question "방탄소년단의 팬클럽 창단식은 몇 월 며칠인가?" --json
 ```
 
-The persistent question loop loads models once. `--question`, `--questions-file`, `--json` and `--no-reader` support single-query inference, batch evaluation and evidence inspection. See [runtime instructions](docs/runtime.md) for optional CUDA, offline verification and troubleshooting.
+The persistent question loop loads models once. `--question`, `--questions-file`, `--json` and `--no-reader` support single-query inference, batch inference and evidence inspection. See [runtime instructions](docs/runtime.md) for optional CUDA, offline verification and troubleshooting.
 
 ## Verify and reproduce
 

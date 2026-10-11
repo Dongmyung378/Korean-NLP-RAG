@@ -122,7 +122,7 @@ class CPUTrainingSmokeTests(unittest.TestCase):
         previous_threads = torch.get_num_threads()
         torch.set_num_threads(2)
         try:
-            with tempfile.TemporaryDirectory(prefix=".training-test-", dir=Path(__file__).resolve().parents[1]) as directory:
+            with tempfile.TemporaryDirectory(prefix=".training-test-") as directory:
                 target = Path(directory) / "run"
                 report = train_bounded(model, tokenizer, train, dev, target, config, device_name="cpu")
                 self.assertEqual(report["optimizer_steps"], 1)
