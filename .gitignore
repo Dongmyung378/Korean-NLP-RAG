@@ -10,3 +10,9 @@ __pycache__/
 Thumbs.db
 reports/cleanup_manifest.json
 reports/local_evaluation_rerun/
+artifacts/
+.local/
+*.egg-info/
+build/
+dist/
+transformer/notebooks/

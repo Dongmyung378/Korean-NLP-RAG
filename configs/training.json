@@ -1,0 +1,38 @@
+{
+  "retriever": {
+    "seed": 378,
+    "learning_rate": 0.00001,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "micro_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "query_max_length": 128,
+    "passage_max_length": 256,
+    "pair_max_length": 384,
+    "evaluation_batch_size": 8,
+    "temperature": 0.05,
+    "gradient_checkpointing": true,
+    "mixed_precision": true,
+    "patience": 1,
+    "min_delta": 0.001,
+    "warmup_fraction": 0.1
+  },
+  "reranker": {
+    "seed": 378,
+    "learning_rate": 0.00001,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "micro_batch_size": 2,
+    "gradient_accumulation_steps": 8,
+    "query_max_length": 128,
+    "passage_max_length": 256,
+    "pair_max_length": 384,
+    "evaluation_batch_size": 8,
+    "temperature": 0.05,
+    "gradient_checkpointing": true,
+    "mixed_precision": true,
+    "patience": 1,
+    "min_delta": 0.001,
+    "warmup_fraction": 0.1
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+  "protocol_sha256": "7640ad47eb8149350b1d3cb52ce3a417e9ddd1c20ff2aaf15ed40e8e78e68ea8",
+  "configuration": {
+    "schema_version": 1,
+    "retriever": {
+      "kind": "e5",
+      "query_max_length": 128,
+      "passage_max_length": 256
+    },
+    "chunking": {
+      "max_tokens": 192,
+      "overlap_tokens": 32
+    },
+    "retrieval": {
+      "candidate_k": 50,
+      "rerank_k": 20
+    },
+    "reader": {
+      "context_k": 5,
+      "context_mode": "parent_window",
+      "max_length": 512,
+      "score_mode": "reader_reranker",
+      "null_score_margin": 1e-06
+    },
+    "thresholds": {
+      "min_rrf_score": 0.028,
+      "min_reranker_score": 0.5,
+      "min_reader_score": 0.3,
+      "require_explicit_year": true
+    },
+    "evaluation_binding": {
+      "split": "final",
+      "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+      "question_file_sha256": "e96d6798d4a9ac91567e066dc728f9fae7630ce7039faf731915cc43fd7d7c10",
+      "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991",
+      "no_answer_file_sha256": "6084987476fcf82a4b8a509da7227678f62a2552da02c59ded64138d361bb180"
+    }
+  },
+  "source_sha256": {
+    "korean_rag/abstention_benchmark.py": "9407675d022483d7dbc2df22883ae0f2f813e3f9af69e8effc8c38696318dfe0",
+    "korean_rag/benchmark.py": "e9084885905c3cdce4af81a9997b513067e0530b0b5dca2c8073dc680eae5e94",
+    "korean_rag/evaluate.py": "5807e6925009d9184ec9fdd0930db210f62f25949c26609cd309a47206c03254",
+    "korean_rag/metrics.py": "b93d5f744bc75e417c876c9af3acbd0bece259d5f59317101ecf49614bad27bf",
+    "korean_rag/pipeline.py": "b41d336ff32ccfc6ffb1a5a82114bd2c7657b2856e843f5ed91c254cf85a96dd",
+    "korean_rag/qa_metrics.py": "25852e6df12db19b0a378f16d8dcfbc4203a9dda761b92e2bda9c11b1c525f5b",
+    "korean_rag/reranking.py": "25820d111fa644a039022db776534173eac3ea559fc66f36a8bba5ba5cc53ab7",
+    "korean_rag/retrieval.py": "5d6cfc517797e600653dcd5faa1443e0971743f6522855a712d24305e7ea3b8d",
+    "korean_rag/runtime.py": "f557e4c3eafaf60aac70d8b93b9f9c59704d92ccf72158789448c99676785cf4",
+    "korean_rag/training.py": "7a939d4bab4e6a8d6cee0a2d1ebce51375293b5733e629e16cffa8858afcc37e",
+    "korean_rag/validation.py": "c84d8b828a81e94553860b1981a504e8cc80fa726b758066e08f8185e609e9ff",
+    "korean_rag/__init__.py": "1626c09cd98d040969c7fa6237f414692b701d2c9c4189a6045d97716d512297",
+    "korean_rag/__main__.py": "331c3f944ca5f63118e29270235814c34f8110988683a50a57ddb49663c63688",
+    "scripts/evaluate_portable.py": "b8d6d2fe319f17c9ffc1a8d32522905d391537ead8c532c7b4e777daef4e3599",
+    "scripts/build_bundle.py": "a2596d086b7d094061b17799cd8bf4b03543840a52bf62bbd1d3e723b1774d48",
+    "scripts/select_configuration.py": "316e3aa94589d118bf8340b404057d6dc17130043e5245b73029769b61345d40",
+    "scripts/calibrate_abstention.py": "1e12df03ef2797e0f56bed07bb58bbc37b952b15b7dbef95ad6caebcd7191214",
+    "requirements-runtime.txt": "e675d2ee6b917345b7ebbcafb987a181edde23e01e5ea86c062311e3090d7fb4",
+    "pyproject.toml": "ac0674b52c304c96633a7af743dbce7152dca28371763ff7446b662bf3b07fc9"
+  },
+  "artifact_sha256": {
+    "manifest.json": "2834c057f845137c129dcbbd6bc419e0a63303779d0a2f31a0b7cff11a4a57b9"
+  },
+  "freeze_sha256": "e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574"
+}

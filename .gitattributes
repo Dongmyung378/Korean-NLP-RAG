@@ -1,3 +1,14 @@
-# Weekly learning notebooks are retained as project records but excluded from
-# GitHub Linguist's repository language statistics.
-transformer/notebooks/**/*.ipynb linguist-detectable=false
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf
+*.sh text eol=lf
+*.ps1 text eol=lf
+*.bat text eol=crlf
+*.json -text
+*.jsonl -text
+*.csv -text
+*.png -text
+*.zip -text
+*.safetensors -text

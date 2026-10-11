@@ -1,0 +1,494 @@
+{
+  "schema_version": 1,
+  "stage": "Development retrieval and chunking selection",
+  "inputs": {
+    "split": "dev",
+    "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+    "question_file_sha256": "8bfa9641b3da61d9426945a947a00ddb20d1fb9009b7ecd2efafa6475bf73242",
+    "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991",
+    "no_answer_file_sha256": "009958fef627a1e77d685fa520bea776a02c280866f75a7027d588cc292502dd"
+  },
+  "protocol_sha256": "7640ad47eb8149350b1d3cb52ce3a417e9ddd1c20ff2aaf15ed40e8e78e68ea8",
+  "primary_metric": "recall_at_5",
+  "secondary_metric": "mrr_at_20",
+  "minimum_primary_gain": 0.01,
+  "selected_candidate": "e5-natural192",
+  "selected_retrieval_gain_fraction": 0.08881578947368418,
+  "selected_answer_em_gain_fraction": 0.11184210526315785,
+  "retrieval_stage_promotion": true,
+  "full_pipeline_promotion": false,
+  "full_pipeline_status": "Pending fixed numerical guard, bounded Reader and threshold selection. Raw4/80 false answers exceed unchanged original GPU1/80.",
+  "chunking_experiment_count": 4,
+  "chunking_experiment_limit": 4,
+  "reader_selection_completed": false,
+  "threshold_selection_completed": false,
+  "final_model_inference_count": 0,
+  "candidates": [
+    {
+      "candidate_id": "original",
+      "label": "Original development model",
+      "label_ko": "최초 개발 모델",
+      "configuration": {
+        "schema_version": 1,
+        "retriever": {
+          "kind": "roberta",
+          "query_max_length": 64,
+          "passage_max_length": 64
+        },
+        "chunking": {
+          "max_tokens": 62,
+          "overlap_tokens": 15
+        },
+        "retrieval": {
+          "candidate_k": 50,
+          "rerank_k": 20
+        },
+        "reader": {
+          "context_k": 3,
+          "context_mode": "chunk",
+          "max_length": 512,
+          "score_mode": "reader"
+        },
+        "thresholds": {
+          "min_rrf_score": 0.025,
+          "min_reranker_score": 0.5,
+          "min_reader_score": 0.1,
+          "require_explicit_year": true
+        }
+      },
+      "question_count": 384,
+      "answerable_count": 304,
+      "no_answer_count": 80,
+      "recall_at_5": 0.8782894736842105,
+      "recall_at_5_hit_count": 267,
+      "mrr_at_20": 0.7661914914014117,
+      "complete_gold_chunk_coverage": 1.0,
+      "answerable_exact_match": 0.618421052631579,
+      "answerable_correct_count": 188,
+      "answerable_character_f1": 0.6891835391105685,
+      "answerable_coverage": 0.8453947368421053,
+      "answerable_answered_count": 257,
+      "no_answer_false_answer_count": 1,
+      "no_answer_false_answer_rate": 0.012499999999999956,
+      "evidence_sha256": {
+        "metrics": "7bc2c7e414d89f8b68cce9915ba1f30b0f3daf49af6386068b4354a8da6b3a8f",
+        "predictions": "77e7836c4b8ed57afda9b977b5bdc094115b7a67c62c92ca4af890d62cd9d3cf",
+        "reader_cache": "113588c671ce1a9a23a2498a8d8fb10f9aff670e38ca21dd15c4848f5776ddb4",
+        "bundle_manifest": "ad1c4c5c6bef829db0698d5db95a0107dc0a8579988e5d3b8dff0e1700f7f36a"
+      },
+      "retrieval_gain_over_original": 0.0,
+      "retrieval_gain_rule_satisfied": false,
+      "answer_gain_decision": {
+        "promote": false,
+        "em_delta": 0.0,
+        "character_f1_delta": 0.0,
+        "scope": "Stage3 development-only Reader comparison against variant0 with unchanged thresholds."
+      },
+      "raw_joint_promotion_decision": {
+        "promote": false,
+        "conditions": {
+          "declared_answer_gain": false,
+          "no_answer_rate_not_worse": true,
+          "answerable_coverage_preserved": true
+        },
+        "delta": {
+          "answerable_exact_match": 0.0,
+          "answerable_character_f1": 0.0,
+          "answerable_coverage": 0.0,
+          "no_answer_false_answer_rate": 0.0
+        },
+        "scope": "Development-only promotion. The 10% false-answer aspiration does not override these rules."
+      }
+    },
+    {
+      "candidate_id": "task-original-chunks",
+      "label": "Task-trained retriever, original chunks",
+      "label_ko": "과제 학습 검색기와 최초 청크",
+      "configuration": {
+        "schema_version": 1,
+        "retriever": {
+          "kind": "roberta",
+          "query_max_length": 128,
+          "passage_max_length": 256
+        },
+        "chunking": {
+          "max_tokens": 62,
+          "overlap_tokens": 15
+        },
+        "retrieval": {
+          "candidate_k": 50,
+          "rerank_k": 20
+        },
+        "reader": {
+          "context_k": 3,
+          "context_mode": "chunk",
+          "max_length": 512,
+          "score_mode": "reader"
+        },
+        "thresholds": {
+          "min_rrf_score": 0.025,
+          "min_reranker_score": 0.5,
+          "min_reader_score": 0.1,
+          "require_explicit_year": true
+        }
+      },
+      "question_count": 384,
+      "answerable_count": 304,
+      "no_answer_count": 80,
+      "recall_at_5": 0.8914473684210527,
+      "recall_at_5_hit_count": 271,
+      "mrr_at_20": 0.7641702974205876,
+      "complete_gold_chunk_coverage": 1.0,
+      "answerable_exact_match": 0.6217105263157895,
+      "answerable_correct_count": 189,
+      "answerable_character_f1": 0.6896157275361778,
+      "answerable_coverage": 0.8453947368421053,
+      "answerable_answered_count": 257,
+      "no_answer_false_answer_count": 5,
+      "no_answer_false_answer_rate": 0.0625,
+      "evidence_sha256": {
+        "metrics": "674ee2186bf0b29bcbce694b22a6833fd964db02425712c0cc60be47895273ba",
+        "predictions": "f138aed11af8ea1453babd086d2a7544cb0754fe21fdde10a54f3daa21de1222",
+        "reader_cache": "7767a24eb344f4bda9b5994e4cab93eee282b189c7fc2120e66ace3db6530075",
+        "bundle_manifest": "1799f1048f6c029ffd1371e7e27b304620edb694cd9bb3619a9acf8f0578fad5"
+      },
+      "retrieval_gain_over_original": 0.013157894736842146,
+      "retrieval_gain_rule_satisfied": true,
+      "answer_gain_decision": {
+        "promote": false,
+        "em_delta": 0.003289473684210509,
+        "character_f1_delta": 0.0004321884256093256,
+        "scope": "Stage3 development-only Reader comparison against variant0 with unchanged thresholds."
+      },
+      "raw_joint_promotion_decision": {
+        "promote": false,
+        "conditions": {
+          "declared_answer_gain": false,
+          "no_answer_rate_not_worse": false,
+          "answerable_coverage_preserved": true
+        },
+        "delta": {
+          "answerable_exact_match": 0.003289473684210509,
+          "answerable_character_f1": 0.0004321884256093256,
+          "answerable_coverage": 0.0,
+          "no_answer_false_answer_rate": 0.050000000000000044
+        },
+        "scope": "Development-only promotion. The 10% false-answer aspiration does not override these rules."
+      }
+    },
+    {
+      "candidate_id": "e5-natural128",
+      "label": "Public E5, natural128",
+      "label_ko": "공개 E5와 자연 청크 128",
+      "configuration": {
+        "schema_version": 1,
+        "retriever": {
+          "kind": "e5",
+          "query_max_length": 128,
+          "passage_max_length": 256
+        },
+        "chunking": {
+          "max_tokens": 128,
+          "overlap_tokens": 32
+        },
+        "retrieval": {
+          "candidate_k": 50,
+          "rerank_k": 20
+        },
+        "reader": {
+          "context_k": 3,
+          "context_mode": "chunk",
+          "max_length": 512,
+          "score_mode": "reader"
+        },
+        "thresholds": {
+          "min_rrf_score": 0.025,
+          "min_reranker_score": 0.5,
+          "min_reader_score": 0.1,
+          "require_explicit_year": true
+        }
+      },
+      "question_count": 384,
+      "answerable_count": 304,
+      "no_answer_count": 80,
+      "recall_at_5": 0.9506578947368421,
+      "recall_at_5_hit_count": 289,
+      "mrr_at_20": 0.8443935359231411,
+      "complete_gold_chunk_coverage": 1.0,
+      "answerable_exact_match": 0.6842105263157895,
+      "answerable_correct_count": 208,
+      "answerable_character_f1": 0.7565114563238469,
+      "answerable_coverage": 0.8782894736842105,
+      "answerable_answered_count": 267,
+      "no_answer_false_answer_count": 3,
+      "no_answer_false_answer_rate": 0.03749999999999998,
+      "evidence_sha256": {
+        "metrics": "c66825a8d126eaf1280e51814157193099b0184f9e4121d27b348c2e23edb81f",
+        "predictions": "ab4af7b8306b7da2b507748a6a1281795b1ec97137375f2a32ba22e95c52ae95",
+        "reader_cache": "804f07f6a527c29bf912956039137be998b7fc60ee7cf90f696e58f14ba4be88",
+        "bundle_manifest": "4a6515217575f214e5244396da50a2e67e3c3bb9ed6f70f0801df11590afde07"
+      },
+      "retrieval_gain_over_original": 0.07236842105263164,
+      "retrieval_gain_rule_satisfied": true,
+      "answer_gain_decision": {
+        "promote": true,
+        "em_delta": 0.06578947368421051,
+        "character_f1_delta": 0.06732791721327835,
+        "scope": "Stage3 development-only Reader comparison against variant0 with unchanged thresholds."
+      },
+      "raw_joint_promotion_decision": {
+        "promote": false,
+        "conditions": {
+          "declared_answer_gain": true,
+          "no_answer_rate_not_worse": false,
+          "answerable_coverage_preserved": true
+        },
+        "delta": {
+          "answerable_exact_match": 0.06578947368421051,
+          "answerable_character_f1": 0.06732791721327835,
+          "answerable_coverage": 0.0328947368421052,
+          "no_answer_false_answer_rate": 0.025000000000000022
+        },
+        "scope": "Development-only promotion. The 10% false-answer aspiration does not override these rules."
+      }
+    },
+    {
+      "candidate_id": "e5-natural192",
+      "label": "Public E5, natural192",
+      "label_ko": "공개 E5와 자연 청크 192",
+      "configuration": {
+        "schema_version": 1,
+        "retriever": {
+          "kind": "e5",
+          "query_max_length": 128,
+          "passage_max_length": 256
+        },
+        "chunking": {
+          "max_tokens": 192,
+          "overlap_tokens": 32
+        },
+        "retrieval": {
+          "candidate_k": 50,
+          "rerank_k": 20
+        },
+        "reader": {
+          "context_k": 3,
+          "context_mode": "chunk",
+          "max_length": 512,
+          "score_mode": "reader"
+        },
+        "thresholds": {
+          "min_rrf_score": 0.025,
+          "min_reranker_score": 0.5,
+          "min_reader_score": 0.1,
+          "require_explicit_year": true
+        }
+      },
+      "question_count": 384,
+      "answerable_count": 304,
+      "no_answer_count": 80,
+      "recall_at_5": 0.9671052631578947,
+      "recall_at_5_hit_count": 294,
+      "mrr_at_20": 0.8756657268170427,
+      "complete_gold_chunk_coverage": 1.0,
+      "answerable_exact_match": 0.7302631578947368,
+      "answerable_correct_count": 222,
+      "answerable_character_f1": 0.8033616670865964,
+      "answerable_coverage": 0.9276315789473685,
+      "answerable_answered_count": 282,
+      "no_answer_false_answer_count": 4,
+      "no_answer_false_answer_rate": 0.050000000000000044,
+      "evidence_sha256": {
+        "metrics": "0a81c6c53107e4d18d397265f3fc861f6a4685b8d24045cd9cd8854eb498c8e8",
+        "predictions": "d1d1e2c54dd7d46f6e21544e68f2a2c2ac5611c7e553ef32592537145b41b878",
+        "reader_cache": "fe2967856d9a6f161b6de6519530cac6e3c6c0edecf4297af16a474d5a6c2f3f",
+        "bundle_manifest": "926720d07ec949f30b38b25a1774c8533eede11e337f343c8a7e3a39201f6ee8"
+      },
+      "retrieval_gain_over_original": 0.08881578947368418,
+      "retrieval_gain_rule_satisfied": true,
+      "answer_gain_decision": {
+        "promote": true,
+        "em_delta": 0.11184210526315785,
+        "character_f1_delta": 0.11417812797602789,
+        "scope": "Stage3 development-only Reader comparison against variant0 with unchanged thresholds."
+      },
+      "raw_joint_promotion_decision": {
+        "promote": false,
+        "conditions": {
+          "declared_answer_gain": true,
+          "no_answer_rate_not_worse": false,
+          "answerable_coverage_preserved": true
+        },
+        "delta": {
+          "answerable_exact_match": 0.11184210526315785,
+          "answerable_character_f1": 0.11417812797602789,
+          "answerable_coverage": 0.08223684210526316,
+          "no_answer_false_answer_rate": 0.03750000000000009
+        },
+        "scope": "Development-only promotion. The 10% false-answer aspiration does not override these rules."
+      }
+    },
+    {
+      "candidate_id": "e5-natural256",
+      "label": "Public E5, natural256",
+      "label_ko": "공개 E5와 자연 청크 256",
+      "configuration": {
+        "schema_version": 1,
+        "retriever": {
+          "kind": "e5",
+          "query_max_length": 128,
+          "passage_max_length": 256
+        },
+        "chunking": {
+          "max_tokens": 256,
+          "overlap_tokens": 32
+        },
+        "retrieval": {
+          "candidate_k": 50,
+          "rerank_k": 20
+        },
+        "reader": {
+          "context_k": 3,
+          "context_mode": "chunk",
+          "max_length": 512,
+          "score_mode": "reader"
+        },
+        "thresholds": {
+          "min_rrf_score": 0.025,
+          "min_reranker_score": 0.5,
+          "min_reader_score": 0.1,
+          "require_explicit_year": true
+        }
+      },
+      "question_count": 384,
+      "answerable_count": 304,
+      "no_answer_count": 80,
+      "recall_at_5": 0.9638157894736842,
+      "recall_at_5_hit_count": 293,
+      "mrr_at_20": 0.8763573597455178,
+      "complete_gold_chunk_coverage": 1.0,
+      "answerable_exact_match": 0.7236842105263158,
+      "answerable_correct_count": 220,
+      "answerable_character_f1": 0.8081542397100514,
+      "answerable_coverage": 0.9210526315789473,
+      "answerable_answered_count": 280,
+      "no_answer_false_answer_count": 8,
+      "no_answer_false_answer_rate": 0.09999999999999998,
+      "evidence_sha256": {
+        "metrics": "7fa6e18b4de42b446fd23242bfc8549f2342bc462ece7d857d58df9416b69cc7",
+        "predictions": "e1f612cbd49c43aa6eb2fe0999958b0a1923700444f4343e44388b842e6e5c33",
+        "reader_cache": "19bee01b272577c08e7cad41c35aef533e854d4e267bc4a6ac5034ed985d840a",
+        "bundle_manifest": "9120b8d4f86f585890253ef6d00517fe477acea459114262d50175ab042048e5"
+      },
+      "retrieval_gain_over_original": 0.08552631578947367,
+      "retrieval_gain_rule_satisfied": true,
+      "answer_gain_decision": {
+        "promote": true,
+        "em_delta": 0.10526315789473684,
+        "character_f1_delta": 0.11897070059948289,
+        "scope": "Stage3 development-only Reader comparison against variant0 with unchanged thresholds."
+      },
+      "raw_joint_promotion_decision": {
+        "promote": false,
+        "conditions": {
+          "declared_answer_gain": true,
+          "no_answer_rate_not_worse": false,
+          "answerable_coverage_preserved": true
+        },
+        "delta": {
+          "answerable_exact_match": 0.10526315789473684,
+          "answerable_character_f1": 0.11897070059948289,
+          "answerable_coverage": 0.07565789473684204,
+          "no_answer_false_answer_rate": 0.08750000000000002
+        },
+        "scope": "Development-only promotion. The 10% false-answer aspiration does not override these rules."
+      }
+    },
+    {
+      "candidate_id": "task-natural192",
+      "label": "Task-trained retriever, natural192",
+      "label_ko": "과제 학습 검색기와 자연 청크 192",
+      "configuration": {
+        "schema_version": 1,
+        "retriever": {
+          "kind": "mean_pool",
+          "query_max_length": 128,
+          "passage_max_length": 256
+        },
+        "chunking": {
+          "max_tokens": 192,
+          "overlap_tokens": 32
+        },
+        "retrieval": {
+          "candidate_k": 50,
+          "rerank_k": 20
+        },
+        "reader": {
+          "context_k": 3,
+          "context_mode": "chunk",
+          "max_length": 512,
+          "score_mode": "reader"
+        },
+        "thresholds": {
+          "min_rrf_score": 0.025,
+          "min_reranker_score": 0.5,
+          "min_reader_score": 0.1,
+          "require_explicit_year": true
+        }
+      },
+      "question_count": 384,
+      "answerable_count": 304,
+      "no_answer_count": 80,
+      "recall_at_5": 0.9638157894736842,
+      "recall_at_5_hit_count": 293,
+      "mrr_at_20": 0.8778234649122808,
+      "complete_gold_chunk_coverage": 1.0,
+      "answerable_exact_match": 0.7368421052631579,
+      "answerable_correct_count": 224,
+      "answerable_character_f1": 0.8273481971973525,
+      "answerable_coverage": 0.930921052631579,
+      "answerable_answered_count": 283,
+      "no_answer_false_answer_count": 11,
+      "no_answer_false_answer_rate": 0.13749999999999996,
+      "evidence_sha256": {
+        "metrics": "ace4e2c3085a32653f68b14edeb2f9793c2f7b27d019f36c17423c064d8da71b",
+        "predictions": "d084d050ef99d7c5f94ef16cfec69a2c1266912f5703054d349dcae8bd88ff7a",
+        "reader_cache": "2242a1e0aa38dd45891cf60c0b5bd9661e6ee613f4a654057d2a1bb44226102a",
+        "bundle_manifest": "67e67b96e71133b08ee4a4b7bdd0e6628c3a98e692ce0805beab5f8263fd5526"
+      },
+      "retrieval_gain_over_original": 0.08552631578947367,
+      "retrieval_gain_rule_satisfied": true,
+      "answer_gain_decision": {
+        "promote": true,
+        "em_delta": 0.11842105263157887,
+        "character_f1_delta": 0.13816465808678402,
+        "scope": "Stage3 development-only Reader comparison against variant0 with unchanged thresholds."
+      },
+      "raw_joint_promotion_decision": {
+        "promote": false,
+        "conditions": {
+          "declared_answer_gain": true,
+          "no_answer_rate_not_worse": false,
+          "answerable_coverage_preserved": true
+        },
+        "delta": {
+          "answerable_exact_match": 0.11842105263157887,
+          "answerable_character_f1": 0.13816465808678402,
+          "answerable_coverage": 0.08552631578947367,
+          "no_answer_false_answer_rate": 0.125
+        },
+        "scope": "Development-only promotion. The 10% false-answer aspiration does not override these rules."
+      }
+    }
+  ],
+  "own_model_comparison": {
+    "own_natural192_em_minus_selected": 0.006578947368421018,
+    "own_natural192_recall5_minus_selected": -0.003289473684210509,
+    "own_natural192_false_answers": 11,
+    "selected_false_answers": 4,
+    "interpretation": "Own task training improves development QA. Selection follows the frozen retrieval-primary ordering; it does not establish that task training failed."
+  },
+  "scope": "All figures are saved development results, independently rescored from exact384 IDs. This is a compound system comparison of encoder, source-only chunking and token limits, not an isolated retriever ablation. Small differences are descriptive, without a significance claim.",
+  "confidence_scope": "Public-source model exposure is not fully knowable; paragraph separation is not article or pretrained-model independence. Synthetic false-answer rates do not estimate natural-user hallucination risk.",
+  "audit_source_sha256": "8477e8f7dda5e6088ff430e285da087ca68f3bb863855bde4f616abbd0d46903"
+}

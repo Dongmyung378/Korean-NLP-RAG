@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "corpus_sha256": "ce939b9e2a7d9e4459c6bf6ab54dc2ed0de66166eaa3ba241ff5697e7145db3c",
+  "fixed_corpus_paragraphs": 960,
+  "review_type": "Codex agent targeted source review plus whole-corpus term scan; not independent human annotation",
+  "whole_corpus_term_counts": {
+    "방탄소년단": 29,
+    "BTS": 14,
+    "아미": 10,
+    "ARMY": 3,
+    "팬클럽": 8,
+    "해체식": 0,
+    "해체": 9,
+    "해산": 1,
+    "창단식": 1,
+    "2030": 0,
+    "점심": 0
+  },
+  "targeted_fanclub_paragraphs_reviewed": [
+    {
+      "document_id": "465313e978b7578dd12106208f669d88927223fa6488873a357aafd82c858835",
+      "title": "방탄소년단",
+      "raw_text_sha256": "465313e978b7578dd12106208f669d88927223fa6488873a357aafd82c858835"
+    },
+    {
+      "document_id": "49808d34988ff219e59970c691f6e21635f933eeb15ccddc34e3ddb2230d131d",
+      "title": "방탄소년단",
+      "raw_text_sha256": "49808d34988ff219e59970c691f6e21635f933eeb15ccddc34e3ddb2230d131d"
+    },
+    {
+      "document_id": "7bdf1c765a9f6dafdbae672c6c33a4a5de2f7f9067a2bedd6217ef1daff3588b",
+      "title": "방탄소년단",
+      "raw_text_sha256": "7bdf1c765a9f6dafdbae672c6c33a4a5de2f7f9067a2bedd6217ef1daff3588b"
+    },
+    {
+      "document_id": "a3df13d6e5bfd76038a05a136d5ad3ede4ff6d43731cc637805cb4aa54cfe2e3",
+      "title": "방탄소년단",
+      "raw_text_sha256": "a3df13d6e5bfd76038a05a136d5ad3ede4ff6d43731cc637805cb4aa54cfe2e3"
+    },
+    {
+      "document_id": "adb4e3dd7da5c5d8f17c9d2e9a471591718c293e4a366f67d41eca3247d9da92",
+      "title": "이회창",
+      "raw_text_sha256": "adb4e3dd7da5c5d8f17c9d2e9a471591718c293e4a366f67d41eca3247d9da92"
+    },
+    {
+      "document_id": "c6e59a4f76c33e998434feee1b432df1a4c20d9c9ae7edfc19352008397b9d55",
+      "title": "방탄소년단",
+      "raw_text_sha256": "c6e59a4f76c33e998434feee1b432df1a4c20d9c9ae7edfc19352008397b9d55"
+    },
+    {
+      "document_id": "d1c9afee1cfb7201c80eecffd0d82e95d8a758c414562e4d609805f4b5ed02dc",
+      "title": "방탄소년단",
+      "raw_text_sha256": "d1c9afee1cfb7201c80eecffd0d82e95d8a758c414562e4d609805f4b5ed02dc"
+    },
+    {
+      "document_id": "d6a281f89b4b25455a777feb46dbdd60b0b9581784c881144dc4c3d3ad9abb4b",
+      "title": "방탄소년단",
+      "raw_text_sha256": "d6a281f89b4b25455a777feb46dbdd60b0b9581784c881144dc4c3d3ad9abb4b"
+    }
+  ],
+  "fanclub_regression_cases": [
+    {
+      "original_probe_id": "false_event",
+      "requested_relation": "BTS official fan-club dissolution ceremony date",
+      "review_scope": "All eight paragraphs mentioning fan clubs were reviewed. The full corpus was scanned for BTS aliases and dissolution-related terms. BTS entity paragraphs contain no dissolution-related terms.",
+      "counterevidence_document_id": "7bdf1c765a9f6dafdbae672c6c33a4a5de2f7f9067a2bedd6217ef1daff3588b",
+      "source_fact": "The cited paragraph describes a founding ceremony on 2014-03-29, not a dissolution ceremony.",
+      "label": "Unsupported event relation in this fixed corpus; no assertion about all real-world history.",
+      "independent_final": false
+    },
+    {
+      "original_probe_id": "false_year",
+      "requested_relation": "2030 BTS fan-club founding ceremony date",
+      "counterevidence_document_id": "7bdf1c765a9f6dafdbae672c6c33a4a5de2f7f9067a2bedd6217ef1daff3588b",
+      "source_fact": "The source dates the founding ceremony to 2014-03-29. No paragraph contains 2030.",
+      "label": "The requested year-event relation is not supported by this fixed corpus. The existence of a future event elsewhere is not judged.",
+      "independent_final": false
+    },
+    {
+      "original_probe_id": "missing_detail",
+      "requested_relation": "Food served for lunch at BTS fan-club founding ceremony",
+      "counterevidence_document_id": "7bdf1c765a9f6dafdbae672c6c33a4a5de2f7f9067a2bedd6217ef1daff3588b",
+      "source_fact": "The full founding-ceremony paragraph describes the date and venue but supplies no meal details. No fixed-corpus paragraph mentions lunch.",
+      "label": "Unspecified detail in this fixed corpus, rather than a claim that no lunch occurred.",
+      "independent_final": false
+    }
+  ],
+  "remaining_historical_probes": "Weather, private account and future concert probes are preserved as historical debugging cases. They are not newly human-annotated benchmark examples.",
+  "limitation": "Term scans are not a generic semantic no-answer proof. This targeted review records exact source scope and the missing requested relation for already exposed probes."
+}

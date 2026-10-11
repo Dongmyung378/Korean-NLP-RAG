@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "name": "Korean RAG bounded improvement protocol",
+  "splits": {
+    "seed": 378,
+    "grouping": "paragraph",
+    "development_question_target": 300,
+    "final_question_target": 500,
+    "grouping_rule": "Identical raw source paragraphs and normalized duplicate questions are indivisible connected groups.",
+    "legacy_exposure_rule": "No final group may contain a question ID or normalized question found in historical exported evaluation files, nor a paragraph or normalized question in the original training source. Article overlap is also excluded under explicit article grouping.",
+    "corpus_rule": "Retain every validation source paragraph in the retrieval corpus, including gold paragraphs for final questions.",
+    "training_rule": "Remove train-source questions whose paragraph or normalized question also occurs in validation. Article exclusion is enforced when article grouping is explicitly selected.",
+    "count_rule": "Whole-group selection can exceed the question target; it must never silently reduce the target or split a group."
+  },
+  "selection": {
+    "evaluation_split": "dev",
+    "retrieval_primary_metric": "recall_at_5",
+    "retrieval_secondary_metric": "mrr_at_20",
+    "answer_primary_metric": "answerable_exact_match",
+    "answer_secondary_metric": "answerable_character_f1",
+    "minimum_retrieval_gain": 0.01,
+    "minimum_answer_em_gain": 0.01,
+    "minimum_answer_f1_gain": 0.005,
+    "maximum_em_regression_for_f1_gain": 0.0,
+    "training_max_epochs": 2,
+    "training_max_variants_per_family": 2,
+    "max_chunking_variants": 4,
+    "max_reader_variants": 4,
+    "max_abstention_variants": 12,
+    "stop_rule": "Stop an experiment family after its bounded declared variants fail to meet its development gain threshold. Preserve the existing best configuration and all failed records.",
+    "no_answer_constraint": "Select thresholds on development data only. Promotion requires no-answer false-answer rate no higher than the original baseline, answerable coverage at least baseline coverage minus 0.02, and the declared answer EM or F1 gain. Never count an unsupported extracted source span as a correct no-answer decision.",
+    "no_answer_promotion": {
+      "maximum_false_answer_rate_relative_to_baseline": 0.0,
+      "minimum_answerable_coverage_relative_to_baseline": -0.02,
+      "aspirational_false_answer_rate": 0.1,
+      "aspiration_rule": "The 10% false-answer rate is a stated aspiration, not permission to lower coverage or weaken the fixed promotion rules. If no candidate satisfies every promotion rule, retain the incumbent."
+    },
+    "tie_breaker": "Prefer the lower warm latency and simpler configuration when measured quality is tied."
+  },
+  "final_evaluation": {
+    "access_rule": "No final-question model inference or final answer inspection before the selected configuration, model artifacts, source and benchmark hashes are frozen.",
+    "allowed_runs": "One predefined paired comparison of original and selected configurations. Repeat only for an execution failure or a separately recorded reproduction check; never select a configuration from final outcomes.",
+    "numerical_reporting": "Publish counts and denominators with EM, character F1, complete-span Recall and selective/no-answer metrics. Keep legacy regression results separate.",
+    "scope": "Project tuning holdout from public KorQuAD validation. Not the official private test and not a claim that pretrained models have never encountered the data."
+  },
+  "metrics": {
+    "official_evaluator_url": "https://korquad.github.io/dataset/evaluate-v1.0.py",
+    "official_evaluator_sha256": "304bd29a7ea47e4b45b4432d6d1a4b1a5089ac68c63218608bff644ca5bb183d",
+    "em": "Best official-normalized exact match over all gold annotations; abstentions score zero on answerable questions.",
+    "f1": "Best multiset character F1 over all gold annotations after official Korean normalization; whitespace is ignored for character counting.",
+    "retrieval_relevance": "A relevant chunk has the same original paragraph and fully contains at least one entire annotated answer span. Partial overlap never qualifies.",
+    "no_answer": "No-answer labels require an explicit auditable construction or human review against the declared fixed corpus; they are not imported from KorQuAD v1."
+  }
+}

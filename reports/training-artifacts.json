@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "file": "korean-rag-training-models.zip",
+  "bytes": 790806262,
+  "sha256": "9cbb8be9921dcf96a15f95fcc5c55f075be1344ceb3a2b6836b8bf366ba72677",
+  "download_url": null,
+  "drive_file_id": null,
+  "publication_status": "prepared_for_manual_upload_link_pending",
+  "optional": true,
+  "required_for_question_answering_runtime": false,
+  "sharing": "Anyone with the link, Viewer; verify anonymous download before publishing the real link",
+  "verification": "Full ZIP CRC and every payload SHA-256 checked against frozen source bytes",
+  "payload_manifest": {
+    "schema_version": 1,
+    "purpose": "Optional exact retriever checkpoint and training provenance archive",
+    "files": [
+      {
+        "path": "README.ko.md",
+        "bytes": 4545,
+        "sha256": "470c541080fe72ab05347cc15fd666247dee3774a1ef83230f6f1f12d36780a0"
+      },
+      {
+        "path": "README.md",
+        "bytes": 4187,
+        "sha256": "0a42886d9a5bfe4b93270ed1020175c3867c012ce0cc70e885270730d07b6d1b"
+      },
+      {
+        "path": "configs/training.json",
+        "bytes": 916,
+        "sha256": "b3a890b70926a6b8da5cbeef8ed10566f5a86462562a020d0373128343b143ec"
+      },
+      {
+        "path": "models/original-retriever/config.json",
+        "bytes": 773,
+        "sha256": "98e76f6d895b6b314678ee70053097c30407f8e748db6d0d9bd18df779b3099c"
+      },
+      {
+        "path": "models/original-retriever/conversion_manifest.json",
+        "bytes": 567,
+        "sha256": "f88c71e435a7328fa08b002531ac8b45971e3675b1d24da8c54d0df6beff21e1"
+      },
+      {
+        "path": "models/original-retriever/model.safetensors",
+        "bytes": 442494816,
+        "sha256": "2ce1e42b5a20ca387b3ba81eafb90bdeb7c73907ee6b66ebf9b1c7e17f9d681b"
+      },
+      {
+        "path": "models/original-retriever/tokenizer.json",
+        "bytes": 752251,
+        "sha256": "5e75543922ab94a075f7f8ca2adec6ddcc4da0b39aa608bfae8be1aca212c7de"
+      },
+      {
+        "path": "models/original-retriever/tokenizer_config.json",
+        "bytes": 670,
+        "sha256": "10fa3530adeec22f3f2678de23a95ea7019fb9875b91da08331c6a51f62c4119"
+      },
+      {
+        "path": "models/task-retriever-hard-epoch1/config.json",
+        "bytes": 774,
+        "sha256": "001e622e39cf9e8dd3b83d4b78e6192ff3bcebf84848b3c666427de95767230e"
+      },
+      {
+        "path": "models/task-retriever-hard-epoch1/model.safetensors",
+        "bytes": 442494816,
+        "sha256": "bd7589673945f8c3b4e4b443d7f93c77fe9e1b865aff9f059863df2e6d9ae460"
+      },
+      {
+        "path": "models/task-retriever-hard-epoch1/tokenizer.json",
+        "bytes": 752252,
+        "sha256": "372ce7b5703114c4d989008ce3b2e207f6fee6f3f1c1f07144ed646686d1a665"
+      },
+      {
+        "path": "models/task-retriever-hard-epoch1/tokenizer_config.json",
+        "bytes": 670,
+        "sha256": "10fa3530adeec22f3f2678de23a95ea7019fb9875b91da08331c6a51f62c4119"
+      },
+      {
+        "path": "notices/KLUE-CC-BY-SA-4.0.txt",
+        "bytes": 20131,
+        "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297"
+      },
+      {
+        "path": "notices/KLUE-model-card.md",
+        "bytes": 1369,
+        "sha256": "45955546db8185a8bc7e31cb0c157cc35bf102c1327e07e70d0f38ca461812de"
+      },
+      {
+        "path": "notices/upstream-identities.json",
+        "bytes": 1166,
+        "sha256": "ecff78b95a916b4feb054bdaafedfa9d0a49117d0d4321113d965df636f82b8c"
+      },
+      {
+        "path": "provenance/matched-reranker-summary.json",
+        "bytes": 1007,
+        "sha256": "bca3dc54a43814cec24e9e7261d560b9f24db83548129a6f1e2ba87e58d6e66f"
+      },
+      {
+        "path": "provenance/mining-manifest.json",
+        "bytes": 2073,
+        "sha256": "b6aeb9a5a2a0edcf389910749bae02a1608fc4d20ede7345a5f19209b68a4980"
+      },
+      {
+        "path": "provenance/task-retriever-input-manifest.json",
+        "bytes": 1051,
+        "sha256": "34829ed85b06a9705a68b49c74fae470711bb2300d637846a224be4646505d9a"
+      },
+      {
+        "path": "provenance/task-retriever-training-report.json",
+        "bytes": 2087,
+        "sha256": "dac5d86df64237cdde9cfc4aa4f764fe4b3faaaed54a7eeeb01778988fd8aa7c"
+      },
+      {
+        "path": "provenance/training-data-manifest.json",
+        "bytes": 1417,
+        "sha256": "cf4be7153aae3ca2734d1d12f36f99c1998eee5fa2b7a059e08f493febca8b8b"
+      }
+    ],
+    "excluded": [
+      "Reader weights",
+      "raw KorQuAD data",
+      "mined text pairs",
+      "personal records"
+    ],
+    "selected_public_runtime_requirement": false,
+    "original_retriever_sha256": "2ce1e42b5a20ca387b3ba81eafb90bdeb7c73907ee6b66ebf9b1c7e17f9d681b",
+    "task_retriever_epoch1_sha256": "bd7589673945f8c3b4e4b443d7f93c77fe9e1b865aff9f059863df2e6d9ae460"
+  }
+}

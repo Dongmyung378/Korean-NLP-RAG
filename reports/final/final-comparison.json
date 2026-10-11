@@ -1,0 +1,500 @@
+{
+  "schema_version": 1,
+  "inputs": {
+    "split": "final",
+    "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+    "question_file_sha256": "e96d6798d4a9ac91567e066dc728f9fae7630ce7039faf731915cc43fd7d7c10",
+    "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991",
+    "no_answer_file_sha256": "6084987476fcf82a4b8a509da7227678f62a2552da02c59ded64138d361bb180"
+  },
+  "evaluation_scope": "One predefined paired project tuning holdout evaluation from public KorQuAD validation plus separately reported synthetic no-answer cases. Not the official private test or pretrained-unseen data.",
+  "original_qa": {
+    "question_count": 581,
+    "answerable_count": 501,
+    "no_answer_count": 80,
+    "answered_count": 432,
+    "answered_answerable_count": 431,
+    "abstained_answerable_count": 70,
+    "correct_answerable_count": 312,
+    "no_answer_abstained_count": 79,
+    "no_answer_false_answer_count": 1,
+    "coverage": 0.7435456110154905,
+    "answerable_coverage": 0.8602794411177644,
+    "answerable_exact_match": 0.6227544910179641,
+    "answerable_character_f1": 0.7055198334883749,
+    "answered_answerable_exact_match": 0.7238979118329466,
+    "answered_answerable_character_f1": 0.8201054212939114,
+    "accepted_answer_precision_exact_match": 0.7222222222222222,
+    "selective_risk_exact_match": 0.2777777777777778,
+    "no_answer_abstention_rate": 0.9875,
+    "no_answer_false_answer_rate": 0.012499999999999956,
+    "no_answer_abstention_wilson_95": [
+      0.9325372992233133,
+      0.9977900244795476
+    ],
+    "balanced_correct_decision_rate": 0.8051272455089821,
+    "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+    "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+  },
+  "selected_qa": {
+    "question_count": 581,
+    "answerable_count": 501,
+    "no_answer_count": 80,
+    "answered_count": 444,
+    "answered_answerable_count": 440,
+    "abstained_answerable_count": 61,
+    "correct_answerable_count": 367,
+    "no_answer_abstained_count": 76,
+    "no_answer_false_answer_count": 4,
+    "coverage": 0.7641996557659209,
+    "answerable_coverage": 0.8782435129740519,
+    "answerable_exact_match": 0.7325349301397206,
+    "answerable_character_f1": 0.7994485291138116,
+    "answered_answerable_exact_match": 0.8340909090909091,
+    "answered_answerable_character_f1": 0.91028116610459,
+    "accepted_answer_precision_exact_match": 0.8265765765765766,
+    "selective_risk_exact_match": 0.17342342342342343,
+    "no_answer_abstention_rate": 0.95,
+    "no_answer_false_answer_rate": 0.050000000000000044,
+    "no_answer_abstention_wilson_95": [
+      0.8783772379535698,
+      0.9803864454644556
+    ],
+    "balanced_correct_decision_rate": 0.8412674650698603,
+    "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+    "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+  },
+  "selected_minus_original": {
+    "answerable_exact_match": 0.1097804391217565,
+    "answerable_character_f1": 0.09392869562543671,
+    "answerable_coverage": 0.017964071856287456,
+    "no_answer_false_answer_rate": 0.03750000000000009,
+    "accepted_answer_precision_exact_match": 0.10435435435435436
+  },
+  "original_retrieval": {
+    "question_count": 501,
+    "complete_gold_chunk_coverage": 1.0,
+    "recall_at_1": 0.7025948103792415,
+    "mrr_at_1": 0.7025948103792415,
+    "ndcg_at_1": 0.7025948103792415,
+    "recall_at_5": 0.9161676646706587,
+    "mrr_at_5": 0.7924484364604125,
+    "ndcg_at_5": 0.7986671874769838,
+    "recall_at_10": 0.9341317365269461,
+    "mrr_at_10": 0.7949846339067896,
+    "ndcg_at_10": 0.8075062860228138,
+    "recall_at_20": 0.9421157684630739,
+    "mrr_at_20": 0.7955843003747196,
+    "ndcg_at_20": 0.8114773685497713
+  },
+  "selected_retrieval": {
+    "question_count": 501,
+    "complete_gold_chunk_coverage": 1.0,
+    "recall_at_1": 0.812375249500998,
+    "mrr_at_1": 0.812375249500998,
+    "ndcg_at_1": 0.812375249500998,
+    "recall_at_5": 0.9660678642714571,
+    "mrr_at_5": 0.8789421157684632,
+    "ndcg_at_5": 0.897392211894926,
+    "recall_at_10": 0.9780439121756487,
+    "mrr_at_10": 0.8806767417545861,
+    "ndcg_at_10": 0.9025476945393182,
+    "recall_at_20": 0.9780439121756487,
+    "mrr_at_20": 0.8806767417545861,
+    "ndcg_at_20": 0.9025476945393182
+  },
+  "paired_changes": {
+    "answerable_exact_match": {
+      "both_correct": 285,
+      "neither_exact_correct": 107,
+      "selected_gained_exact_correct": 82,
+      "selected_lost_exact_correct": 27
+    },
+    "answerable_character_f1": {
+      "selected_improved": 98,
+      "selected_worsened": 38,
+      "unchanged": 365
+    },
+    "synthetic_no_answer": {
+      "both_abstained": 75,
+      "selected_added_false_answer": 4,
+      "selected_corrected_false_answer": 1
+    }
+  },
+  "original_error_breakdown": {
+    "counts": {
+      "exact_correct": 312,
+      "incorrect_gold_missing_top20_abstained": 15,
+      "incorrect_gold_missing_top20_answered": 14,
+      "incorrect_gold_rank6_to20_abstained": 1,
+      "incorrect_gold_rank6_to20_answered": 12,
+      "incorrect_gold_top5_abstained": 54,
+      "incorrect_gold_top5_answered": 93
+    },
+    "complete_gold_chunk_locations": {
+      "gold_missing_top20": 29,
+      "gold_rank6_to20": 13,
+      "gold_top5": 459
+    },
+    "scope": "Descriptive position of a full annotated gold span after reranking. These categories do not establish causal component failures; expanded Reader windows can recover gold beyond a retrieved chunk boundary."
+  },
+  "selected_error_breakdown": {
+    "counts": {
+      "exact_correct": 367,
+      "incorrect_gold_missing_top20_abstained": 7,
+      "incorrect_gold_missing_top20_answered": 4,
+      "incorrect_gold_rank6_to20_abstained": 3,
+      "incorrect_gold_rank6_to20_answered": 1,
+      "incorrect_gold_top5_abstained": 51,
+      "incorrect_gold_top5_answered": 68
+    },
+    "complete_gold_chunk_locations": {
+      "gold_missing_top20": 11,
+      "gold_rank6_to20": 6,
+      "gold_top5": 484
+    },
+    "scope": "Descriptive position of a full annotated gold span after reranking. These categories do not establish causal component failures; expanded Reader windows can recover gold beyond a retrieved chunk boundary."
+  },
+  "synthetic_no_answer": {
+    "original": {
+      "question_count": 80,
+      "answerable_count": 0,
+      "no_answer_count": 80,
+      "answered_count": 1,
+      "answered_answerable_count": 0,
+      "abstained_answerable_count": 0,
+      "correct_answerable_count": 0,
+      "no_answer_abstained_count": 79,
+      "no_answer_false_answer_count": 1,
+      "coverage": 0.0125,
+      "answerable_coverage": null,
+      "answerable_exact_match": null,
+      "answerable_character_f1": null,
+      "answered_answerable_exact_match": null,
+      "answered_answerable_character_f1": null,
+      "accepted_answer_precision_exact_match": 0.0,
+      "selective_risk_exact_match": 1.0,
+      "no_answer_abstention_rate": 0.9875,
+      "no_answer_false_answer_rate": 0.012499999999999956,
+      "no_answer_abstention_wilson_95": [
+        0.9325372992233133,
+        0.9977900244795476
+      ],
+      "balanced_correct_decision_rate": null,
+      "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+      "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction.",
+      "by_subtype": {
+        "absent_entity_identity": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 0,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 20,
+          "no_answer_false_answer_count": 0,
+          "coverage": 0.0,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": null,
+          "selective_risk_exact_match": null,
+          "no_answer_abstention_rate": 1.0,
+          "no_answer_false_answer_rate": 0.0,
+          "no_answer_abstention_wilson_95": [
+            0.8388748419471806,
+            1.0
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        },
+        "absent_entity_location": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 0,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 20,
+          "no_answer_false_answer_count": 0,
+          "coverage": 0.0,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": null,
+          "selective_risk_exact_match": null,
+          "no_answer_abstention_rate": 1.0,
+          "no_answer_false_answer_rate": 0.0,
+          "no_answer_abstention_wilson_95": [
+            0.8388748419471806,
+            1.0
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        },
+        "fabricated_relation": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 1,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 19,
+          "no_answer_false_answer_count": 1,
+          "coverage": 0.05,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": 0.0,
+          "selective_risk_exact_match": 1.0,
+          "no_answer_abstention_rate": 0.95,
+          "no_answer_false_answer_rate": 0.050000000000000044,
+          "no_answer_abstention_wilson_95": [
+            0.763868806553258,
+            0.9911185511992047
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        },
+        "fictional_future_event": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 0,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 20,
+          "no_answer_false_answer_count": 0,
+          "coverage": 0.0,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": null,
+          "selective_risk_exact_match": null,
+          "no_answer_abstention_rate": 1.0,
+          "no_answer_false_answer_rate": 0.0,
+          "no_answer_abstention_wilson_95": [
+            0.8388748419471806,
+            1.0
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        }
+      },
+      "scope": "Synthetic closed-corpus no-answer stress set; report separately from historical regression and any natural-query annotations."
+    },
+    "selected": {
+      "question_count": 80,
+      "answerable_count": 0,
+      "no_answer_count": 80,
+      "answered_count": 4,
+      "answered_answerable_count": 0,
+      "abstained_answerable_count": 0,
+      "correct_answerable_count": 0,
+      "no_answer_abstained_count": 76,
+      "no_answer_false_answer_count": 4,
+      "coverage": 0.05,
+      "answerable_coverage": null,
+      "answerable_exact_match": null,
+      "answerable_character_f1": null,
+      "answered_answerable_exact_match": null,
+      "answered_answerable_character_f1": null,
+      "accepted_answer_precision_exact_match": 0.0,
+      "selective_risk_exact_match": 1.0,
+      "no_answer_abstention_rate": 0.95,
+      "no_answer_false_answer_rate": 0.050000000000000044,
+      "no_answer_abstention_wilson_95": [
+        0.8783772379535698,
+        0.9803864454644556
+      ],
+      "balanced_correct_decision_rate": null,
+      "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+      "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction.",
+      "by_subtype": {
+        "absent_entity_identity": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 4,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 16,
+          "no_answer_false_answer_count": 4,
+          "coverage": 0.2,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": 0.0,
+          "selective_risk_exact_match": 1.0,
+          "no_answer_abstention_rate": 0.8,
+          "no_answer_false_answer_rate": 0.19999999999999996,
+          "no_answer_abstention_wilson_95": [
+            0.5839825677481064,
+            0.919342337420202
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        },
+        "absent_entity_location": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 0,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 20,
+          "no_answer_false_answer_count": 0,
+          "coverage": 0.0,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": null,
+          "selective_risk_exact_match": null,
+          "no_answer_abstention_rate": 1.0,
+          "no_answer_false_answer_rate": 0.0,
+          "no_answer_abstention_wilson_95": [
+            0.8388748419471806,
+            1.0
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        },
+        "fabricated_relation": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 0,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 20,
+          "no_answer_false_answer_count": 0,
+          "coverage": 0.0,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": null,
+          "selective_risk_exact_match": null,
+          "no_answer_abstention_rate": 1.0,
+          "no_answer_false_answer_rate": 0.0,
+          "no_answer_abstention_wilson_95": [
+            0.8388748419471806,
+            1.0
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        },
+        "fictional_future_event": {
+          "question_count": 20,
+          "answerable_count": 0,
+          "no_answer_count": 20,
+          "answered_count": 0,
+          "answered_answerable_count": 0,
+          "abstained_answerable_count": 0,
+          "correct_answerable_count": 0,
+          "no_answer_abstained_count": 20,
+          "no_answer_false_answer_count": 0,
+          "coverage": 0.0,
+          "answerable_coverage": null,
+          "answerable_exact_match": null,
+          "answerable_character_f1": null,
+          "answered_answerable_exact_match": null,
+          "answered_answerable_character_f1": null,
+          "accepted_answer_precision_exact_match": null,
+          "selective_risk_exact_match": null,
+          "no_answer_abstention_rate": 1.0,
+          "no_answer_false_answer_rate": 0.0,
+          "no_answer_abstention_wilson_95": [
+            0.8388748419471806,
+            1.0
+          ],
+          "balanced_correct_decision_rate": null,
+          "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+          "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+        }
+      },
+      "scope": "Synthetic closed-corpus no-answer stress set; report separately from historical regression and any natural-query annotations."
+    }
+  },
+  "descriptive_paired_uncertainty": {
+    "seed": 378,
+    "resamples": 2000,
+    "paragraph_connected_groups": 102,
+    "question_count": 501,
+    "paired_delta": {
+      "exact_match": {
+        "observed_delta": 0.10978043912175649,
+        "percentile_95": [
+          0.06943417159763314,
+          0.15260394028158367
+        ]
+      },
+      "character_f1": {
+        "observed_delta": 0.09392869562543676,
+        "percentile_95": [
+          0.053481527575646434,
+          0.13366154778898767
+        ]
+      }
+    },
+    "scope": "Descriptive paired percentile bootstrap of complete paragraph/duplicate-question connected groups, with question-weighted means. Does not account for residual article dependence, public pretrained exposure, adaptive development selection or synthetic-label bias; not a claim of general statistical significance."
+  },
+  "latency": {
+    "original": {
+      "load_seconds": 15.553333500000008,
+      "latency_mean_seconds": 0.10533996970733044,
+      "latency_p50_seconds": 0.10338240000055521,
+      "latency_p95_seconds": 0.12502200000017183,
+      "latency_scope": "Single configured serving path, model loading excluded."
+    },
+    "selected": {
+      "load_seconds": 19.097724400002335,
+      "latency_mean_seconds": 0.20953462547333837,
+      "latency_p50_seconds": 0.20698339999944437,
+      "latency_p95_seconds": 0.24722570000085398,
+      "latency_scope": "Single configured serving path, model loading excluded."
+    }
+  },
+  "provenance": {
+    "summarizer_sha256": "e36c592e1793e807c6b7b21d86a5bf6aa3199be31947b7f843d70cd6b1010dda",
+    "original_metrics_sha256": "b884328a633e01698fcc6d72a33b90f7774bb60d3b2c71acf32cffd23ab9e236",
+    "selected_metrics_sha256": "f22e782ff3ffb3b6688c6a35ceefddb15a19eaf9395646152ef720e2144bb986",
+    "original_freeze_sha256": "c61b0663c29b04d3f61127aa74572588dae4b02d05c7b633fd577042097442cd",
+    "selected_freeze_sha256": "e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574"
+  },
+  "interpretation_rule": "Report final observations without reselecting configuration or relaxing development gates from final outcomes. A synthetic final risk increase, if present, remains a reported limitation.",
+  "published_files_sha256": {
+    "final-original-metrics.json": "fa90477c27f01d20ad0d72762b78c4beb285cc139f653e1f9a41f7a16dd13c81",
+    "final-original-predictions.jsonl": "25b304c5c51b1d3b9ea7f5455b2ede5d82afcaecb823af4f59721ed6ce9fda1b",
+    "final-selected-metrics.json": "5e799b50b841158fd9b6fece2191cb19ad378ed26f07c474e31a9aabca34ec3a",
+    "final-selected-predictions.jsonl": "1f4b2b86169c2a65f1846667dd52eed4cc5e03265d9deecf224c246120f8c11e"
+  },
+  "comparison_sha256": "9a5d9ba2fbb85a2a6add3b46b4e271ce98d27ba685c369c65494fa3ae2d7e1a5"
+}

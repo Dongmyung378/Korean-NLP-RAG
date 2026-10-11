@@ -1,0 +1,150 @@
+{
+  "configuration": {
+    "schema_version": 1,
+    "retriever": {
+      "kind": "roberta",
+      "query_max_length": 64,
+      "passage_max_length": 64
+    },
+    "chunking": {
+      "max_tokens": 62,
+      "overlap_tokens": 15
+    },
+    "retrieval": {
+      "candidate_k": 50,
+      "rerank_k": 20
+    },
+    "reader": {
+      "context_k": 3,
+      "context_mode": "chunk",
+      "max_length": 512,
+      "score_mode": "reader"
+    },
+    "thresholds": {
+      "min_rrf_score": 0.025,
+      "min_reranker_score": 0.5,
+      "min_reader_score": 0.1,
+      "require_explicit_year": true
+    },
+    "evaluation_binding": {
+      "split": "final",
+      "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+      "question_file_sha256": "e96d6798d4a9ac91567e066dc728f9fae7630ce7039faf731915cc43fd7d7c10",
+      "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991",
+      "no_answer_file_sha256": "6084987476fcf82a4b8a509da7227678f62a2552da02c59ded64138d361bb180"
+    }
+  },
+  "bundle_manifest_sha256": "50b3361a44d0de9cde4ca6c6ce62d557c45be0723689153d05f4a7bd7081e3fc",
+  "environment": {
+    "python_version": "3.12.7",
+    "python_implementation": "CPython",
+    "os": "Windows",
+    "os_release": "11",
+    "machine": "AMD64",
+    "dependency_versions": {
+      "numpy": "2.5.3",
+      "torch": "2.14.0+cu130",
+      "transformers": "5.17.0",
+      "tokenizers": "0.23.2",
+      "faiss-cpu": "1.15.1",
+      "rank-bm25": "0.2.2",
+      "safetensors": "0.8.0",
+      "huggingface-hub": "1.32.0"
+    },
+    "device": "cuda",
+    "gpu_index": 0,
+    "gpu_name": "NVIDIA GeForce RTX 3060 Laptop GPU",
+    "gpu_compute_capability": [
+      8,
+      6
+    ],
+    "torch_version": "2.14.0+cu130",
+    "cuda_runtime_version": "13.0",
+    "cudnn_version": 92400,
+    "torch_num_threads": 4,
+    "torch_num_interop_threads": 8,
+    "float32_matmul_precision": "highest",
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": true,
+    "cudnn_deterministic": false,
+    "cudnn_benchmark": false,
+    "deterministic_algorithms_enabled": false,
+    "numerical_scope": "Hashes reproduce data, source and artifacts. Hardware and backend arithmetic can differ; fixed near-null guards do not guarantee universal bitwise equality."
+  },
+  "source_sha256": {
+    "korean_rag/abstention_benchmark.py": "9407675d022483d7dbc2df22883ae0f2f813e3f9af69e8effc8c38696318dfe0",
+    "korean_rag/benchmark.py": "e9084885905c3cdce4af81a9997b513067e0530b0b5dca2c8073dc680eae5e94",
+    "korean_rag/qa_metrics.py": "25852e6df12db19b0a378f16d8dcfbc4203a9dda761b92e2bda9c11b1c525f5b",
+    "korean_rag/reranking.py": "25820d111fa644a039022db776534173eac3ea559fc66f36a8bba5ba5cc53ab7",
+    "korean_rag/retrieval.py": "5d6cfc517797e600653dcd5faa1443e0971743f6522855a712d24305e7ea3b8d",
+    "korean_rag/runtime.py": "f557e4c3eafaf60aac70d8b93b9f9c59704d92ccf72158789448c99676785cf4",
+    "korean_rag/validation.py": "c84d8b828a81e94553860b1981a504e8cc80fa726b758066e08f8185e609e9ff",
+    "scripts/evaluate_portable.py": "b8d6d2fe319f17c9ffc1a8d32522905d391537ead8c532c7b4e777daef4e3599"
+  },
+  "qa": {
+    "question_count": 581,
+    "answerable_count": 501,
+    "no_answer_count": 80,
+    "answered_count": 432,
+    "answered_answerable_count": 431,
+    "abstained_answerable_count": 70,
+    "correct_answerable_count": 312,
+    "no_answer_abstained_count": 79,
+    "no_answer_false_answer_count": 1,
+    "coverage": 0.7435456110154905,
+    "answerable_coverage": 0.8602794411177644,
+    "answerable_exact_match": 0.6227544910179641,
+    "answerable_character_f1": 0.7055198334883749,
+    "answered_answerable_exact_match": 0.7238979118329466,
+    "answered_answerable_character_f1": 0.8201054212939114,
+    "accepted_answer_precision_exact_match": 0.7222222222222222,
+    "selective_risk_exact_match": 0.2777777777777778,
+    "no_answer_abstention_rate": 0.9875,
+    "no_answer_false_answer_rate": 0.012499999999999956,
+    "no_answer_abstention_wilson_95": [
+      0.9325372992233133,
+      0.9977900244795476
+    ],
+    "balanced_correct_decision_rate": 0.8051272455089821,
+    "metric_scope": "Gold-normalized EM and Korean character F1; not semantic correctness or an official KorQuAD leaderboard score.",
+    "interval_scope": "Wilson interval is descriptive and does not account for related questions or synthetic construction."
+  },
+  "retrieval": {
+    "question_count": 501,
+    "complete_gold_chunk_coverage": 1.0,
+    "recall_at_1": 0.7025948103792415,
+    "mrr_at_1": 0.7025948103792415,
+    "ndcg_at_1": 0.7025948103792415,
+    "recall_at_5": 0.9161676646706587,
+    "mrr_at_5": 0.7924484364604125,
+    "ndcg_at_5": 0.7986671874769838,
+    "recall_at_10": 0.9341317365269461,
+    "mrr_at_10": 0.7949846339067896,
+    "ndcg_at_10": 0.8075062860228138,
+    "recall_at_20": 0.9421157684630739,
+    "mrr_at_20": 0.7955843003747196,
+    "ndcg_at_20": 0.8114773685497713
+  },
+  "load_seconds": 15.553333500000008,
+  "latency_mean_seconds": 0.10533996970733044,
+  "latency_p50_seconds": 0.10338240000055521,
+  "latency_p95_seconds": 0.12502200000017183,
+  "latency_scope": "Single configured serving path, model loading excluded.",
+  "cache_reader_variants": false,
+  "inputs": {
+    "split": "final",
+    "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+    "question_file_sha256": "e96d6798d4a9ac91567e066dc728f9fae7630ce7039faf731915cc43fd7d7c10",
+    "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991",
+    "no_answer_file_sha256": "6084987476fcf82a4b8a509da7227678f62a2552da02c59ded64138d361bb180"
+  },
+  "provenance": {
+    "original_full_metrics_sha256": "b884328a633e01698fcc6d72a33b90f7774bb60d3b2c71acf32cffd23ab9e236",
+    "original_full_predictions_sha256": "b004fda6a09e572496935f875214967c3fa148a0f465ee02fc210faa4671fb5b",
+    "private_full_reader_cache_sha256": "69330d3e2e8683222b4bda611d251309959ee06fdabd3bc81a4e97f6e57752b4",
+    "compact_public_predictions_sha256": "25b304c5c51b1d3b9ea7f5455b2ede5d82afcaecb823af4f59721ed6ce9fda1b",
+    "freeze_sha256": "c61b0663c29b04d3f61127aa74572588dae4b02d05c7b633fd577042097442cd",
+    "freeze_file_sha256": "5a512e1d12b248a24d6dbdbe903063509c7834b1fa3545eb4c83370bc8414005"
+  },
+  "publication_scope": "Source contexts, evidence passages, questions and gold answer texts are omitted. Public compact prediction checksums differ intentionally from the private full evidence checksums."
+}

@@ -1,0 +1,68 @@
+{
+  "grouping": "paragraph",
+  "seed": 378,
+  "target_counts": {
+    "dev": 300,
+    "final": 500
+  },
+  "actual_counts": {
+    "train": 60387,
+    "dev": 304,
+    "final": 501,
+    "unused": 4969
+  },
+  "source_validation_groups": 960,
+  "historically_exposed_groups": 627,
+  "groups_excluded_from_final": 628,
+  "eligible_unexposed_groups": 332,
+  "train_removed_for_validation_overlap": 20,
+  "validation_groups_overlapping_original_training_source": 3,
+  "known_exposed_validation_questions": 1000,
+  "final_known_exposure_count": 0,
+  "final_article_overlap_with_dev": 19,
+  "limitations": [
+    "This is a holdout from project tuning and historical exported question inference, not the official private KorQuAD test.",
+    "The published KorQuAD-finetuned reader may have used this public validation set for model selection.",
+    "Historical notebooks inspected aggregate token lengths and answer preservation across the public validation set.",
+    "Paragraph grouping does not imply article independence; article overlap is reported explicitly.",
+    "All validation source paragraphs, including final gold documents, remain in the fixed retrieval corpus."
+  ],
+  "schema_version": 1,
+  "source_files": {
+    "train": {
+      "file": "KorQuAD_v1.0_train.json",
+      "sha256": "40d5115879a701751781df721d901abfa736d8db5f89000f2619433f39bf2dd2"
+    },
+    "validation": {
+      "file": "KorQuAD_v1.0_dev.json",
+      "sha256": "25ffeb51e6c51ec02c071b60a10188e10005c144110f0d876b26079d80a35bdf"
+    }
+  },
+  "historical_exposure_files": [
+    {
+      "file": "week4_evaluation_queries.csv",
+      "sha256": "5b30ac0d75469e2fdbc9535fbaa98ab46683b542a5a07c9febe4507fda5168aa",
+      "rows": 1000
+    },
+    {
+      "file": "week4_day5_rag_examples.csv",
+      "sha256": "acd29380dd348a235dacf978ce1ae05ec6e715bc995328a625607385737acb75",
+      "rows": 100
+    },
+    {
+      "file": "korquad_retrieval_data.json",
+      "sha256": "656633b901be5fef07d7cac1e19db6256681d5678d814cfbc1c47ae3f94a0aba",
+      "rows": 1000
+    }
+  ],
+  "protocol_sha256": "7640ad47eb8149350b1d3cb52ce3a417e9ddd1c20ff2aaf15ed40e8e78e68ea8",
+  "manifest_sha256": {
+    "corpus.jsonl": "ce939b9e2a7d9e4459c6bf6ab54dc2ed0de66166eaa3ba241ff5697e7145db3c",
+    "dev.jsonl": "8bfa9641b3da61d9426945a947a00ddb20d1fb9009b7ecd2efafa6475bf73242",
+    "final.jsonl": "e96d6798d4a9ac91567e066dc728f9fae7630ce7039faf731915cc43fd7d7c10",
+    "train.jsonl": "7decbf36ed60044d889105da79cda482470aed05dec81f3c0813d142f81627b0",
+    "unused.jsonl": "1b906eb923b247ed4ccdfb48c71e541c785244557cb715324e5616d7556e15df"
+  },
+  "corpus_paragraph_count": 960,
+  "benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d"
+}

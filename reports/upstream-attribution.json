@@ -1,0 +1,169 @@
+{
+  "models": [
+    {
+      "alias": "klue-roberta-base",
+      "model_id": "klue/roberta-base",
+      "revision": "02f94ba5e3fcb7e2a58a390b8639b0fac974a8da",
+      "repository_license_tag": null,
+      "readme_present": true,
+      "license_files": []
+    },
+    {
+      "alias": "koelectra-korquad-reader",
+      "model_id": "monologg/koelectra-base-v3-finetuned-korquad",
+      "revision": "ad4097ba1dc9904a22c3df71cafe6431e23f8914",
+      "repository_license_tag": null,
+      "readme_present": false,
+      "license_files": []
+    },
+    {
+      "upstream_repository": "KLUE-benchmark/KLUE",
+      "commit": "3efd98708a40ff49251fddde35453f8fbb11f536"
+    },
+    {
+      "upstream_repository": "monologg/KoELECTRA",
+      "commit": "024fbdd600e653b6e4bdfc64ceec84181b5ce6c4"
+    },
+    {
+      "upstream_base_model": "monologg/koelectra-base-v3-discriminator",
+      "revision": "68b30cd259f34a4b5aa8786392612ba2a2617fcc",
+      "repository_license_tag": "apache-2.0"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://huggingface.co/api/models/klue/roberta-base/revision/02f94ba5e3fcb7e2a58a390b8639b0fac974a8da",
+      "file": "klue-roberta-base-metadata.json",
+      "available": true,
+      "bytes": 2124,
+      "sha256": "69076a9ea6777518d0b8f266d669659e94dcd4d9c486231e4315308b350a7ad0"
+    },
+    {
+      "url": "https://huggingface.co/klue/roberta-base/resolve/02f94ba5e3fcb7e2a58a390b8639b0fac974a8da/README.md",
+      "file": "klue-roberta-base-README.md",
+      "available": true,
+      "bytes": 1369,
+      "sha256": "45955546db8185a8bc7e31cb0c157cc35bf102c1327e07e70d0f38ca461812de"
+    },
+    {
+      "url": "https://huggingface.co/klue/roberta-base/resolve/02f94ba5e3fcb7e2a58a390b8639b0fac974a8da/LICENSE",
+      "file": "klue-roberta-base-LICENSE",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://huggingface.co/klue/roberta-base/resolve/02f94ba5e3fcb7e2a58a390b8639b0fac974a8da/LICENSE.txt",
+      "file": "klue-roberta-base-LICENSE.txt",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://huggingface.co/klue/roberta-base/resolve/02f94ba5e3fcb7e2a58a390b8639b0fac974a8da/NOTICE",
+      "file": "klue-roberta-base-NOTICE",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://huggingface.co/api/models/monologg/koelectra-base-v3-finetuned-korquad/revision/ad4097ba1dc9904a22c3df71cafe6431e23f8914",
+      "file": "koelectra-korquad-reader-metadata.json",
+      "available": true,
+      "bytes": 2646,
+      "sha256": "9d3af82001a40440f12f674f4ae1342b24121dfb46bc83e75f78f3ff88375872"
+    },
+    {
+      "url": "https://huggingface.co/monologg/koelectra-base-v3-finetuned-korquad/resolve/ad4097ba1dc9904a22c3df71cafe6431e23f8914/README.md",
+      "file": "koelectra-korquad-reader-README.md",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://huggingface.co/monologg/koelectra-base-v3-finetuned-korquad/resolve/ad4097ba1dc9904a22c3df71cafe6431e23f8914/LICENSE",
+      "file": "koelectra-korquad-reader-LICENSE",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://huggingface.co/monologg/koelectra-base-v3-finetuned-korquad/resolve/ad4097ba1dc9904a22c3df71cafe6431e23f8914/LICENSE.txt",
+      "file": "koelectra-korquad-reader-LICENSE.txt",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://huggingface.co/monologg/koelectra-base-v3-finetuned-korquad/resolve/ad4097ba1dc9904a22c3df71cafe6431e23f8914/NOTICE",
+      "file": "koelectra-korquad-reader-NOTICE",
+      "http_status": 404,
+      "available": false
+    },
+    {
+      "url": "https://api.github.com/repos/KLUE-benchmark/KLUE/commits/main",
+      "file": "klue-commit.json",
+      "available": true,
+      "bytes": 8006,
+      "sha256": "40bbed7f114e2f73d9b99f47c5ddf94d4d7a4ac44a9559c741922ab9d5a5cc86"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/KLUE-benchmark/KLUE/3efd98708a40ff49251fddde35453f8fbb11f536/README.md",
+      "file": "klue-README.md",
+      "available": true,
+      "bytes": 7721,
+      "sha256": "1f87facecc35feabf8ad25ecd2eda75bab8ea3ad074569b5239b4d57197ea059"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/KLUE-benchmark/KLUE/3efd98708a40ff49251fddde35453f8fbb11f536/License.md",
+      "file": "klue-License.md",
+      "available": true,
+      "bytes": 20131,
+      "sha256": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297"
+    },
+    {
+      "url": "https://api.github.com/repos/monologg/KoELECTRA/commits/master",
+      "file": "koelectra-commit.json",
+      "available": true,
+      "bytes": 8990,
+      "sha256": "8f982ea703e319f8b885900ae065fb710d53e91a3d7631b1fc7e1bec7d8fde29"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/monologg/KoELECTRA/024fbdd600e653b6e4bdfc64ceec84181b5ce6c4/README.md",
+      "file": "koelectra-README.md",
+      "available": true,
+      "bytes": 14383,
+      "sha256": "f4a5111b330b00d0a58459b0d2cd7d61e274d0a4c6886af0c6f13237a05c5940"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/monologg/KoELECTRA/024fbdd600e653b6e4bdfc64ceec84181b5ce6c4/README_EN.md",
+      "file": "koelectra-README_EN.md",
+      "available": true,
+      "bytes": 13477,
+      "sha256": "71142aa4fe39081a1f3d7e3849fd00a73c992857eaa11f3eac7f9e194e221f0a"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/monologg/KoELECTRA/024fbdd600e653b6e4bdfc64ceec84181b5ce6c4/LICENSE",
+      "file": "koelectra-LICENSE",
+      "available": true,
+      "bytes": 11356,
+      "sha256": "43070e2d4e532684de521b885f385d0841030efa2b1a20bafb76133a5e1379c1"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/monologg/KoELECTRA/024fbdd600e653b6e4bdfc64ceec84181b5ce6c4/finetune/README.md",
+      "file": "koelectra-finetune-README.md",
+      "available": true,
+      "bytes": 6022,
+      "sha256": "6aad03ad772bb339289a03d2d43a93bc8d19629fded3d217c9cfa82b60b5c599"
+    },
+    {
+      "url": "https://huggingface.co/api/models/monologg/koelectra-base-v3-discriminator",
+      "file": "koelectra-base-metadata.json",
+      "available": true,
+      "bytes": 1303,
+      "sha256": "a34ff4ba4a6b638bd0e58e0a2ac1012ddef05a9f278248e3f73c012103e7ee0a"
+    },
+    {
+      "url": "https://huggingface.co/monologg/koelectra-base-v3-discriminator/resolve/68b30cd259f34a4b5aa8786392612ba2a2617fcc/README.md",
+      "file": "koelectra-base-README.md",
+      "available": true,
+      "bytes": 1841,
+      "sha256": "2ec76465e2a9666418d30bf490d4e898e031b0f04c4f00c7e7aec50e358929c5"
+    }
+  ],
+  "scope": "Primary upstream declarations and immutable source identities; absence is recorded and no repository license is asserted as an explicit fine-tuned-checkpoint grant"
+}

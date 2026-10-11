@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "counts": {
+    "dev": 80,
+    "final": 80
+  },
+  "subtype_counts": {
+    "dev": {
+      "absent_entity_location": 20,
+      "absent_entity_identity": 20,
+      "fabricated_relation": 20,
+      "fictional_future_event": 20
+    },
+    "final": {
+      "absent_entity_location": 20,
+      "absent_entity_identity": 20,
+      "fabricated_relation": 20,
+      "fictional_future_event": 20
+    }
+  },
+  "base_paragraph_counts": {
+    "dev": 50,
+    "final": 80
+  },
+  "base_article_overlap": 19,
+  "base_paragraph_overlap": 0,
+  "entity_name_overlap": 0,
+  "surface_template_overlap": 0,
+  "corpus_paragraphs_scanned_per_marker": 960,
+  "label_provenance_counts": {
+    "synthetic_constructed": 160,
+    "independent_human_annotation": 0
+  },
+  "limitations": [
+    "This is a constructed closed-corpus stress set, not an independently human-labeled natural-language unanswerability benchmark.",
+    "No-answer rates may be optimistic because synthetic names and explicit future years can be easy to reject.",
+    "Surface templates, complete entity names and base paragraphs are disjoint across development and final; broad linguistic patterns and source articles can still overlap.",
+    "The construction contains unsupported relations, not proof that every analogous real-world event is false.",
+    "The fixed corpus consists of public KorQuAD validation paragraphs and has no live information or private account access."
+  ],
+  "answerable_benchmark_sha256": "2bf39dc8ad1862c2a1b2ec9f7d13484529cb596013e6f9969d86bfbdf55f7c7d",
+  "corpus_sha256": "ce939b9e2a7d9e4459c6bf6ab54dc2ed0de66166eaa3ba241ff5697e7145db3c",
+  "no_answer_protocol_sha256": "2793f3bfa20d39c02933b55fba86bf98baf85ffc4bdffdb2915de9e777c38600",
+  "historical_probe_source_sha256": "375cc584544ac5807ec7c51c5486289a136106ebc0196ab786c86c4b223e973e",
+  "files_sha256": {
+    "dev.jsonl": "009958fef627a1e77d685fa520bea776a02c280866f75a7027d588cc292502dd",
+    "final.jsonl": "6084987476fcf82a4b8a509da7227678f62a2552da02c59ded64138d361bb180",
+    "regression-source-review.json": "d2196b7b7799c544cded1f17aec80011542d8124d49658866f39342ac94621ca",
+    "regression.jsonl": "8744b2c3b989416ae7d338f5ca94eb4022091caad351082ea8de2c0698a055f4"
+  },
+  "final_access_rule": "No final model inference before root freezes the selected model, pipeline configuration and this no-answer manifest. Construction is independent of model outputs.",
+  "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991"
+}

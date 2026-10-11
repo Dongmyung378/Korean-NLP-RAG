@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "korean-nlp-rag"
+version = "2.0.0"
+description = "Reproducible Korean evidence retrieval and extractive question answering"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy==2.5.3",
+  "pandas==3.0.6",
+  "torch==2.14.0",
+  "transformers==5.17.0",
+  "safetensors==0.8.0",
+  "faiss-cpu==1.15.1",
+  "rank-bm25==0.2.2",
+  "packaging==26.3",
+  "tokenizers==0.23.2",
+  "huggingface-hub==1.32.0",
+]
+
+[project.optional-dependencies]
+training = ["datasets==5.0.1"]
+
+[project.scripts]
+korean-rag = "korean_rag.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["korean_rag*"]
+

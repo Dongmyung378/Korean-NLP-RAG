@@ -1,0 +1,50 @@
+name: Verify portable CPU code
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'korean_rag/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'configs/**'
+      - 'requirements-runtime.txt'
+      - 'pyproject.toml'
+      - '.github/workflows/verify.yml'
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  cpu:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '4'
+      MKL_NUM_THREADS: '4'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare project-only CPU environment
+        run: python scripts/setup_runtime.py --device cpu
+      - name: Run Linux logic and tiny training checks
+        if: runner.os == 'Linux'
+        run: .venv/bin/python -m unittest discover -s tests -v
+      - name: Run Windows logic and tiny training checks
+        if: runner.os == 'Windows'
+        run: .venv/Scripts/python.exe -m unittest discover -s tests -v
+      - name: Reconstruct exact benchmark on Linux
+        if: runner.os == 'Linux'
+        run: .venv/bin/python scripts/reproduce_data.py
+      - name: Reconstruct exact benchmark on Windows
+        if: runner.os == 'Windows'
+        run: .venv/Scripts/python.exe scripts/reproduce_data.py

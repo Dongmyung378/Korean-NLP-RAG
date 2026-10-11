@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "name": "Bounded development-only abstention follow-up",
+  "status": "Explicit refinement after the original twelve-threshold family failed; not success under the original experiment budget.",
+  "evaluation_split": "dev",
+  "initial_reader_variants": 4,
+  "initial_threshold_variants": 12,
+  "additional_threshold_variants": 9,
+  "total_threshold_variants": 21,
+  "rrf_thresholds": [0.028, 0.03, 0.032],
+  "reader_thresholds": [0.3, 0.6, 0.9],
+  "reranker_threshold": 0.5,
+  "require_explicit_year": true,
+  "reader_variant_id": "reader-3",
+  "reader_configuration": {
+    "context_k": 5,
+    "context_mode": "parent_window",
+    "max_length": 512,
+    "score_mode": "reader_reranker",
+    "null_score_margin": 0.000001
+  },
+  "promotion_rule": "Apply the unchanged original validation protocol to the original baseline measured on the same GPU. No-answer false-answer rate must not exceed baseline, answerable coverage must be at least baseline minus 0.02, and answer EM or F1 must meet the original gain rule.",
+  "selection_rule": "Among eligible candidates choose highest answerable EM, then character F1, then lower no-answer false-answer rate, then original thresholds if included, then declared order.",
+  "stop_rule": "Evaluate these nine candidates once. If none satisfies every unchanged gate, preserve the original conservative default. Retain all initial and follow-up records; do not add another threshold search.",
+  "final_questions_used": 0,
+  "scope": "Adaptive refinement uses the same development set, so its estimates can be optimistic. The untouched project tuning holdout is reserved for the paired final evaluation after configuration freeze. Public pretrained exposure and synthetic no-answer limitations remain."
+}

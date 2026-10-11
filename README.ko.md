@@ -1,171 +1,94 @@
-# Korean-NLP-RAG
+# 한국어 검색과 질의응답
 
 [English](README.md) | [한국어](README.ko.md)
 
-한국어 문맥에서 질문에 필요한 근거를 찾고, 답과 출처를 터미널에 보여주는 프로젝트입니다. 4주 동안 Transformer 학습, 문장 임베딩, 검색, 리랭킹을 실험한 뒤 저장된 모델을 로컬 Python 코드로 연결했습니다.
+사용자 컴퓨터에서 실행하는 한국어 근거 검색과 추출형 질의응답 시스템입니다. BM25와 벡터 검색, Cross-Encoder 재순위화, KoELECTRA QA Reader를 연결해 답과 출처를 반환하거나 답변을 보류합니다.
 
-최종 앱은 인터넷을 검색하거나 자유롭게 문장을 생성하지 않습니다. KorQuAD 문맥을 검색한 다음 QA Reader가 답을 추출합니다. Qwen을 이용한 생성형 RAG와의 비교 실험은 4주차 노트북에 남겨두었습니다.
+최초 프로젝트는 2026년 6월에 4주간 개발했습니다. 포트폴리오 공개 버전에는 질문과 문단 검색에 맞춘 학습, 제한된 구성 비교, 동결한 최종 평가와 CPU 실행 환경을 추가했으며 재사용 가능한 코드와 실제 검증 기록을 제공합니다.
 
-## 구성
+## 구현 역량
 
-| 단계 | 작업 | 다음 단계에서 쓰는 결과물 |
-| --- | --- | --- |
-| 1주차 | KLUE-YNAT 뉴스 제목 분류, 학습 설정 비교 | 학습·평가 경험. 분류 모델은 검색기에 연결하지 않음 |
-| 2주차 | KLUE-STS 문장 임베딩, hard-negative 추가 학습, FAISS 검색 | Retriever와 토크나이저 |
-| 3주차 | Cross-Encoder 학습, 검색 후보 재정렬 | Reranker |
-| 4주차 | BM25·Dense 검색 결합, Qwen·Reader 비교, 인용과 오류 분석 | 지식베이스, 인덱스, 평가 결과 |
+- 질문과 문단 검색을 위한 검색기 학습, 오답 필터링과 Hard Negative 생성, 동일 조건의 재순위화 추가 학습
+- BM25와 FAISS 검색, RRF 결합, Cross-Encoder 재순위화
+- 원문 위치를 유지하는 청크 생성과 검색한 구간을 중심으로 읽는 Reader 문맥
+- 검색 성능, 답변 정확도, 답변 비율과 통제한 무응답 평가의 분리
+- 개발 데이터에서만 구성 선택, 해시를 동결한 최종 평가와 미채택 실험 보존
+- `safetensors` 모델 검증, 프로젝트 전용 환경 설치와 모델을 재사용하는 연속 질문 CLI
 
-로컬 앱의 처리 순서는 다음과 같습니다.
+## 측정 결과
 
-`질문 -> BM25 Top-50 + Dense Top-50 -> RRF Top-20 -> Reranker Top-3 -> QA Reader -> 답변과 인용 또는 답변 보류`
+[측정 결과 보고서](reports/results.ko.md)에 동일한 최종 표본의 비교, 개발 실험, 분모, 처리 시간과 한계를 정리했습니다. [이전 회귀 평가](reports/legacy_baseline.ko.md)는 별도로 표시합니다.
 
-주차별 노트북은 학습·실험 기록이므로 저장소에는 그대로 보존하되, 재사용 가능한 애플리케이션 소스의 언어 비중을 왜곡하지 않도록 `.gitattributes`에서 `.ipynb` 파일을 GitHub 언어 통계에서 제외했습니다. [주차별 보고서](reports)는 영어를 기본으로 제공하며, 각 보고서에서 한국어 번역본으로 이동할 수 있습니다.
+<!-- FINAL_RESULTS -->
 
-## 답변할 수 있는 범위
+| 측정 항목 | 최초 개발 모델 | 최종 개발 모델 | 변화 |
+| --- | ---: | ---: | ---: |
+| 정답 일치율 EM, 답이 있는 501문항 | 62.28% (312/501) | 73.25% (367/501) | +10.98%p |
+| 한국어 문자 F1, 동일 501문항 | 70.55% | 79.94% | +9.39%p |
+| 정답 구간 전체를 찾은 Recall@5, 동일 501문항 | 91.62% (459/501) | 96.61% (484/501) | +4.99%p |
+| 답변 제공률, 동일 501문항 | 86.03% (431/501) | 87.82% (440/501) | +1.80%p |
+| 별도 합성 무응답 80문항의 보류 | 79/80 (98.75%) | 76/80 (95.00%) | -3.75%p |
+| 동일 합성 80문항의 잘못된 답변 | 1/80 | 4/80 | 3건 증가 |
+| 전체 581문항 평균 GPU 처리 시간 | 105.34 ms | 209.53 ms | 1.99배 |
 
-지식베이스는 KorQuAD 1.0 validation split의 한국어 위키백과 문맥 960개를 나눈 5,889개 청크입니다. 저장된 인물·문화·역사·과학 등의 문맥에서 사실을 찾을 수 있지만, 최신 뉴스나 날씨, 개인정보처럼 여기에 없는 정보에는 신뢰할 만한 답을 제공할 수 없습니다. 웹 검색, 사용자 문서 업로드, 대화 이력 기능은 없습니다.
+답변 품질은 개선됐지만 최종 합성 무응답 오답은 1건에서 4건으로 증가했고 평균 GPU 처리 시간은 1.99배가 됐습니다. 각 평가 범위와 중단한 실험은 결과 보고서에 함께 기록했습니다.
 
-관련 문맥을 찾았더라도 질문의 전제를 잘못 이해하거나 엉뚱한 구절을 추출할 수 있습니다. 인용이 붙어 있다는 이유만으로 정답이라고 판단하지 말고, 함께 출력되는 근거를 확인해 주세요.
+<!-- /FINAL_RESULTS -->
 
-## 실행하기
+최종 문항은 공개 KorQuAD 검증 데이터에서 프로젝트 개선에 사용하지 않은 표본입니다. 공식 비공개 시험 데이터는 아니며 공개 모델의 과거 데이터 노출까지 배제하지는 못합니다. 무응답 문항은 가상 대상을 사용하는 통제 표본이므로 자연 질문 전반의 오류율로 해석하지 않습니다.
 
-Python 3.12 환경에서 프로젝트 루트를 기준으로 실행합니다. 아래 명령은 Git Bash에서도 사용할 수 있습니다.
+## 실행
 
-### 저장소와 출력물 준비
+[GitHub 저장소](https://github.com/Dongmyung378/Korean-NLP-RAG)를 복제하거나 해당 경로에 접근할 수 없다면 [포트폴리오 소스 압축 파일](https://park-dongmyung.com/downloads/korean-nlp-rag-source.zip)을 내려받아 압축을 풉니다.
+
+**Windows:** `launch-rag.bat`을 더블클릭하거나 실행합니다.
+
+```powershell
+.\launch-rag.bat
+```
+
+**Linux:**
 
 ```bash
-git clone https://github.com/Dongmyung378/Korean-NLP-RAG.git
-cd Korean-NLP-RAG
+bash launch-rag.sh
 ```
 
-이미 저장소가 있다면 그 폴더로 이동하면 됩니다.
+필요하면 64비트 Python 3.12를 확보하고 프로젝트 전용 환경에 버전을 고정한 CPU 패키지를 설치합니다. 해시가 일치하는 모델 파일을 내려받으며 변경하지 않은 공식 KorQuAD 파일에서 원문과 청크를 로컬에 재구성합니다. 최초 준비에는 인터넷이 필요하고 준비 후 추론은 로컬에서 실행합니다. Docker, API 키와 GPU는 필요하지 않습니다.
 
-모델 체크포인트는 각각 100MB가 넘어 GitHub에서 제외했습니다. [Google Drive에서 outputs 폴더](https://drive.google.com/drive/folders/1wqPSshOLzAJHYGfR7Z-Ug0BP_k3ycL4s?usp=sharing)를 받아 `transformer` 안에 넣어 주세요. ZIP으로 받았다면 압축을 풀고 폴더 구조를 유지해야 합니다.
+최초 설치에는 패키지와 모델 다운로드가 포함되므로 여러 GB의 여유 디스크 공간을 확보하세요. Windows와 Linux CPU 실행은 같은 컴퓨터의 격리 환경에서 확인한 것이며 외부 독립 검증자의 검증을 의미하지 않습니다.
 
-```text
-Korean-NLP-RAG/
-  korean_rag/
-  transformer/
-    notebooks/
-    outputs/
-      week2/
-        week2_retriever_artifacts/
-          week2_dense_retriever.pt
-          tokenizer/
-      week3/
-        week3_day4_final_reranker/
-          config.json
-          model.safetensors
-          tokenizer.json
-          tokenizer_config.json
-      week4/
-        week4_day1_3_artifacts/
-          week4_knowledge_base_chunks.csv
-          week4_dense.index
-          week4_bm25.pkl
-          week4_day5_rag_examples.csv
+```powershell
+.\launch-rag.bat --doctor
+.\launch-rag.bat --question "방탄소년단의 팬클럽 창단식은 몇 월 며칠인가?" --json
 ```
 
-주요 파일만 표시한 구조입니다. 개별 파일을 골라 받기보다 배포된 폴더를 그대로 옮기는 편이 편합니다. `outputs/outputs/`처럼 폴더가 중복되지 않도록 확인하세요. 1주차 출력물은 로컬 앱 실행에 필요하지 않습니다.
+연속 질문에서는 모델을 한 번 불러와 재사용합니다. `--question`, `--questions-file`, `--json`, `--no-reader`로 단일 질문, 일괄 처리와 근거 확인을 지원합니다. 선택적인 CUDA 실행과 오프라인 검증 및 오류 해결 방법은 [실행 안내](docs/runtime.ko.md)를 참고하세요.
 
-체크포인트와 BM25 파일은 역직렬화해서 읽습니다. 출처를 신뢰할 수 없는 파일은 사용하지 마세요.
-
-### 설치와 첫 질문
-
-```bash
-python -m pip install -r requirements.txt
-python -m korean_rag --question "방탄소년단의 팬클럽 창단식은 몇 월 며칠인가?"
-```
-
-검증 환경에서는 다음 답변과 인용이 나왔습니다.
-
-```text
-Answer: 2014년 3월 29일
-Source: extractive_reader
-Reader span score: 0.9591
-Citation: 방탄소년단 (chunk 3167)
-```
-
-첫 실행에는 공개 QA 모델 `monologg/koelectra-base-v3-finetuned-korquad`를 내려받기 위한 인터넷 연결이 필요합니다. 이후에는 로컬 캐시를 사용합니다. 질문 한 번을 실행할 때마다 모델을 메모리에 다시 불러옵니다.
-
-Windows, Python 3.12.7, PyTorch 2.5.1+cu121, Transformers 5.16.1에서 검증했습니다. CPU로도 실행할 수 있고, GPU를 쓰려면 CUDA 지원 PyTorch가 설치돼 있어야 합니다. 의존성은 버전 범위로 지정했으므로 환경이 달라지면 아래 테스트로 확인해 주세요.
-
-## 자주 쓰는 명령
-
-| 용도 | 명령어 |
-| --- | --- |
-| 질문을 직접 입력 | `python -m korean_rag` |
-| 검색 결과만 확인 | `python -m korean_rag --no-reader --question "질문"` |
-| CPU 사용 | `python -m korean_rag --device cpu --question "질문"` |
-| GPU 사용 | `python -m korean_rag --device cuda --question "질문"` |
-| JSON 출력 | `python -m korean_rag --json --question "질문"` |
-| 다른 출력물 경로 사용 | `python -m korean_rag --outputs-root "D:/data/outputs" --question "질문"` |
-| 전체 옵션 | `python -m korean_rag --help` |
-
-`--no-reader`는 답을 추출하지 않고 검색·리랭킹 근거만 보여줍니다. 정확도를 높이는 옵션은 아닙니다.
-
-질문은 앞뒤 공백을 제외하고 1,000자, 모델 토크나이저 기준 128토큰 이내로 받습니다. 둘 중 하나라도 넘으면 줄여 달라는 메시지를 출력합니다. 질문을 임의로 잘라 의미가 바뀌는 것을 피하기 위한 제한입니다.
-
-### 답을 보류하는 경우
-
-```bash
-python -m korean_rag --question "내일 서울 날씨는 어때?"
-```
-
-이 질문은 검증에서 `Source: abstained`로 보류했습니다. 후보별 기본 기준은 RRF 0.025, reranker 0.50, Reader 0.10입니다. Reader가 빈 답을 더 높게 평가하는 경우와 인용 문맥에 답 문자열이 없는 경우도 제외합니다. 질문에 명시된 네 자리 연도(`2030년` 등)가 근거에 없을 때도 보류합니다.
-
-기준은 실행 옵션으로 바꿀 수 있습니다.
-
-```bash
-python -m korean_rag --question "질문" --min-rrf-score 0.03 --min-reranker-score 0.70 --min-reader-score 0.20
-```
-
-이 점수들은 정답 확률이 아닙니다. 기준을 높이면 정답도 거절할 수 있고, 높은 점수의 오답이 남을 수도 있습니다. JSON의 `answer_in_evidence`는 답 문자열이 문맥에 있다는 뜻이지 정답 판정이 아닙니다.
-
-## 결과와 남은 한계
-
-2026-09-05의 저장 결과입니다. 검색은 1,000문항, 답변은 기존의 고정 100문항으로 평가했습니다.
-
-| 항목 | 결과 |
-| --- | ---: |
-| Hybrid + Reranker Recall@5 | 0.9020 |
-| Hybrid + Reranker Recall@20 | 0.9350 |
-| 노트북 Reader-First 정답 포함 | 74/100 |
-| 로컬 앱 정답 포함 | 67/100 |
-| 로컬 앱 답변 반환 / 보류 | 79 / 21 |
-| 반환한 답변 중 정답 포함 | 67/79 (84.8%) |
-| 수작업 무응답 점검에서 보류 | 5/6 |
-
-노트북은 로컬 앱과 같은 후보별 임계값을 사용하지 않아 수치가 다릅니다. 정답 포함은 정규화한 정답 문자열이 답변에 있는지를 계산한 값입니다. 의미적 정확도나 새 held-out 성능은 아닙니다.
-
-무응답 점검도 알려진 실패 사례를 포함한 6문항에 한정됩니다. 팬클럽 ‘해체식’이라는 잘못된 전제의 질문에 날짜를 답하는 실패가 남아 있습니다.
-
-3주차의 random-negative 기준 모델 비교에는 검증 질문 중복이 있어 hard-negative 학습 효과를 입증하는 근거로 사용할 수 없습니다. 독립된 질문 분할로 두 모델을 다시 비교한 결과는 없습니다. 최종 모델의 검색 순위 평가와의 차이는 [3주차 보고서](reports/week3_experiment_results.ko.md)에 설명했습니다.
-
-[4주차 분석](reports/week4_experiment_results.ko.md), [실측 지표와 실행 환경](reports/local_evaluation/metrics.json), [100개 답변](reports/local_evaluation/predictions.json), [무응답 점검 결과](reports/local_evaluation/unanswerable_probes.json)에서 세부 내용을 볼 수 있습니다. 평가 기록의 코드 해시는 입력 검사와 예외 처리가 추가되기 전의 실행 버전을 가리킵니다.
-
-## 검증 명령
-
-코드와 저장 결과를 확인합니다. 모델을 학습하거나 추론하지 않습니다.
+## 검증과 재현
 
 ```bash
 python -m unittest discover -s tests -v
+python scripts/reproduce_data.py
 ```
 
-출력물이 없으면 해당 파일을 읽는 테스트는 건너뜁니다. 실제 검색과 답변을 다시 평가하려면 다음 명령을 사용합니다.
+[실행 안내](docs/runtime.ko.md)에 따라 준비한 프로젝트 환경에서 실행합니다. 데이터 재구성 도구는 해시를 고정한 공식 학습 및 검증 원본을 내려받고 공개한 문항 ID로 평가 파일을 정확하게 재현합니다. 변형한 원문 데이터를 재배포하지 않습니다. 최초 모델 파일이 없는 환경에서는 선택적인 과거 모델 검사를 건너뜁니다.
 
-```bash
-python -m korean_rag.evaluate --device auto --save-dir transformer/outputs/local_verification
-```
+[평가 안내](docs/evaluation.ko.md)에 최종 추론 명령과 EM, 한국어 문자 F1, 정답 구간 전체를 기준으로 한 검색 재현율 및 보류 지표를 설명했습니다. [학습 안내](docs/training.ko.md)에는 학습 명령과 중단 기준을, [시스템 구조](docs/architecture.ko.md)에는 근거와 답변 판단의 연결을 정리했습니다.
 
-100개 질문과 무응답 6문항을 실행하고 `metrics.json`, `predictions.json`, `unanswerable_probes.json`을 저장합니다. 재학습은 하지 않습니다. 같은 경로를 다시 사용하면 기존 검증 파일을 덮어쓰므로 보관하려면 저장 경로를 바꿔 주세요. 이 결과 폴더는 Git 업로드에서 제외됩니다.
+## 폴더 구성
 
-## 파일 안내
+| 위치 | 내용 |
+| --- | --- |
+| `korean_rag/` | 검색, 답 추출, 지표, 학습과 CLI |
+| `scripts/` | 환경 설치, 모델 검증, 데이터 재구성, 학습과 평가 |
+| `configs/` | 고정한 평가 규칙, 문항 ID와 선택한 구성 |
+| `reports/` | 측정 결과, 채택 판단과 검증 근거 |
+| `docs/` | 영어 기본 설명과 한국어 번역 |
+| `tests/` | 입력, 모델 파일, 데이터 분할, 선택과 학습 검사 |
+| `artifacts/`, `.local/`, `.venv/` | Git에 포함하지 않는 모델, 데이터와 환경 |
 
-- `korean_rag/`: 검색, 리랭킹, 답변 처리, CLI와 평가 코드
-- `transformer/notebooks/`: 1~4주차 실험 노트북
-- `reports/`: 주차별 분석과 검증 기록
-- `tests/`: 회귀 테스트와 저장 결과 검사
-- `scripts/refresh_week4_reports.py`: 저장된 답변의 인용·표·그림 재생성
+## 적용 범위
 
-주차별 실행 순서와 보고서 재생성 방법은 [노트북 안내](transformer/notebooks/README.ko.md)에 있습니다. 로컬 앱을 쓰는 데 노트북 재학습은 필요하지 않습니다.
+지식베이스는 KorQuAD 검증 원문의 중복을 제거한 960개 문단입니다. 이 문서에 포함된 사실 질문을 대상으로 합니다. 인용은 답변 문자열이 원문에 있다는 것을 보여 주며 의미적으로 정답임을 보장하지 않습니다. 답변 기준 점수는 정답 확률로 보정한 값이 아닙니다. 최신 웹 정보, 임의 문서 업로드와 대화 이력은 현재 구현 범위에 포함하지 않습니다.
+
+모델과 데이터 출처는 [외부 자료 고지](THIRD_PARTY_NOTICES.md)에 기록했습니다. 데이터와 모델의 이용 조건은 프로젝트 소스 코드와 별도로 적용됩니다.

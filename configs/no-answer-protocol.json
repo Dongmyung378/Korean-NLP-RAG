@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "name": "Synthetic closed-corpus no-answer stress set",
+  "seed": 378,
+  "development_question_count": 80,
+  "final_question_count": 80,
+  "base_group_rule": "Development and final synthetic questions use source paragraphs from their respective frozen answerable benchmark split. No base paragraph crosses the split.",
+  "entity_rule": "Each question introduces an explicitly constructed unique fictional referent with no aliases and no facts inserted into the fixed corpus. The question requests a property or relation of this referent, not an unrelated fact about the real source title.",
+  "absence_rule": "Check the complete normalized fictional name in every raw paragraph and title of the fixed corpus. This confirms no accidental mention; construction provenance and the required subject relation establish the synthetic label. String absence alone never establishes a natural-question no-answer label.",
+  "subtypes": [
+    "absent_entity_location",
+    "absent_entity_identity",
+    "fabricated_relation",
+    "fictional_future_event"
+  ],
+  "templates": {
+    "dev": {
+      "absent_entity_location": "{title} 관련 기록을 기준으로, '{entity}'가 설립된 도시는 어디인가?",
+      "absent_entity_identity": "{title}와 관련된 '{entity}'의 초대 대표는 누구인가?",
+      "fabricated_relation": "{title}가 '{entity}'와 합병했다고 하는데, 그 합병 날짜는 언제인가?",
+      "fictional_future_event": "2047년에 '{entity}'가 주최하는 '{event}'의 개최 장소는 어디인가? {title} 자료를 근거로 답해줘."
+    },
+    "final": {
+      "absent_entity_location": "'{entity}'의 설립 장소를 알려줘. {title}에 관한 자료에서 해당 도시를 확인해줘.",
+      "absent_entity_identity": "'{entity}'를 창립한 사람의 이름은 무엇인가? {title}와 관련된 근거를 제시해줘.",
+      "fabricated_relation": "'{entity}'와 {title}가 공동으로 창립 기념식을 연 일자를 알려줘.",
+      "fictional_future_event": "2091년 '{entity}' 주최 '{event}' 행사가 열리는 도시는 어디인가? {title}에 관한 근거로 답해줘."
+    }
+  },
+  "namespace": {
+    "dev": "온빛누리",
+    "final": "새솔모람"
+  },
+  "event_namespace": {
+    "dev": "별빛합동총회",
+    "final": "푸른개척기념제"
+  },
+  "regression_rule": "Preserve the six previously exposed debugging probes in a separate regression file. They are never final-holdout examples and do not increase the synthetic final denominator.",
+  "natural_false_premise_rule": "A real-entity unsupported-premise case needs targeted source review and a traceable reason against the whole fixed corpus. Retain the fan-club dissolution probe only in regression with its review scope and source references, not as independent held-out evidence.",
+  "limitations": [
+    "This is a constructed closed-corpus stress set, not an independently human-labeled natural-language unanswerability benchmark.",
+    "No-answer rates may be optimistic because synthetic names and explicit future years can be easy to reject.",
+    "Surface templates, complete entity names and base paragraphs are disjoint across development and final; broad linguistic patterns and source articles can still overlap.",
+    "The construction contains unsupported relations, not proof that every analogous real-world event is false.",
+    "The fixed corpus consists of public KorQuAD validation paragraphs and has no live information or private account access."
+  ]
+}

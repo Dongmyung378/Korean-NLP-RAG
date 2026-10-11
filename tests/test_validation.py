@@ -30,7 +30,7 @@ class QuestionTests(unittest.TestCase):
 
     def test_cli_rejects_long_text_before_loading_models(self):
         with patch("sys.argv", ["korean_rag", "-q", "가" * (MAX_QUESTION_CHARS + 1)]), \
-             patch("korean_rag.__main__.KoreanRAGPipeline") as pipeline, \
+             patch("korean_rag.runtime.PortableRAG") as pipeline, \
              contextlib.redirect_stderr(io.StringIO()) as stderr:
             with self.assertRaises(SystemExit) as error:
                 main()
@@ -41,12 +41,10 @@ class QuestionTests(unittest.TestCase):
 
     def test_cli_reports_token_error_without_traceback(self):
         with patch("sys.argv", ["korean_rag", "-q", "질문"]), \
-             patch("korean_rag.__main__.KoreanRAGPipeline") as pipeline, \
+             patch("korean_rag.runtime.PortableRAG") as pipeline, \
              contextlib.redirect_stderr(io.StringIO()) as stderr:
             pipeline.return_value.answer.side_effect = QuestionValidationError("질문이 너무 깁니다.")
-            with self.assertRaises(SystemExit) as error:
-                main()
-            self.assertEqual(error.exception.code, 2)
+            self.assertEqual(main(), 0)
         self.assertNotIn("Traceback", stderr.getvalue())
 
 

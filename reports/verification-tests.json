@@ -1,0 +1,15 @@
+{
+  "scope": "Full public unit suite in separate clean Windows CPU virtual environment, not model accuracy evaluation.",
+  "command": "python -m unittest discover -s tests -v",
+  "test_count": 112,
+  "passed_count": 109,
+  "skipped_count": 3,
+  "failed_count": 0,
+  "elapsed_seconds": 16.044,
+  "python": "3.12.7",
+  "torch": "2.14.0+cpu",
+  "system_site_packages": false,
+  "skipped_scope": "Optional historical Week 4 saved artifacts moved out of the public tree.",
+  "selected_freeze_sha256": "e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574",
+  "verification_date_utc": "2026-10-11"
+}

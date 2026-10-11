@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-11T09:09:58.483126+00:00",
+  "status": "completed",
+  "scope": {
+    "question_count": 80,
+    "question_kind": "Synthetic final no-answer cases",
+    "answerable_holdout_cpu_inferences": 0,
+    "policy": "Supplemental audit after the GPU final result; no tuning or model/configuration selection",
+    "same_host": true,
+    "external_independent_review": false,
+    "source_and_model_unchanged": true
+  },
+  "bindings": {
+    "canonical_freeze_sha256": "e2304cebdc5ed6af713f0a6a3376d15849394f882c718c81ce5ad4963d2b0574",
+    "freeze_file_sha256": "481701fd11108ae5d8909414de7ce76344b073f7a1499957e652209865aded72",
+    "bundle_manifest_sha256": "2834c057f845137c129dcbbd6bc419e0a63303779d0a2f31a0b7cff11a4a57b9",
+    "question_file_sha256": "6084987476fcf82a4b8a509da7227678f62a2552da02c59ded64138d361bb180",
+    "no_answer_benchmark_sha256": "a049b0353725b71f5127629825d59e44fe484b94eb7b80ddd8f87a69f6311991",
+    "frozen_source_sha256": {
+      "korean_rag/abstention_benchmark.py": "9407675d022483d7dbc2df22883ae0f2f813e3f9af69e8effc8c38696318dfe0",
+      "korean_rag/benchmark.py": "e9084885905c3cdce4af81a9997b513067e0530b0b5dca2c8073dc680eae5e94",
+      "korean_rag/evaluate.py": "5807e6925009d9184ec9fdd0930db210f62f25949c26609cd309a47206c03254",
+      "korean_rag/metrics.py": "b93d5f744bc75e417c876c9af3acbd0bece259d5f59317101ecf49614bad27bf",
+      "korean_rag/pipeline.py": "b41d336ff32ccfc6ffb1a5a82114bd2c7657b2856e843f5ed91c254cf85a96dd",
+      "korean_rag/qa_metrics.py": "25852e6df12db19b0a378f16d8dcfbc4203a9dda761b92e2bda9c11b1c525f5b",
+      "korean_rag/reranking.py": "25820d111fa644a039022db776534173eac3ea559fc66f36a8bba5ba5cc53ab7",
+      "korean_rag/retrieval.py": "5d6cfc517797e600653dcd5faa1443e0971743f6522855a712d24305e7ea3b8d",
+      "korean_rag/runtime.py": "f557e4c3eafaf60aac70d8b93b9f9c59704d92ccf72158789448c99676785cf4",
+      "korean_rag/training.py": "7a939d4bab4e6a8d6cee0a2d1ebce51375293b5733e629e16cffa8858afcc37e",
+      "korean_rag/validation.py": "c84d8b828a81e94553860b1981a504e8cc80fa726b758066e08f8185e609e9ff",
+      "korean_rag/__init__.py": "1626c09cd98d040969c7fa6237f414692b701d2c9c4189a6045d97716d512297",
+      "korean_rag/__main__.py": "331c3f944ca5f63118e29270235814c34f8110988683a50a57ddb49663c63688",
+      "scripts/evaluate_portable.py": "b8d6d2fe319f17c9ffc1a8d32522905d391537ead8c532c7b4e777daef4e3599",
+      "scripts/build_bundle.py": "a2596d086b7d094061b17799cd8bf4b03543840a52bf62bbd1d3e723b1774d48",
+      "scripts/select_configuration.py": "316e3aa94589d118bf8340b404057d6dc17130043e5245b73029769b61345d40",
+      "scripts/calibrate_abstention.py": "1e12df03ef2797e0f56bed07bb58bbc37b952b15b7dbef95ad6caebcd7191214",
+      "requirements-runtime.txt": "e675d2ee6b917345b7ebbcafb987a181edde23e01e5ea86c062311e3090d7fb4",
+      "pyproject.toml": "ac0674b52c304c96633a7af743dbce7152dca28371763ff7446b662bf3b07fc9"
+    },
+    "private_predictions_sha256": "4a9f120fdfd0242476ca66a6ba24fbfc52e68baa277e029c67c59034aeef1679",
+    "audit_script_sha256": "502cabbf768ce93b3788c1b6c98c6f32725ced6ad990579b69f771af9a96ffc1"
+  },
+  "comparison": {
+    "gpu_false_answers": 4,
+    "cpu_false_answers": 4,
+    "gpu_false_answer_rate": 0.05,
+    "cpu_false_answer_rate": 0.05,
+    "gpu_false_query_ids": [
+      "synthetic-no-answer-final-021",
+      "synthetic-no-answer-final-029",
+      "synthetic-no-answer-final-037",
+      "synthetic-no-answer-final-049"
+    ],
+    "cpu_false_query_ids": [
+      "synthetic-no-answer-final-021",
+      "synthetic-no-answer-final-029",
+      "synthetic-no-answer-final-037",
+      "synthetic-no-answer-final-049"
+    ],
+    "decision_disagreement_count": 0,
+    "decision_disagreement_query_ids": []
+  },
+  "environment": {
+    "python": "3.12.7",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "device": "cpu",
+    "cuda_build": null,
+    "system_site_packages": false,
+    "cpu_threads": 4,
+    "package_versions": {
+      "torch": "2.14.0+cpu",
+      "transformers": "5.17.0",
+      "tokenizers": "0.23.2",
+      "safetensors": "0.8.0",
+      "numpy": "2.5.3",
+      "faiss-cpu": "1.15.1",
+      "rank-bm25": "0.2.2"
+    },
+    "load_seconds": 12.436292200000025,
+    "latency_mean_seconds": 2.993035343749989,
+    "latency_median_seconds": 2.990717249998852
+  },
+  "decisions": [
+    {
+      "query_id": "synthetic-no-answer-final-000",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-001",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-002",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-003",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-004",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-005",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-006",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-007",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-008",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-009",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-010",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-011",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-012",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-013",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-014",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-015",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-016",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-017",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-018",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-019",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-020",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-021",
+      "cpu_answered": true,
+      "gpu_answered": true
+    },
+    {
+      "query_id": "synthetic-no-answer-final-022",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-023",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-024",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-025",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-026",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-027",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-028",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-029",
+      "cpu_answered": true,
+      "gpu_answered": true
+    },
+    {
+      "query_id": "synthetic-no-answer-final-030",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-031",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-032",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-033",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-034",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-035",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-036",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-037",
+      "cpu_answered": true,
+      "gpu_answered": true
+    },
+    {
+      "query_id": "synthetic-no-answer-final-038",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-039",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-040",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-041",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-042",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-043",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-044",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-045",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-046",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-047",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-048",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-049",
+      "cpu_answered": true,
+      "gpu_answered": true
+    },
+    {
+      "query_id": "synthetic-no-answer-final-050",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-051",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-052",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-053",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-054",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-055",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-056",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-057",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-058",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-059",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-060",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-061",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-062",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-063",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-064",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-065",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-066",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-067",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-068",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-069",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-070",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-071",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-072",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-073",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-074",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-075",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-076",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-077",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-078",
+      "cpu_answered": false,
+      "gpu_answered": false
+    },
+    {
+      "query_id": "synthetic-no-answer-final-079",
+      "cpu_answered": false,
+      "gpu_answered": false
+    }
+  ]
+}
