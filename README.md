@@ -6,6 +6,8 @@ A local Korean evidence-retrieval and extractive question-answering system. It c
 
 The original four-week project was developed in June 2026. Its portfolio release adds task-aligned training, bounded model selection, a frozen project holdout and portable CPU execution, with reusable code and measured verification records.
 
+The [Original Development (4 Weeks)](https://drive.google.com/drive/folders/1PY8OtmllcOFIFBWK0jydj0xmDbdQ09HR) Drive folder contains reference artifacts from that initial period. Follow this repository's [runtime](docs/runtime.md) and [evaluation](docs/evaluation.md) guides to reproduce the current portfolio release.
+
 ## Engineering demonstrated
 
 - Question-to-passage retriever training, filtered hard-negative mining and matched reranker refinements.

@@ -6,6 +6,8 @@
 
 최초 프로젝트는 2026년 6월에 4주간 개발했습니다. 포트폴리오 공개 버전에는 질문과 문단 검색에 맞춘 학습, 제한된 구성 비교, 동결한 최종 평가와 CPU 실행 환경을 추가했으며 재사용 가능한 코드와 실제 검증 기록을 제공합니다.
 
+최초 4주 개발 자료는 [Original Development (4 Weeks)](https://drive.google.com/drive/folders/1PY8OtmllcOFIFBWK0jydj0xmDbdQ09HR) Drive 폴더에서 참고할 수 있습니다. 현재 포트폴리오 공개 버전의 실행과 검증은 이 저장소의 [실행 안내](docs/runtime.ko.md)와 [평가 안내](docs/evaluation.ko.md)를 따릅니다.
+
 ## 구현 역량
 
 - 질문과 문단 검색을 위한 검색기 학습, 오답 필터링과 Hard Negative 생성, 동일 조건의 재순위화 추가 학습
