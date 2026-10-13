@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "scope": "Display of retained experiment results. No training, inference, model selection or evaluation changes.",
+  "projects": [
+    {
+      "site_id": "project-04",
+      "title_ko": "한국어 검색과 질의응답",
+      "title_en": "Korean NLP RAG",
+      "full_title": "한국어 검색과 질의응답 (Korean NLP RAG)",
+      "period": "2026년 6월 (4주간)",
+      "theme": {
+        "name_ko": "한국어 검색과 정보 탐색",
+        "background": "#F6F7F9",
+        "ink": "#193354",
+        "primary": "#264E82",
+        "secondary": "#D4A537",
+        "before": "#94A5B9",
+        "after": "#264E82",
+        "warning": "#AB6835"
+      },
+      "thumbnail_concept_ko": "한국어 질문에서 근거 문단 검색과 답 추출로 이어지는 도식에 501문항 정답 312개와 367개의 비교 막대를 배치한다.",
+      "metrics": [
+        {
+          "metric": "exact_match",
+          "label_ko": "정답 일치율",
+          "before": 62.27544910179641,
+          "after": 73.25349301397206,
+          "unit": "percent",
+          "denominator": 501
+        },
+        {
+          "metric": "character_f1",
+          "label_ko": "한국어 문자 F1",
+          "before": 70.55198334883748,
+          "after": 79.94485291138116,
+          "unit": "percent",
+          "denominator": 501
+        },
+        {
+          "metric": "recall_at_5",
+          "label_ko": "상위 5개 근거 검색 재현율",
+          "before": 91.61676646706587,
+          "after": 96.6067864271457,
+          "unit": "percent",
+          "denominator": 501
+        },
+        {
+          "metric": "false_answer",
+          "label_ko": "근거 없는 질문의 잘못된 답변",
+          "before": 1,
+          "after": 4,
+          "unit": "count",
+          "denominator": 80
+        },
+        {
+          "metric": "mean_latency_ms",
+          "label_ko": "평균 GPU 처리 시간",
+          "before": 105.33996970733044,
+          "after": 209.53462547333837,
+          "unit": "ms",
+          "denominator": 581
+        }
+      ],
+      "correct_before": 312,
+      "correct_after": 367,
+      "technology_tags": [
+        "한국어 질의응답",
+        "하이브리드 검색",
+        "PyTorch",
+        "FAISS",
+        "검색 평가"
+      ],
+      "implementation": [
+        "BM25와 다국어 E5 검색",
+        "FAISS",
+        "상호 순위 융합",
+        "교차 인코더 재정렬",
+        "KoELECTRA 추출형 QA",
+        "근거 구간 기반 문맥 구성",
+        "답변 보류"
+      ],
+      "caveats_ko": [
+        "생성형 언어 모델이 답을 새로 작성하는 시스템이 아니라 검색과 추출형 질의응답 시스템이다.",
+        "정답 일치율과 문자 F1은 같은 답변 가능 501문항이며 공식 비공개 시험 성적이 아니다.",
+        "별도 합성 무응답 80문항의 오답은 1개에서 4개로 늘었다.",
+        "평균 처리 시간은 동일 GPU 실행 경로의 전체 581문항에서 모델 로딩을 제외한 측정이다."
+      ],
+      "sources": [
+        {
+          "path": "reports/final/final-comparison.json",
+          "sha256": "af901baf20e02b8b2bfbc358ec173394860411a5f1897aa6a51e231a5106e3de"
+        },
+        {
+          "path": "README.ko.md",
+          "sha256": "9d9bd44fcc213c4f933f806c0145cb051e1d82be78f85b295c8edab48e7ba941"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "generated_from_published_measurements",
+  "visual_data_sha256": "5799464f464374ac6b9740f827bfacf77a78ad3bbe0cd7922efd15db54a39570",
+  "project_ids": [
+    "project-04"
+  ],
+  "files": [
+    {
+      "filename": "korean-rag-thumbnail.svg",
+      "project_id": "project-04",
+      "bytes": 3586,
+      "sha256": "31a455f6be3085cd9b07f64695f7e66273dc630d3dd499352e89da087d6fe1cf"
+    },
+    {
+      "filename": "korean-rag-results.svg",
+      "project_id": "project-04",
+      "bytes": 5080,
+      "sha256": "995159a82bc87a26f8e34df4ecfc5593d3b10b88e5507499dba034c4605208ed"
+    },
+    {
+      "filename": "korean-rag-tradeoffs.svg",
+      "project_id": "project-04",
+      "bytes": 4209,
+      "sha256": "b06b0c591f6b93f61a79c5694305cbfdf9e8cfc8b6459928455b3cf9ba088b65"
+    }
+  ],
+  "network_or_model_execution_performed": false,
+  "source_paths_read": false
+}

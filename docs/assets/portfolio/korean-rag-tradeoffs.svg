@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="710" viewBox="0 0 1200 710" role="img" aria-labelledby="title desc">
+<title id="title">답변 개선과 함께 증가한 실행 비용과 잘못된 답변</title>
+<desc id="desc">같은 GPU 실행 경로의 전체581문항 평균 처리 시간이 증가했고 별도 합성 무응답80문항의 잘못된 답변도1개에서4개로 증가했습니다. 두 패널의 단위와 분모는 다릅니다.</desc>
+<style>text{font-family:'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;font-variant-numeric:tabular-nums} .axis{fill:#64696B}</style>
+<rect x="0" y="0" width="1200" height="710" fill="#F6F7F9" rx="0" stroke-width="1"/>
+<text x="48" y="64" fill="#193354" font-size="36" font-weight="750" text-anchor="start">답변 개선에 따른 실행 비용과 오답 변화</text>
+<text x="48" y="104" fill="#64696B" font-size="22" font-weight="400" text-anchor="start">정답은 늘었지만 처리 시간과 근거 없는 질문의 잘못된 답변도 증가했습니다.</text>
+<rect x="48" y="153" width="516" height="438" fill="#FFFFFF" rx="20" stroke="#DDDDE0" stroke-width="1"/>
+<text x="73" y="199" fill="#193354" font-size="28" font-weight="700" text-anchor="start">평균 GPU 처리 시간</text>
+<text x="73" y="233" fill="#64696B" font-size="22" font-weight="400" text-anchor="start">전체 581문항 / 단위 ms</text>
+<text x="76" y="299" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">최초 개발</text>
+<text x="528" y="299" fill="#94A5B9" font-size="31" font-weight="700" text-anchor="end">105.34 ms</text>
+<rect x="76" y="329" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1"/>
+<rect x="76" y="329" width="198.390276282139" height="30" fill="#94A5B9" rx="7" stroke-width="1"/>
+<text x="76" y="425" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">최종 개발</text>
+<text x="528" y="425" fill="#264E82" font-size="31" font-weight="700" text-anchor="end">209.53 ms</text>
+<rect x="76" y="455" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1"/>
+<rect x="76" y="455" width="394.6235446414539" height="30" fill="#264E82" rx="7" stroke-width="1"/>
+<text x="76" y="550" fill="#AB6835" font-size="27" font-weight="700" text-anchor="start">1.99배의 처리 시간</text>
+<rect x="636" y="153" width="516" height="438" fill="#FFFFFF" rx="20" stroke="#DDDDE0" stroke-width="1"/>
+<text x="661" y="199" fill="#193354" font-size="28" font-weight="700" text-anchor="start">근거 없는 질문의 오답</text>
+<text x="661" y="233" fill="#64696B" font-size="22" font-weight="400" text-anchor="start">별도 합성 80문항 / 단위 건</text>
+<text x="664" y="299" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">최초 개발</text>
+<text x="1116" y="299" fill="#94A5B9" font-size="31" font-weight="700" text-anchor="end">1 / 80</text>
+<rect x="664" y="329" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1"/>
+<rect x="664" y="329" width="90.4" height="30" fill="#94A5B9" rx="7" stroke-width="1"/>
+<text x="664" y="425" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">최종 개발</text>
+<text x="1116" y="425" fill="#264E82" font-size="31" font-weight="700" text-anchor="end">4 / 80</text>
+<rect x="664" y="455" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1"/>
+<rect x="664" y="455" width="361.6" height="30" fill="#264E82" rx="7" stroke-width="1"/>
+<text x="664" y="550" fill="#AB6835" font-size="27" font-weight="700" text-anchor="start">잘못된 답변 3건 증가</text>
+<text x="48" y="650" fill="#64696B" font-size="20" font-weight="400" text-anchor="start">GPU 처리 시간은 모델 로딩을 제외합니다. 사용자 CPU의 실행 시간과 구분합니다.</text>
+<text x="48" y="679" fill="#64696B" font-size="20" font-weight="400" text-anchor="start">합성 무응답 문항은 통제 표본이며 실제 모든 질문의 오류율로 일반화할 수 없습니다.</text>
+<metadata>{"project_id": "project-04", "visual_data_sha256": "5799464f464374ac6b9740f827bfacf77a78ad3bbe0cd7922efd15db54a39570", "generated_from_published_measurements": true}</metadata>
+</svg>
