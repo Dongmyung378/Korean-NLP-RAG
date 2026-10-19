@@ -66,6 +66,8 @@ Plan for several gigabytes of free disk space for dependencies and models. Windo
 
 The persistent question loop loads models once. `--question`, `--questions-file`, `--json` and `--no-reader` support single-query inference, batch inference and evidence inspection. See [runtime instructions](docs/runtime.md) for optional CUDA, offline verification and troubleshooting.
 
+The Korean question in the command is intentional: this system retrieves Korean evidence and extracts Korean answers. English documentation describes that interface without translating the actual model input into a different task.
+
 ## Verify and reproduce
 
 ```bash

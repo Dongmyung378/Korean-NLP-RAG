@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Korean retrieval and question answering</title>
+<desc id="desc">Retrieve evidence for Korean questions and extract answers from the source. Exact match on the same 501 questions changed from 62.28% to 73.25%.</desc>
+<style>text{font-family:'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;font-variant-numeric:tabular-nums} .axis{fill:#64696B}</style>
+<rect x="0" y="0" width="1200" height="760" fill="#F6F7F9" rx="0" stroke-width="1" />
+<text x="56" y="83" fill="#193354" font-size="49" font-weight="750" text-anchor="start">Korean retrieval and answer extraction</text>
+<text x="56" y="135" fill="#64696B" font-size="32" font-weight="400" text-anchor="start">Evidence retrieval and extractive question answering</text>
+<rect x="54" y="185" width="1090" height="100" fill="#193354" rx="18" stroke-width="1" />
+<text x="81" y="244" fill="#D4A537" font-size="35" font-weight="700" text-anchor="start">Query</text>
+<text x="215" y="244" fill="#FFFFFF" font-size="32" font-weight="400" text-anchor="start">Find the answer in the original passage</text>
+<rect x="56" y="324" width="482" height="258" fill="#FFFFFF" rx="20" stroke="#DDDDE0" stroke-width="1" />
+<text x="82" y="373" fill="#193354" font-size="35" font-weight="700" text-anchor="start">Evidence retrieval</text>
+<rect x="83" y="406" width="405" height="15" fill="#DDE5EF" rx="6" stroke-width="1" />
+<rect x="83" y="444" width="370" height="15" fill="#DDE5EF" rx="6" stroke-width="1" />
+<rect x="83" y="482" width="390" height="15" fill="#DDE5EF" rx="6" stroke-width="1" />
+<rect x="80" y="519" width="406" height="29" fill="#F0DC9B" rx="6" stroke-width="1" />
+<text x="92" y="542" fill="#193354" font-size="19" font-weight="700" text-anchor="start">Passage containing the answer span</text>
+<line x1="558" y1="446" x2="625" y2="446" stroke="#264E82" stroke-width="6" />
+<path d="M609.692,453.394 L625.000,446.000 L609.692,438.606" fill="none" stroke="#264E82" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="649" y="324" width="496" height="258" fill="#FFFFFF" rx="20" stroke="#DDDDE0" stroke-width="1" />
+<text x="677" y="373" fill="#193354" font-size="35" font-weight="700" text-anchor="start">Answer extraction</text>
+<text x="677" y="438" fill="#264E82" font-size="32" font-weight="700" text-anchor="start">Select a source span</text>
+<text x="677" y="496" fill="#64696B" font-size="26" font-weight="400" text-anchor="start">Abstain if evidence is insufficient</text>
+<line x1="677" y1="538" x2="1110" y2="538" stroke="#D4A537" stroke-width="5" />
+<text x="55" y="642" fill="#64696B" font-size="31" font-weight="400" text-anchor="start">Exact match on the same 501 questions</text>
+<text x="55" y="713" fill="#94A5B9" font-size="49" font-weight="700" text-anchor="start">62.28%</text>
+<line x1="313" y1="696" x2="365" y2="696" stroke="#264E82" stroke-width="5" />
+<path d="M349.692,703.394 L365.000,696.000 L349.692,688.606" fill="none" stroke="#264E82" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+<text x="394" y="713" fill="#264E82" font-size="49" font-weight="750" text-anchor="start">73.25%</text>
+<text x="1123" y="707" fill="#193354" font-size="34" font-weight="700" text-anchor="end">55 net additional correct</text>
+<metadata>{"generated_from_published_measurements": true, "localization": {"language": "en", "measurement_values_changed": false, "source_sha256": "31a455f6be3085cd9b07f64695f7e66273dc630d3dd499352e89da087d6fe1cf", "source_svg": "docs/assets/portfolio/korean-rag-thumbnail.svg"}, "project_id": "project-04", "visual_data_sha256": "5799464f464374ac6b9740f827bfacf77a78ad3bbe0cd7922efd15db54a39570"}</metadata>
+</svg>

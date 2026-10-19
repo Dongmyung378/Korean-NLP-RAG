@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "presentation_only": true,
+  "models_or_evaluation_run": false,
+  "files": [
+    {
+      "source": "docs/assets/portfolio/korean-rag-thumbnail.svg",
+      "target": "docs/assets/portfolio/korean-rag-thumbnail.en.svg",
+      "language": "en",
+      "source_sha256": "31a455f6be3085cd9b07f64695f7e66273dc630d3dd499352e89da087d6fe1cf",
+      "sha256": "ba91d8126f0a90d6e9ce14c2a09ad1fff4b0c1e7ab9aaf997f3dcd466cf49535",
+      "translated_elements": 13
+    },
+    {
+      "source": "docs/assets/portfolio/korean-rag-results.svg",
+      "target": "docs/assets/portfolio/korean-rag-results.en.svg",
+      "language": "en",
+      "source_sha256": "995159a82bc87a26f8e34df4ecfc5593d3b10b88e5507499dba034c4605208ed",
+      "sha256": "f99452b77928a3549977d6dde744769a3b89cf1e0330df46ce7210f95d1eb96f",
+      "translated_elements": 14
+    },
+    {
+      "source": "docs/assets/portfolio/korean-rag-tradeoffs.svg",
+      "target": "docs/assets/portfolio/korean-rag-tradeoffs.en.svg",
+      "language": "en",
+      "source_sha256": "b06b0c591f6b93f61a79c5694305cbfdf9e8cfc8b6459928455b3cf9ba088b65",
+      "sha256": "22ef5b12a653095646026f3e5c0c3eeed71c912d31bd8089a3a499deee55e180",
+      "translated_elements": 16
+    }
+  ]
+}

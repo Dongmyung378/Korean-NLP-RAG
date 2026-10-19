@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="710" viewBox="0 0 1200 710" role="img" aria-labelledby="title desc">
+<title id="title">Answer gains with higher runtime cost and false answers</title>
+<desc id="desc">Mean serving time increased for all 581 questions on the same GPU path; false answers on a separate 80-question synthetic no-answer set rose from 1 to 4. The panels use different units and denominators.</desc>
+<style>text{font-family:'Noto Sans KR', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;font-variant-numeric:tabular-nums} .axis{fill:#64696B}</style>
+<rect x="0" y="0" width="1200" height="710" fill="#F6F7F9" rx="0" stroke-width="1" />
+<text x="48" y="64" fill="#193354" font-size="36" font-weight="750" text-anchor="start">Runtime cost and false-answer tradeoffs</text>
+<text x="48" y="104" fill="#64696B" font-size="22" font-weight="400" text-anchor="start">More correct answers also came with longer runtime and more false answers to unsupported questions.</text>
+<rect x="48" y="153" width="516" height="438" fill="#FFFFFF" rx="20" stroke="#DDDDE0" stroke-width="1" />
+<text x="73" y="199" fill="#193354" font-size="28" font-weight="700" text-anchor="start">Mean GPU serving time</text>
+<text x="73" y="233" fill="#64696B" font-size="22" font-weight="400" text-anchor="start">All 581 questions / milliseconds</text>
+<text x="76" y="299" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">Reference</text>
+<text x="528" y="299" fill="#94A5B9" font-size="31" font-weight="700" text-anchor="end">105.34 ms</text>
+<rect x="76" y="329" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1" />
+<rect x="76" y="329" width="198.390276282139" height="30" fill="#94A5B9" rx="7" stroke-width="1" />
+<text x="76" y="425" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">Final</text>
+<text x="528" y="425" fill="#264E82" font-size="31" font-weight="700" text-anchor="end">209.53 ms</text>
+<rect x="76" y="455" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1" />
+<rect x="76" y="455" width="394.6235446414539" height="30" fill="#264E82" rx="7" stroke-width="1" />
+<text x="76" y="550" fill="#AB6835" font-size="27" font-weight="700" text-anchor="start">1.99 times the serving time</text>
+<rect x="636" y="153" width="516" height="438" fill="#FFFFFF" rx="20" stroke="#DDDDE0" stroke-width="1" />
+<text x="661" y="199" fill="#193354" font-size="28" font-weight="700" text-anchor="start">False answers without evidence</text>
+<text x="661" y="233" fill="#64696B" font-size="22" font-weight="400" text-anchor="start">Separate 80 synthetic questions / cases</text>
+<text x="664" y="299" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">Reference</text>
+<text x="1116" y="299" fill="#94A5B9" font-size="31" font-weight="700" text-anchor="end">1 / 80</text>
+<rect x="664" y="329" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1" />
+<rect x="664" y="329" width="90.4" height="30" fill="#94A5B9" rx="7" stroke-width="1" />
+<text x="664" y="425" fill="#64696B" font-size="23" font-weight="400" text-anchor="start">Final</text>
+<text x="1116" y="425" fill="#264E82" font-size="31" font-weight="700" text-anchor="end">4 / 80</text>
+<rect x="664" y="455" width="452" height="30" fill="#EBEDF0" rx="7" stroke-width="1" />
+<rect x="664" y="455" width="361.6" height="30" fill="#264E82" rx="7" stroke-width="1" />
+<text x="664" y="550" fill="#AB6835" font-size="27" font-weight="700" text-anchor="start">3 additional false answers</text>
+<text x="48" y="650" fill="#64696B" font-size="20" font-weight="400" text-anchor="start">GPU serving time excludes model loading and does not represent runtime on a user's CPU.</text>
+<text x="48" y="679" fill="#64696B" font-size="20" font-weight="400" text-anchor="start">The synthetic no-answer set is a controlled sample, not an error-rate estimate for all real questions.</text>
+<metadata>{"generated_from_published_measurements": true, "localization": {"language": "en", "measurement_values_changed": false, "source_sha256": "b06b0c591f6b93f61a79c5694305cbfdf9e8cfc8b6459928455b3cf9ba088b65", "source_svg": "docs/assets/portfolio/korean-rag-tradeoffs.svg"}, "project_id": "project-04", "visual_data_sha256": "5799464f464374ac6b9740f827bfacf77a78ad3bbe0cd7922efd15db54a39570"}</metadata>
+</svg>

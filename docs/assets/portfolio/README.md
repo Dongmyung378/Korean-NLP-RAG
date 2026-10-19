@@ -2,18 +2,19 @@
 
 [English](README.md) | [한국어](README.ko.md)
 
-These Korean-labelled SVGs are the presentation assets used on the portfolio site. Their values come from the retained experiment records referenced, with checksums, in `visual-data.json`. They do not change trained models, data splits, selection decisions or scientific reports. Read the main project documentation for scope and limitations.
+The figures below use English labels. Each is a language-only derivative of the retained Korean SVG with the same chart geometry, palette and numerical values. The underlying experiment records and checksums remain in `visual-data.json`. Models, data splits, selection decisions and scientific reports are unchanged.
 
-The renderer uses Python's standard library and the embedded display data only. Regenerating these visuals does not rerun a model or verify its scientific evaluation.
+The localization renderer uses Python's standard library, the source SVGs and explicit labels in `localization.json`. It does not run models or repeat evaluation. Korean CLI questions and extracted Korean passages are task inputs and outputs, so their language is preserved rather than replaced with English examples of a different task.
 
 ```bash
-python docs/assets/portfolio/render_visuals.py --input docs/assets/portfolio/visual-data.json --output docs/assets/portfolio
+python docs/assets/portfolio/render_localized_visuals.py
+python docs/assets/portfolio/render_localized_visuals.py --check
 ```
 
-`visual-receipt.json` binds the generated SVG bytes to the display data. The source-download ZIP includes these exact site assets. The website's technical diagrams describe implemented processing steps; they are not new benchmark results.
+`localization-receipt.json` binds each English derivative to the retained Korean source SVG and SHA-256. The original Korean renderer and `visual-receipt.json` remain unchanged. Diagrams describe processing steps rather than new measurements. Website assets and existing ZIPs are separate publication artifacts and are not overwritten by this helper.
 
 ## Figures
 
-- [korean-rag-thumbnail.svg](korean-rag-thumbnail.svg)
-- [korean-rag-results.svg](korean-rag-results.svg)
-- [korean-rag-tradeoffs.svg](korean-rag-tradeoffs.svg)
+- [Retrieval and answer extraction](korean-rag-thumbnail.en.svg)
+- [Paired answer and retrieval results](korean-rag-results.en.svg)
+- [Runtime and false-answer tradeoffs](korean-rag-tradeoffs.en.svg)

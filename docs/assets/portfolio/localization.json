@@ -1,0 +1,66 @@
+{
+  "figures": [
+    {
+      "source": "docs/assets/portfolio/korean-rag-thumbnail.svg",
+      "target": "docs/assets/portfolio/korean-rag-thumbnail.en.svg",
+      "language": "en",
+      "translations": {
+        "한국어 검색과 질의응답": "Korean retrieval and question answering",
+        "한국어 질문에서 근거 문단을 검색하고 원문에서 답을 추출합니다. 같은 501문항의 정답 일치율은 62.28%에서 73.25%로 변했습니다.": "Retrieve evidence for Korean questions and extract answers from the source. Exact match on the same 501 questions changed from 62.28% to 73.25%.",
+        "한국어 근거 검색과 답변 추출": "Korean retrieval and answer extraction",
+        "한국어 검색과 추출형 질의응답": "Evidence retrieval and extractive question answering",
+        "질문": "Query",
+        "필요한 정보를 원문에서 찾아 답하다": "Find the answer in the original passage",
+        "근거 검색": "Evidence retrieval",
+        "정답 구간을 포함한 문단": {"text": "Passage containing the answer span", "font-size": 19},
+        "답 추출": "Answer extraction",
+        "원문에서 답을 선택": "Select a source span",
+        "근거가 부족하면 보류": {"text": "Abstain if evidence is insufficient", "font-size": 26},
+        "같은 501문항의 정답 일치율": "Exact match on the same 501 questions",
+        "정답 55개 증가": "55 net additional correct"
+      }
+    },
+    {
+      "source": "docs/assets/portfolio/korean-rag-results.svg",
+      "target": "docs/assets/portfolio/korean-rag-results.en.svg",
+      "language": "en",
+      "translations": {
+        "한국어 검색과 질의응답의 대응 비교": "Paired Korean retrieval and QA comparison",
+        "같은 답변 가능한 501문항에서 초기 및 최종 모델의 정답 일치율, 한국어 문자 F1과 상위5개 검색 재현율을 비교했습니다.": "Exact match, Korean character F1 and top-5 retrieval recall compare reference and final configurations on the same 501 answerable questions.",
+        "검색 성능과 답변 품질의 비교 결과": "Retrieval and answer quality comparison",
+        "최초 개발 모델과 최종 개발 모델을 같은 답변 가능한 501문항에서 비교했습니다.": "Reference and final configurations evaluated on the same 501 answerable questions.",
+        "최초 개발 모델": "Reference",
+        "최종 개발 모델": "Final",
+        "정답 일치율": "Exact match",
+        "EM": {"text": "EM", "y": 274},
+        "한국어 문자 F1": "Korean character F1",
+        "상위 5개 근거 검색": "Top-5 evidence",
+        "재현율": {"text": "retrieval recall", "y": 494},
+        "지표 (%)": "Metric (%)",
+        "정답 일치율: 312 / 501 → 367 / 501. 검색 재현율: 정답 구간 전체를 포함하는 근거를 찾은 비율입니다.": {"text": "Exact match: 312 / 501 → 367 / 501. Recall requires a retrieved passage containing the full answer span.", "font-size": 19},
+        "공개 KorQuAD 검증 자료의 프로젝트 평가입니다. 공식 비공개 시험 성적이나 의미상 정확도는 아닙니다.": {"text": "Project evaluation on public KorQuAD validation, not an official private test or a semantic-accuracy score.", "font-size": 19}
+      }
+    },
+    {
+      "source": "docs/assets/portfolio/korean-rag-tradeoffs.svg",
+      "target": "docs/assets/portfolio/korean-rag-tradeoffs.en.svg",
+      "language": "en",
+      "translations": {
+        "답변 개선과 함께 증가한 실행 비용과 잘못된 답변": "Answer gains with higher runtime cost and false answers",
+        "같은 GPU 실행 경로의 전체581문항 평균 처리 시간이 증가했고 별도 합성 무응답80문항의 잘못된 답변도1개에서4개로 증가했습니다. 두 패널의 단위와 분모는 다릅니다.": "Mean serving time increased for all 581 questions on the same GPU path; false answers on a separate 80-question synthetic no-answer set rose from 1 to 4. The panels use different units and denominators.",
+        "답변 개선에 따른 실행 비용과 오답 변화": "Runtime cost and false-answer tradeoffs",
+        "정답은 늘었지만 처리 시간과 근거 없는 질문의 잘못된 답변도 증가했습니다.": "More correct answers also came with longer runtime and more false answers to unsupported questions.",
+        "평균 GPU 처리 시간": "Mean GPU serving time",
+        "전체 581문항 / 단위 ms": "All 581 questions / milliseconds",
+        "최초 개발": "Reference",
+        "최종 개발": "Final",
+        "1.99배의 처리 시간": "1.99 times the serving time",
+        "근거 없는 질문의 오답": "False answers without evidence",
+        "별도 합성 80문항 / 단위 건": "Separate 80 synthetic questions / cases",
+        "잘못된 답변 3건 증가": "3 additional false answers",
+        "GPU 처리 시간은 모델 로딩을 제외합니다. 사용자 CPU의 실행 시간과 구분합니다.": "GPU serving time excludes model loading and does not represent runtime on a user's CPU.",
+        "합성 무응답 문항은 통제 표본이며 실제 모든 질문의 오류율로 일반화할 수 없습니다.": "The synthetic no-answer set is a controlled sample, not an error-rate estimate for all real questions."
+      }
+    }
+  ]
+}
