@@ -4,6 +4,14 @@
 
 The final development-selected system answers 367 of 501 held-out answerable questions exactly, compared with 312 for the initial system. Retrieval and answer quality improve, while synthetic no-answer errors increase and inference takes longer. These tradeoffs are part of the result, and final outcomes were not used to retune or reselect the configuration.
 
+## Reading the comparison
+
+“Paired” means both implementations answer the same questions, allowing changes to be inspected question by question. “Frozen” means the chosen configuration and its file identities were recorded before final inference. Development questions informed selection; the final holdout did not, subject to the historical exposure limits below.
+
+EM checks exact answer matching after normalization, while character F1 measures partial overlap with the reference answer. Recall@5 evaluates the search stage: at least one of the top five candidates must contain a complete gold answer span, where “gold” means the supplied reference annotation. Coverage counts returned answers whether correct or wrong. Synthetic abstention measures withheld answers on a separate controlled set with no supported answer. It cannot be added to answerable-question accuracy as though all rows shared one denominator.
+
+For timings, p50 is the median observed request time and p95 is the time at or below which approximately 95% of measured requests fall. Cold loading is the one-time model startup cost, distinct from serving questions after loading.
+
 ## Frozen paired final evaluation
 
 | Measurement | Initial developed model | Final developed model | Change |
@@ -30,6 +38,8 @@ The comparison is a project-tuning holdout constructed from public KorQuAD valid
 6. **A reviewable portfolio.** Reusable training, selection, evaluation and runtime code replace personal learning notebooks in the public tree. English guides have Korean companions. Initial-model conversion, metadata/source archives, compact final predictions, attribution and rejected development outcomes are documented. The original STS retriever and task-trained candidate are published in an optional [training-model archive](training-artifacts.md), verified by a complete anonymous download and SHA-256. The selected E5 runtime uses separate artifacts and does not depend on this archive.
 
 ## Final changes and remaining errors
+
+The bootstrap below repeatedly samples the recorded question groups and recalculates the difference using both systems' saved answers. Its seed fixes the random resampling sequence; it does not refer to retraining the models. The resulting interval describes the observed sample under those grouping assumptions.
 
 The paired final answers contain 82 newly exact-correct cases and 27 lost exact-correct cases, for a net gain of 55. F1 improves on 98 questions and falls on 38. A seed-378 bootstrap over 102 connected paragraph/question groups, with 2,000 resamples, gives descriptive paired 95% intervals of +6.94 to +15.26 percentage points for EM and +5.35 to +13.37 for F1. Residual article dependence, pretrained exposure and adaptive development selection are outside that calculation; it is not a general statistical-significance claim.
 

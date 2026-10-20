@@ -2,11 +2,29 @@
 
 [English](README.md) | [한국어](README.ko.md)
 
+Ask a Korean factual question about the prepared document collection. The system searches that collection, extracts a short answer from a source passage and returns the citation, or withholds an answer when its acceptance checks fail. It runs locally and lets a reader inspect the text used for the answer.
+
 A local Korean evidence-retrieval and extractive question-answering system. It combines BM25 and dense retrieval, Cross-Encoder reranking and a KoELECTRA QA Reader to return an answer with a source citation or abstain.
 
 The original four-week project was developed in June 2026. Its portfolio release adds task-aligned training, bounded model selection, a frozen project holdout and portable CPU execution, with reusable code and measured verification records.
 
 The [Original Development (4 Weeks)](https://drive.google.com/drive/folders/1PY8OtmllcOFIFBWK0jydj0xmDbdQ09HR) Drive folder contains reference artifacts from that initial period. Follow this repository's [runtime](docs/runtime.md) and [evaluation](docs/evaluation.md) guides to reproduce the current portfolio release.
+
+## From a question to a cited answer
+
+RAG usually means retrieval-augmented generation: look up evidence before answering. This repository keeps that retrieval-first structure but uses an **extractive Reader**, which selects an answer span from Korean text rather than generating unrestricted prose.
+
+| Component | Its role |
+| --- | --- |
+| BM25 and dense retrieval | BM25 searches for matching words. Dense retrieval represents questions and passages as numerical vectors to search by semantic similarity; FAISS performs vector search. |
+| Reciprocal Rank Fusion (RRF) | Combines the ranked keyword and vector search lists into one candidate list. |
+| Cross-Encoder reranker | Reads each question and candidate passage together to refine their order. |
+| KoELECTRA QA Reader | Identifies the beginning and end of an answer inside the selected Korean context. |
+| Chunks and parent windows | Chunks are searchable pieces of a paragraph. A parent window restores surrounding source text so the Reader can see context near the retrieved passage. |
+| Hard negatives | Plausible-looking but incorrect passages used during training, to help distinguish relevant evidence from near misses. |
+| Acceptance checks and abstention | Fixed rules decide whether to return the extracted answer and citation or withhold the answer. Passing these checks is not proof of correctness. |
+
+Training changes model weights. Model selection compares candidate configurations on development questions. A frozen holdout reserves a separate set of questions from those choices and measures the chosen configuration afterward.
 
 ## Engineering demonstrated
 
@@ -20,6 +38,8 @@ The [Original Development (4 Weeks)](https://drive.google.com/drive/folders/1PY8
 ## Measured results
 
 See [measured results](reports/results.md) for the paired final evaluation, development experiments, denominators, timing and limitations. [Historical regression](reports/legacy_baseline.md) is reported separately.
+
+**How to read the metrics:** EM requires an exact answer match after the defined text normalization. Korean character F1 gives partial credit for overlapping answer characters by balancing how much of the prediction is correct with how much of the reference answer is recovered. Complete-span Recall@5 asks whether the top five retrieved candidates contain an entire accepted answer span. Coverage is how often an answer is returned, including wrong answers. Abstention means withholding an answer; the synthetic no-answer rows use a separate question set. Percentage-point changes subtract two percentages directly. Higher quality and lower runtime are desirable, but the table shows their tradeoff rather than a single overall score.
 
 <!-- FINAL_RESULTS -->
 

@@ -1,5 +1,7 @@
 # Architecture
 
+The input is a Korean question and the output is a source-backed answer span or an abstention. Retrieval finds promising passages; reranking orders that shortlist more carefully; the Reader extracts an answer from a source window; acceptance rules decide whether to return it. A chunk is a searchable text piece, a vector represents text numerically for similarity search, and a parent window restores nearby source context. These stages are evaluated separately because a good retrieved passage does not guarantee a correct extracted answer.
+
 [English](architecture.md) | [한국어](architecture.ko.md)
 
 The system answers Korean questions using a fixed, locally indexed KorQuAD corpus. It retrieves evidence, extracts an answer span and returns a source citation or abstains. It does not require an LLM API.
